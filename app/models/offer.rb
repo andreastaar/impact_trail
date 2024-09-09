@@ -1,0 +1,15 @@
+class Offer < ApplicationRecord
+  belongs_to :user
+  has_many :applications, dependent: :destroy
+  has_many :reviews, dependent: :destroy
+
+  validates :title, presence: true
+  validates :description, presence: true
+  validates :requirements, presence: true
+  validates :start_date, presence: true
+  validates :end_date, presence: true
+  validates :availability, presence: true, numericality: { only_integer: true, greater_than: 0 }
+  validates :location, presence: true
+  validates :latitude, numericality: true, allow_nil: true
+  validates :longitude, numericality: true, allow_nil: true
+end
