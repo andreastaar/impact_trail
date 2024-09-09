@@ -5,9 +5,11 @@
     <%= f.error_notification %>
 
     <div class="form-inputs">
+
+
+      <%= f.input :role, collection: [['Voluntario', 'voluntario'], ['Organización', 'organización']], prompt: "Select a role", input_html: { class: 'form-control' } %>
       <%= f.input :first_name %>
       <%= f.input :last_name %>
-      <%= f.input :role, collection: [['Voluntario', 'voluntario'], ['Organización', 'organización']], prompt: "Select a role", input_html: { class: 'form-control' } %>
 
       <%= f.input :location %>
       <%= f.input :instagram_account %>
