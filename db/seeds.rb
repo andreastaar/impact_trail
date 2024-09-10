@@ -6,7 +6,7 @@ Review.destroy_all
 Offer.destroy_all
 User.destroy_all
 
-# Crear usuarios
+ puts "Crear usuarios"
 usuarios = User.create!(
   [
     { email: 'alberto.martinez@example.com', password: '123456', password_confirmation: '123456', first_name: 'Alberto', last_name: 'Martínez', role: 'organización', location: 'México', instagram_account: 'alberto_martinez', facebook_account: 'alberto_martinez_fb', organization_name: 'Fundación Esperanza', description: 'Organización dedicada a ayudar a comunidades marginadas.' },
@@ -15,7 +15,7 @@ usuarios = User.create!(
     { email: 'carla.morales@example.com', password: '123456', password_confirmation: '123456', first_name: 'Carla', last_name: 'Morales', role: 'voluntario', location: 'Chile', instagram_account: 'carla_morales', facebook_account: 'carla_morales_fb', organization_name: nil, description: 'Interesada en contribuir a causas sociales.' }
   ]
 )
-# Agregando imagenes
+puts "creando imagenes"
 user_images =[
   "https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/MJK_08789_Robert_Pattinson_%28Damsel%2C_Berlinale_2018%29_%28cropped%29.jpg/800px-MJK_08789_Robert_Pattinson_%28Damsel%2C_Berlinale_2018%29_%28cropped%29.jpg",
   "https://m.media-amazon.com/images/M/MV5BMTM3OTUwMDYwNl5BMl5BanBnXkFtZTcwNTUyNzc3Nw@@._V1_.jpg",
@@ -30,7 +30,7 @@ user_images.each_with_index do |imagen, index|
 end
 
 
-# Crear ofertas para los usuarios con el rol de organización
+puts "creando ofertas"
 ofertas = Offer.create!(
   [
     # Ofertas para Alberto Martínez
@@ -44,19 +44,19 @@ ofertas = Offer.create!(
     { title: 'Voluntariado en Centro de Rehabilitación', description: 'Apoyar en la rehabilitación de personas con adicciones.', requirements: 'Experiencia en psicología o trabajo social.', start_date: '2024-10-15', end_date: '2024-12-15', availability: 3, user: usuarios[1], address: 'Avenida 15 #78-90, Bogotá', latitude: 4.7110, longitude: -74.0721 }
   ]
 )
-
+puts "creando imagenes"
 offer_images = [
-  "https://ayudaenaccion.org/uploads/2022/02/dia-voluntariado.jpg",
-  "https://ayudaenaccion.org/uploads/2022/02/dia-voluntariado.jpg",
-  "https://noticias.rse.pe/wp-content/uploads/2018/08/voluntariado-corporativo.jpg",
-  "https://www.adventurevolunteer.org/wp-content/uploads/2019/08/voluntariado-en-mexico-1-1200x800.jpeg",
+  "https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/MJK_08789_Robert_Pattinson_%28Damsel%2C_Berlinale_2018%29_%28cropped%29.jpg/800px-MJK_08789_Robert_Pattinson_%28Damsel%2C_Berlinale_2018%29_%28cropped%29.jpg",
+  "https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/MJK_08789_Robert_Pattinson_%28Damsel%2C_Berlinale_2018%29_%28cropped%29.jpg/800px-MJK_08789_Robert_Pattinson_%28Damsel%2C_Berlinale_2018%29_%28cropped%29.jpg",
+  "https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/MJK_08789_Robert_Pattinson_%28Damsel%2C_Berlinale_2018%29_%28cropped%29.jpg/800px-MJK_08789_Robert_Pattinson_%28Damsel%2C_Berlinale_2018%29_%28cropped%29.jpg",
+  "https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/MJK_08789_Robert_Pattinson_%28Damsel%2C_Berlinale_2018%29_%28cropped%29.jpg/800px-MJK_08789_Robert_Pattinson_%28Damsel%2C_Berlinale_2018%29_%28cropped%29.jpg",
 ]
 
 # Adjuntar imágenes a las ofertas
 offer_images.each_with_index do |imagen, index|
   file = URI.parse(imagen).open
   oferta = ofertas[index]
-  oferta.photos.attach(io: file, filename: "#{ofertas.title.parameterize}.jpg", content_type: "image/jpg")
+  oferta.photos.attach(io: file, filename: "#{oferta.title.parameterize}.jpg", content_type: "image/jpg")
 end
 
 # Crear aplicaciones para los voluntarios
@@ -70,7 +70,7 @@ aplicaciones = Application.create!(
 )
 
 # Crear reseñas para las ofertas asociadas a las aplicaciones
-reseas = Review.create!(
+resenas = Review.create!(
   [
     { rating: 5.0, content: 'Una experiencia muy enriquecedora. ¡Altamente recomendado!', user: usuarios[2], offer: ofertas[0] },
     { rating: 4.5, content: 'Excelente organización y muy bien gestionado.', user: usuarios[2], offer: ofertas[1] },
