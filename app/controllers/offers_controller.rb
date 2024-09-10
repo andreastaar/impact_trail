@@ -14,6 +14,7 @@ class OffersController < ApplicationController
 
   def create
     @offer = Offer.new(offer_params)
+    @offer.user_id = current_user.id
     if @offer.save
       redirect_to @offer, notice: 'La oferta fue creada exitosamente'
     else
@@ -36,4 +37,11 @@ class OffersController < ApplicationController
     @offer.destroy
     redirect_to offers_url, notice: 'La oferta fue eliminada'
   end
+
+  private
+
+  def offer_params
+  params.require(:offer).permit(:title, :description, :requirements, :address, :availability)
+  end
+
 end
