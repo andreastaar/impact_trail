@@ -6,8 +6,16 @@
 
     <div class="form-inputs">
 
+      <div class="form-group">
+        <%= f.label :role, "Role" %><br>
 
-      <%= f.input :role, collection: [['Voluntario', 'voluntario'], ['Organización', 'organización']], prompt: "Select a role", input_html: { class: 'form-control' } %>
+        <%= f.radio_button :role, 'voluntario' %>
+        <%= f.label :role_voluntario, "Voluntario" %>
+
+        <%= f.radio_button :role, 'organización' %>
+        <%= f.label :role_organización, "Organización" %>
+      </div>
+
       <%= f.input :first_name %>
       <%= f.input :last_name %>
 
