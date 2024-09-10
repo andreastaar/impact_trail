@@ -5,20 +5,41 @@
     <%= f.error_notification %>
 
     <div class="form-inputs">
-      <%= f.input :first_name %>
-      <%= f.input :last_name %>
-      <%= f.input :role, collection: [['Voluntario', 'voluntario'], ['Organización', 'organización']], prompt: "Select a role", input_html: { class: 'form-control' } %>
 
-      <%= f.input :location %>
-      <%= f.input :instagram_account %>
-      <%= f.input :facebook_account %>
-      <%= f.input :organization_name %>
-      <%= f.input :description %>
+      <div class="form-group">
+        <%= f.label :role, "Perfil" %><br>
 
+        <%= f.radio_button :role, 'voluntario', id: 'role_voluntario' %>
+        <%= f.label :role_voluntario, "Voluntario" %>
+
+        <%= f.radio_button :role, 'organización', id: 'role_organizacion' %>
+        <%= f.label :role_organizacion, "Organización" %>
+      </div>
+
+      <!-- Campos para voluntario -->
+      <div id="voluntario_fields" style="display:none;">
+        <%= f.input :first_name, label: 'Nombre' %>
+        <%= f.input :last_name, label: 'Apellido' %>
+        <%= f.input :description, label: 'Pequeña Presentación' %>
+      </div>
+
+      <!-- Campos para organización -->
+      <div id="organizacion_fields" style="display:none;">
+        <%= f.input :organization_name, label: "Nombre de Organización" %>
+        <%= f.input :description, label: "Breve Descripción" %>
+      </div>
+
+      <!-- Campos comunes -->
+      <div class="form-group">
+        <%= f.label :location, "País" %>
+        <%= f.country_select :location, { prompt: 'Selecciona tu país' }, { class: 'form-control' } %>
+      </div>
+      <%= f.input :instagram_account, label: "Instagram" %>
+      <%= f.input :facebook_account, label: "Facebook" %>
       <%= f.input :email,
                   required: true,
                   autofocus: true,
-                  input_html: { autocomplete: "email" }%>
+                  input_html: { autocomplete: "email" } %>
       <%= f.input :password,
                   required: true,
                   hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
@@ -36,3 +57,30 @@
   <%= render "devise/shared/links" %>
 
 </div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const voluntarioRadio = document.getElementById('role_voluntario');
+    const organizacionRadio = document.getElementById('role_organizacion');
+    const voluntarioFields = document.getElementById('voluntario_fields');
+    const organizacionFields = document.getElementById('organizacion_fields');
+
+    // Función para mostrar/ocultar campos según el rol seleccionado
+    function toggleFields() {
+      if (voluntarioRadio.checked) {
+        voluntarioFields.style.display = 'block';
+        organizacionFields.style.display = 'none';
+      } else if (organizacionRadio.checked) {
+        voluntarioFields.style.display = 'none';
+        organizacionFields.style.display = 'block';
+      }
+    }
+
+    // Escucha cambios en los radio buttons
+    voluntarioRadio.addEventListener('change', toggleFields);
+    organizacionRadio.addEventListener('change', toggleFields);
+
+    // Ejecutar la función al cargar la página para mostrar el estado correcto
+    toggleFields();
+  });
+</script>
