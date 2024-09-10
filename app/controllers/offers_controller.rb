@@ -36,4 +36,11 @@ class OffersController < ApplicationController
     @offer.destroy
     redirect_to offers_url, notice: 'La oferta fue eliminada'
   end
+
+  private
+
+  def offer_params
+  params.require(:offer).permit (:title :description :requirements :location :availability)
+  end
+
 end
