@@ -13,7 +13,7 @@ Rails.application.routes.draw do
 
   resources :offers do
     resources :applications
-    resources :reviews, only: [:index, :create, :destroy]
+    resources :reviews, only: [:index, :create, :destroy, :new]
   end
 
 end
