@@ -5,10 +5,6 @@ class ReviewsController < ApplicationController
     @reviews = User.find(params[:id]).reviews
   end
 
-  # poner en el routes:
-  #member do
-  #get :received_reviews
-  #end
   def new
     @review = Review.new
   end
