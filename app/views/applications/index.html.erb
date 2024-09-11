@@ -1,4 +1,4 @@
 <% @applications.each do |application|%>
-  <p><%= link_to application.user_id%></p>
-  <p><%= link_to application.offer_id%></p>
+<div><h3><%= application.offer.title %><%= application.offer.start_date %> a <%= application.offer.end_date %></h3></div>
+  <p><%=application.user.email%></p>
 <% end %>
