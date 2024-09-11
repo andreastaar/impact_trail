@@ -72,9 +72,9 @@ aplicaciones = Application.create!(
 # Crear reseñas para las ofertas asociadas a las aplicaciones
 resenas = Review.create!(
   [
-    { rating: 5.0, content: 'Una experiencia muy enriquecedora. ¡Altamente recomendado!', user: usuarios[2], offer: ofertas[0] },
-    { rating: 4.5, content: 'Excelente organización y muy bien gestionado.', user: usuarios[2], offer: ofertas[1] },
-    { rating: 4.0, content: 'Buena experiencia, aunque podría haber más actividades.', user: usuarios[3], offer: ofertas[3] },
-    { rating: 4.5, content: 'Muy bien organizado y un equipo muy acogedor.', user: usuarios[3], offer: ofertas[4] }
+    { rating: 5.0, content: 'Una experiencia muy enriquecedora. ¡Altamente recomendado!', user: usuarios[2], organization_id: usuarios[0].id },
+    { rating: 4.5, content: 'Excelente organización y muy bien gestionado.', user: usuarios[2], organization_id: usuarios[0].id },
+    { rating: 4.0, content: 'Buena experiencia, aunque podría haber más actividades.', user: usuarios[3], organization_id: usuarios[1].id },
+    { rating: 4.5, content: 'Muy bien organizado y un equipo muy acogedor.', user: usuarios[3], organization_id: usuarios[1].id }
   ]
 )

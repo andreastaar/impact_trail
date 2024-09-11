@@ -1,36 +1,26 @@
 class ReviewsController < ApplicationController
-  before_action :set_offer, only: %i[new create]
+
   def received_reviews
-    # @reviews = Reviews.where(u, role: "organizaciones")
     @reviews = User.find(params[:id]).reviews
   end
 
-  def new
-    @review = Review.new
-  end
 
   def create
     @review = Review.new(review_params)
-    @review.offer = @offer
+    @review.user = current_user
+    @organization = User.find(params[:review][:organization_id])
     if @review.save
-      redirect_to offer_path(@offer), notice: 'El review fue creado con éxito.'
+      redirect_to organization_path(@organization), notice: 'El review fue creado con éxito.'
     else
+      flash[:alert] = "Something went wrong."
       render :new, status: :unprocessable_entity
     end
   end
 
-  def destroy
-
-  end
-
   private
 
-  def set_offer
-    @offer = Offer.find(params[:offer_id])
-  end
-
   def review_params
-    params.require(:review).permit(:rating, :content)
+    params.require(:review).permit(:rating, :content, :organization_id)
   end
 
 end
