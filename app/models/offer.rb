@@ -1,7 +1,6 @@
 class Offer < ApplicationRecord
   belongs_to :user
   has_many :applications, dependent: :destroy
-  has_many :reviews, dependent: :destroy
   has_many_attached :photos
   validates :title, presence: true
   validates :description, presence: true
