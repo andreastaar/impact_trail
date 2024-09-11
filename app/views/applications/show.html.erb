@@ -1,0 +1,20 @@
+<h1>Application Details</h1>
+<p><strong>Status:</strong> <%= @application.status %></p>
+<p><strong>Offer ID:</strong> <%= @application.offer_id %></p>
+<p><strong>Offer ID:</strong> <%= @application.user_id %></p>
+
+<div class="container chat">
+  <h1>Your booking for <%= @booking.restaurant.name %></h1>
+
+  <div id="messages" class="messages">
+    <% @booking.messages.each do |message| %>
+      <div id="message-<%= message.id %>">
+        <small>
+          <strong><%= message.user.nickname %></strong>
+          <i><%= message.created_at.strftime("%a %b %e at %l:%M %p") %></i>
+        </small>
+        <p><%= message.content %></p>
+      </div>
+    <% end %>
+  </div>
+</div>

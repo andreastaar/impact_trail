@@ -1,6 +1,15 @@
 class ApplicationsController < ApplicationController
   before_action :set_offer, only: %i[new create]
 
+  def index
+    @applications = Application.all
+  end
+
+  def show
+    @applications = Applications.new
+    @applications = Applications.find(params[:id])
+  end
+
   def create
     @application = Application.new(application_params)
     @application.offer = @offer
