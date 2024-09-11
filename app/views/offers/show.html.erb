@@ -14,6 +14,8 @@
       <p class="mt-4"><strong>Fechas:</strong></p>
       <p class="text-secondary"> De <%= @offer.start_date %> a <%= @offer.end_date %></p>
 
+
+
       <% if @offer.photos.present? %>
         <div class="mt-4">
           <strong>Fotos:</strong>
@@ -31,6 +33,14 @@
         <%= link_to 'Editar Oferta', edit_offer_path(@offer), class: 'btn btn-primary' %>
         <%= link_to 'Volver a la lista', offers_path, class: 'btn btn-secondary' %>
       </div>
+
+
+
+<div class="mt-4" data-controller="toggle">
+<button data-action="click->toggle#fire" class="btn btn-warning text-light">Editar</button>
+
+
+
 
     </div>
   </div>

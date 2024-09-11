@@ -5,27 +5,61 @@
     <%= form.label :title %>
     <%= form.text_field :title, class: 'form-control' %>
   </div>
+
   <div class="form-group">
     <%= form.label :description %>
     <%= form.text_area :description, class: 'form-control' %>
   </div>
+
   <div class="form-group">
     <%= form.label :requirements %>
     <%= form.text_area :requirements, class: 'form-control' %>
   </div>
+
   <div class="form-group">
     <%= form.label :address %>
     <%= form.text_field :address, class: 'form-control' %>
   </div>
+
+  <div class="form-group">
+    <%= form.label :start_date %>
+    <%= form.text_field :start_date, class: 'form-control', id: 'start_date_picker' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :end_date %>
+    <%= form.text_field :end_date, class: 'form-control', id: 'end_date_picker' %>
+  </div>
+
+
+
+<div class="form-group">
+  <%= form.label :start_date, "Start Date" %>
+  <%= form.text_field :start_date, class: "form-control", data: {controller: "datepicker"} %>
+</div>
+
+<div class="form-group">
+  <%= form.label :end_date, "End Date" %>
+  <%= form.text_field :end_date, class: "form-control", data: {controller: "datepicker"} %>
+</div>
+
+
+
   <div class="form-group">
     <%= form.label :availability %>
     <%= form.number_field :availability, class: 'form-control' %>
   </div>
+
+  <div class="form-group">
+    <%= form.label :photos %>
+    <%= form.file_field :photos, multiple: true, class: 'form-control' %>
+  </div>
+
   <%= form.submit 'Create Offer', class: 'btn btn-primary' %>
 <% end %>
 
 <%= link_to 'Back to Offers', offers_path, class: 'btn btn-secondary' %>
-raise
+
 
  <%# Crear acceso para el Host como mi Joyita , crear el método hacker de Andrés "pundit"
  3 opciones STATUS : INICIADO, ACEPTADO, CERRADO %>
