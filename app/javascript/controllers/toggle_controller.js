@@ -1,9 +1,9 @@
-import { Controller } from "stimulus";
+import { Controller } from "@hotwire/stimulus";
 
-export default class extends Controller {
-  static targets = ["editForm"];
-
-  toggleEdit() {
-    this.editFormTarget.classList.toggle("d-none");
+export default class extends toggleController {
+  static targets = ["form"];
+  connect() {console.log("hola")}
+  fire() {
+    this.formTarget.classList.toggle("d-none");
   }
 }

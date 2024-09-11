@@ -1,11 +1,10 @@
 class OffersController < ApplicationController
-
+  before_action :set_offer, only: [:edit, :show, :update]
   def index
     @offers = Offer.all
   end
 
   def show
-    @offer = Offer.find(params[:id])
   end
 
   def new
@@ -23,6 +22,7 @@ class OffersController < ApplicationController
   end
 
   def edit
+
   end
 
   def update
@@ -44,4 +44,7 @@ class OffersController < ApplicationController
   params.require(:offer).permit(:title, :description, :requirements, :address, :availability)
   end
 
+  def set_offer
+    @offer = Offer.find(params[:id])
+  end
 end
