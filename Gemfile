@@ -79,4 +79,4 @@ end
 
 gem 'country_select'
 
-gem 'flatpickr'
+
