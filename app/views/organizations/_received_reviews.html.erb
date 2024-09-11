@@ -1,0 +1,17 @@
+<div class="container">
+
+<div class="row">
+<div class="col-xs-4">
+
+<% if @reviews.any? %>
+  <% @reviews.each do |review| %>
+  <%= review.rating  %>
+  <%= review.content  %>
+  <% end %>
+<% else %>
+  <p>No tiene reviews registradas.</p>
+<% end %>
+
+</div>
+</div>
+</div>
