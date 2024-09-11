@@ -1,0 +1,10 @@
+
+
+<% if @reviews.any? %>
+  <% @reviews.each do |review| %>
+  <%= review.rating  %>
+  <%= review.content  %>
+  <% end %>
+<% else %>
+  <p>No tiene reviews registradas.</p>
+<% end %>
