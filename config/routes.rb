@@ -16,4 +16,6 @@ Rails.application.routes.draw do
     resources :reviews, only: [:index, :create, :destroy, :new]
   end
 
+  # resource :organizations, only: [:show]
+  get "organizations/:id", to: "organizations#show"
 end
