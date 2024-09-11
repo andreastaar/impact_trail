@@ -8,6 +8,7 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+<script src="https://kit.fontawesome.com/492bb9efcd.js" crossorigin="anonymous"></script>
   </head>
 
   <body><%= render "shared/navbar" %>
@@ -15,4 +16,6 @@
 
     <%= yield %>
   </body>
+
+<%= render "shared/footer" %>
 </html>
