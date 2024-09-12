@@ -8,6 +8,7 @@ class OffersController < ApplicationController
   end
 
   def show
+    @application = Application.new
   end
 
   def new

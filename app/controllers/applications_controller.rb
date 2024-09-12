@@ -35,6 +35,6 @@ class ApplicationsController < ApplicationController
   end
 
   def application_params
-    params.require(:application).permit(:status)
+    params.require(:application).permit(:status, :start_date, :end_date)
   end
 end
