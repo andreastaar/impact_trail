@@ -1,9 +1,32 @@
-<%= form_with(model: [@offer, @application], local: true) do |form| %>
-  <div class="form-group">
-    <%= form.label :status, "Status" %>
-    <%= form.text_field :status, class: 'form-control' %>
+<div class="container my-3 py-3 border border-success" style="width: 600px;">
+  <div class= >
+    <p >Estimado/a [Nombre del Voluntario],</p>
+
+    <p class="text-align: justify">¡Estamos encantados de que hayas elegido unirse a <strong>ImpactTrail</strong> y asi participar de voluntario/a en la comunidad de [Nombre de la Comunidad]!
+
+    Queremos agradecerle sinceramente por su disposición a contribuir con tu tiempo y habilidades para apoyar nuestra causa. Tu compromiso y entusiasmo son muy valiosos para nosotros.
+
+    Nos pondremos en contacto con usted a través de su correo electrónico para coordinar una entrevista. Esta será una excelente oportunidad para conocernos mejor, discutir su rol como voluntario/a y responder a cualquier pregunta que pueda tener.
+
+    Por favor, mantenga un ojo en su bandeja de entrada para recibir nuestra próxima comunicación con los detalles de la entrevista.
+
+    ¡Gracias nuevamente por unirse a nosotros! Estamos emocionados de comenzar esta colaboración y trabajar juntos para hacer una diferencia.</P>
+
+    <p>Atentamente,</p>
+
+    <p class="text-center"><strong>IMPACTTRAIL</strong></p>
+
   </div>
-  <div class="form-group mt-4">
-    <%= form.submit "Apply", class: 'btn btn-primary' %>
+
+  <div class="text-center">
+    <h2 class=>¿Te Gustaría Unirte a Nuestra Familia de Voluntarios?</h2>
+    <%= simple_form_for [@offer, @application] do |f| %>
+      <div class="form-group">
+        <%= f.input :status, :as => :hidden %>
+      </div>
+      <div class="form-group mt-4">
+        <%= f.submit "Deseo ser Voluntario", class: 'btn btn-primary' %>
+      </div>
+    <% end %>
   </div>
-<% end %>
+</div>

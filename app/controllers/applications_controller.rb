@@ -1,12 +1,28 @@
 class ApplicationsController < ApplicationController
   before_action :set_offer, only: %i[new create]
 
+  def index
+    @applications = Application.where(user: current_user)
+  end
+
+  def new
+    @application = Application.new
+  end
+
+
+  # def show
+  #   @applications = Applications.new
+
+  # end
+
   def create
     @application = Application.new(application_params)
-    @application.offer = @offer
     @application.user = current_user
+    @application.offer = @offer
+    @application.status = 'Iniciado'
+
     if @application.save
-      redirect_to offer_path(@offer), notice: 'La aplicación fue realizada'
+      redirect_to applications_path, notice: 'La aplicación fue realizada'
     else
       render :new, status: :unprocessable_entity
     end

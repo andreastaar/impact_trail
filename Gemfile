@@ -78,3 +78,5 @@ end
  gem "cloudinary"
 
 gem 'country_select'
+
+gem 'flatpickr'
