@@ -16,8 +16,9 @@ Rails.application.routes.draw do
     resources :applications, only: [ :create, :new ]
     resources :reviews, only: [:index, :create, :destroy]
   end
+  
   resources :reviews, only: [:create]
-  # post 'applications', to: 'applications#create'
+
   resources :applications, only: [ :index ]
   # resource :organizations, only: [:show]
   get "organizations/:id", to: "organizations#show", as: "organization"
