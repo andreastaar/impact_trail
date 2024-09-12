@@ -18,5 +18,6 @@ class Offer < ApplicationRecord
                   against: [:city, :type_of_volunteering, :title, :country_name, :address],
                   using: {
                     tsearch: { prefix: true }
-                  }
+                  },
+                  ignoring: :accents
 end

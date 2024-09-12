@@ -10,9 +10,10 @@ class OffersController < ApplicationController
     end
 
     if params[:type_of_volunteering].present?
-      @offers = @offers.where("type_of_volunteering ILIKE ?", params[:type_of_volunteering])
+      @offers = @offers.where("unaccent(type_of_volunteering) ILIKE unaccent(?)", params[:type_of_volunteering])
     end
   end
+
 
   def show
     @application = Application.new
