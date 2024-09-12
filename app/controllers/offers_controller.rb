@@ -1,4 +1,5 @@
 class OffersController < ApplicationController
+  before_action :set_offer, only: [:edit, :show, :update]
   skip_before_action :authenticate_user!, only: :index
 
   def index
@@ -14,7 +15,7 @@ class OffersController < ApplicationController
   end
 
   def show
-    @offer = Offer.find(params[:id])
+    @application = Application.new
   end
 
   def new
@@ -50,7 +51,10 @@ class OffersController < ApplicationController
   private
 
   def offer_params
-  params.require(:offer).permit(:title, :description, :requirements, :address, :availability)
+    params.require(:offer).permit(:title, :description, :requirements, :address, :availability, :start_date, :end_date, photos: [])
   end
 
+  def set_offer
+    @offer = Offer.find(params[:id])
+  end
 end

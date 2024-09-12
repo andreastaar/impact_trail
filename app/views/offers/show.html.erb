@@ -14,8 +14,6 @@
       <p class="mt-4"><strong>Fechas:</strong></p>
       <p class="text-secondary"> De <%= @offer.start_date %> a <%= @offer.end_date %></p>
 
-
-
       <% if @offer.photos.present? %>
         <div class="mt-4">
           <strong>Fotos:</strong>
@@ -29,20 +27,54 @@
         </div>
       <% end %>
 
-      <div class="mt-5">
-        <%= link_to 'Editar Oferta', edit_offer_path(@offer), class: 'btn btn-primary' %>
-        <%= link_to 'Volver a la lista', offers_path, class: 'btn btn-secondary' %>
-      </div>
+      <% if current_user.role == "organización" %>
+        <div class="mt-5" data-controller="toggle">
+          <button data-action="click->toggle#fire">edit</button>
+          <%= link_to 'Volver a la lista', offers_path, class: 'btn btn-secondary' %>
+
+          <div class="d-none" data-toggle-target="form">
+            <h1>Editar la oferta de voluntariado</h1>
+            <%= simple_form_for @offer do |f| %>
+              <%= f.input :title, class: 'form-control' %>
+              <%= f.input :description, class: 'form-control' %>
+              <%= f.input :requirements, class: 'form-control' %>
+              <%= f.input :address, class: 'form-control' %>
+              <%= f.input :start_date, as: :string, input_html: {data: {controller: "datepicker"}} %>
+              <%= f.input :end_date, as: :string, input_html: {data: {controller: "datepicker"}} %>
+              <%= f.input :availability, class: 'form-control' %>
+              <%= f.input :photos, as: :file, input_html: {multiple: true} %>
+              <%= f.submit 'Update Offer', class: 'btn btn-primary' %>
+            <% end %>
+            <%= link_to 'Back to Offers', offers_path, class: 'btn btn-secondary' %>
+          </div>
+        </div>
+      <% end %>
+
+            <% if current_user.role == "voluntario" %>
+
+            <div data-controller= "toggle">
+            <%= link_to 'Aplica aquí', "", class: 'btn btn-secondary',data: {action: "toggle#fire"} %>
+
+
+            <div class="d-none" data-toggle-target="form">
+              <h1>Agregar fechas de voluntariado</h1>
+              <%= simple_form_for [@offer, @application] do |f| %>
+                <%= f.input :start_date, as: :string, input_html: {data: {controller: "datepicker"}} %>
+                <%= f.input :end_date, as: :string, input_html: {data: {controller: "datepicker"}} %>
+                <%= f.submit 'Enviar', class: 'btn btn-primary' %>
+              <% end %>
+              <%= link_to 'Volver a la lista', offers_path, class: 'btn btn-secondary' %>
+            </div>
+
+            </div>
 
 
 
-<div class="mt-4" data-controller="toggle">
-<button data-action="click->toggle#fire" class="btn btn-warning text-light">Editar</button>
 
+        <% end %>
 
-
+      <% console %>
 
     </div>
   </div>
-
 </div>

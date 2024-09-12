@@ -1,10 +1,13 @@
 import { Controller } from "@hotwired/stimulus"
 import flatpickr from "flatpickr"; // You need to import this to use new flatpickr()
 
+
+// Connects to data-controller="datepicker"
 export default class extends Controller {
   connect() {
+    console.log("hello World")
     flatpickr(this.element, {
-      dateFormat: "Y-m-d",
+      minDate: "today", maxDate: "2024-09-30"
     })
   }
 }

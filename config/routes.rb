@@ -16,7 +16,7 @@ Rails.application.routes.draw do
     resources :applications, only: [ :create, :new ]
     resources :reviews, only: [:index, :create, :destroy]
   end
-  
+
   resources :reviews, only: [:create]
   resources :users, only: [:index] do
     collection do
@@ -24,7 +24,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :applications, only: [ :index ]
+  resources :applications, only: [:index]
   # resource :organizations, only: [:show]
   get "organizations/:id", to: "organizations#show", as: "organization"
 end
