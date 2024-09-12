@@ -18,6 +18,11 @@ Rails.application.routes.draw do
   end
   
   resources :reviews, only: [:create]
+  resources :users, only: [:index] do
+    collection do
+      get "offer-locations/:location", to: "users#offer_locations", as: "offer_location"
+    end
+  end
 
   resources :applications, only: [ :index ]
   # resource :organizations, only: [:show]

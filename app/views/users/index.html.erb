@@ -1,0 +1,16 @@
+<h1>Voluntarios cerca de tu voluntariado en  <%= current_user.location %></h1>
+
+
+<%= simple_form_for(@user) do |f| %>
+  <div>
+    <%= f.input :location, label: "Filtrar por ubicación" %>
+    <%= f.submit "Buscar" %>
+  </div>
+<% end %>
+
+<ul>
+  <% @users.each do |user| %>
+    <li><%= user.first_name %> - <%= user.location %></li>
+  <% end %>
+</ul>
+
