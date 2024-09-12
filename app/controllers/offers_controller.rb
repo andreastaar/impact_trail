@@ -1,5 +1,8 @@
 class OffersController < ApplicationController
   before_action :set_offer, only: [:edit, :show, :update]
+  skip_before_action :authenticate_user!, only: :index
+
+
   def index
     @offers = Offer.all
   end

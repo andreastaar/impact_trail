@@ -1,4 +1,6 @@
+<div class="container my-3 py-3 border border-success" >
 <% @applications.each do |application|%>
-<div><h3><%= application.offer.title %><%= application.offer.start_date %> a <%= application.offer.end_date %></h3></div>
+<div><h3><%= application.offer.title %> desde <%= application.offer.start_date %> a <%= application.offer.end_date %></h3></div>
   <p><%=application.user.email%></p>
 <% end %>
+</div>

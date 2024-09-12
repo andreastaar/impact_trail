@@ -59,7 +59,7 @@
 </div>
 
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
+
     const voluntarioRadio = document.getElementById('role_voluntario');
     const organizacionRadio = document.getElementById('role_organizacion');
     const voluntarioFields = document.getElementById('voluntario_fields');
@@ -77,10 +77,9 @@
     }
 
     // Escucha cambios en los radio buttons
-    voluntarioRadio.addEventListener('change', toggleFields);
-    organizacionRadio.addEventListener('change', toggleFields);
+    voluntarioRadio.addEventListener('click', toggleFields);
+    organizacionRadio.addEventListener('click', toggleFields);
 
     // Ejecutar la función al cargar la página para mostrar el estado correcto
     toggleFields();
-  });
 </script>
