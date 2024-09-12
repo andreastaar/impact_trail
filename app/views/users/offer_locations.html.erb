@@ -1,7 +1,11 @@
 <h1>Voluntarios cerca de tu voluntariado en  <%= params[:location] %></h1>
-
 <ul>
-  <% @users.each do |user| %>
-    <li><%= user.first_name %> - <%= user.location %></li>
-  <% end %>
+
+<% if @users.any? %>
+    <% @users.each do |user| %>
+      <li><%= user.first_name %> - <%= user.location %></li>
+    <% end %>
+<% else %>
+    <li> "NO HAY OTROS VOLUNTARIOS ACEPTADOS EN ESTA CIUDAD" </li>
+<% end %>
 </ul>
