@@ -15,6 +15,11 @@ Rails.application.routes.draw do
     resources :applications
   end
   resources :reviews, only: [:create]
+  resources :users, only: [:index] do
+    collection do
+      get "offer-locations/:location", to: "users#offer_locations", as: "offer_location"
+    end
+  end
 
   # resource :organizations, only: [:show]
   get "organizations/:id", to: "organizations#show", as: "organization"
