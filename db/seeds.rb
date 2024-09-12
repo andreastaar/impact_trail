@@ -6,7 +6,7 @@ Review.destroy_all
 Offer.destroy_all
 User.destroy_all
 
- puts "Crear usuarios"
+puts "Crear usuarios"
 usuarios = User.create!(
   [
     { email: 'alberto.martinez@example.com', password: '123456', password_confirmation: '123456', first_name: 'Alberto', last_name: 'Martínez', role: 'organización', location: 'México', instagram_account: 'alberto_martinez', facebook_account: 'alberto_martinez_fb', organization_name: 'Fundación Esperanza', description: 'Organización dedicada a ayudar a comunidades marginadas.' },
@@ -15,8 +15,9 @@ usuarios = User.create!(
     { email: 'carla.morales@example.com', password: '123456', password_confirmation: '123456', first_name: 'Carla', last_name: 'Morales', role: 'voluntario', location: 'Chile', instagram_account: 'carla_morales', facebook_account: 'carla_morales_fb', organization_name: nil, description: 'Interesada en contribuir a causas sociales.' }
   ]
 )
+
 puts "creando imagenes"
-user_images =[
+user_images = [
   "https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/MJK_08789_Robert_Pattinson_%28Damsel%2C_Berlinale_2018%29_%28cropped%29.jpg/800px-MJK_08789_Robert_Pattinson_%28Damsel%2C_Berlinale_2018%29_%28cropped%29.jpg",
   "https://m.media-amazon.com/images/M/MV5BMTM3OTUwMDYwNl5BMl5BanBnXkFtZTcwNTUyNzc3Nw@@._V1_.jpg",
   "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/ChrisEvans2023.jpg/440px-ChrisEvans2023.jpg",
@@ -29,21 +30,99 @@ user_images.each_with_index do |imagen, index|
   usuario.photo.attach(io: file, filename: "#{usuario.email}.jpg ", content_type: "image/jpg")
 end
 
-
 puts "creando ofertas"
 ofertas = Offer.create!(
   [
     # Ofertas para Alberto Martínez
-    { title: 'Voluntariado en Educación Infantil', description: 'Apoyar en la educación de niños en situación de vulnerabilidad.', requirements: 'Paciencia y habilidades educativas.', start_date: '2024-10-01', end_date: '2024-12-31', availability: 4, user: usuarios[0], address: 'Av. Reforma 123, Ciudad de México', city: 'Ciudad de Mexico', latitude: 19.4326, longitude: -99.1332 },
-    { title: 'Asistencia en Refugio para Personas Sin Hogar', description: 'Ayudar en la gestión y asistencia en el refugio.', requirements: 'Experiencia en trabajo social es deseable.', start_date: '2024-10-05', end_date: '2024-12-30', availability: 5, user: usuarios[0], address: 'Calle 5 de Febrero 456, Ciudad de México', city: 'Ciudad de Mexico', latitude: 19.4326, longitude: -99.1332 },
-    { title: 'Campaña de Recaudación de Fondos', description: 'Organizar eventos para recaudar fondos para la organización.', requirements: 'Experiencia en eventos o marketing.', start_date: '2024-10-10', end_date: '2024-12-15', availability: 3, user: usuarios[0], address: 'Plaza Central 789, Ciudad de México', city: 'Ciudad de Mexico', latitude: 19.4326, longitude: -99.1332 },
+    {
+      title: 'Voluntariado en Educación Infantil',
+      description: 'Apoyar en la educación de niños en situación de vulnerabilidad.',
+      requirements: 'Paciencia y habilidades educativas.',
+      start_date: '2024-10-01',
+      end_date: '2024-12-31',
+      availability: 4,
+      user: usuarios[0],
+      address: 'Av. Reforma 123, Ciudad de México',
+      city: 'Ciudad de Mexico',
+      latitude: 19.4326,
+      longitude: -99.1332,
+      type_of_volunteering: 'Enseñanza e idiomas' # Nuevo campo agregado
+    },
+    {
+      title: 'Asistencia en Refugio para Personas Sin Hogar',
+      description: 'Ayudar en la gestión y asistencia en el refugio.',
+      requirements: 'Experiencia en trabajo social es deseable.',
+      start_date: '2024-10-05',
+      end_date: '2024-12-30',
+      availability: 5,
+      user: usuarios[0],
+      address: 'Calle 5 de Febrero 456, Ciudad de México',
+      city: 'Ciudad de Mexico',
+      latitude: 19.4326,
+      longitude: -99.1332,
+      type_of_volunteering: 'Mejora de la comunidad' # Nuevo campo agregado
+    },
+    {
+      title: 'Campaña de Recaudación de Fondos',
+      description: 'Organizar eventos para recaudar fondos para la organización.',
+      requirements: 'Experiencia en eventos o marketing.',
+      start_date: '2024-10-10',
+      end_date: '2024-12-15',
+      availability: 3,
+      user: usuarios[0],
+      address: 'Plaza Central 789, Ciudad de México',
+      city: 'Ciudad de Mexico',
+      latitude: 19.4326,
+      longitude: -99.1332,
+      type_of_volunteering: 'Proyectos de construcción y restauración' # Nuevo campo agregado
+    },
 
     # Ofertas para Sofía Ramírez
-    { title: 'Apoyo en Centro de Día para Adultos Mayores', description: 'Asistir en actividades y cuidados de adultos mayores.', requirements: 'Empatía y habilidades para el cuidado.', start_date: '2024-10-02', end_date: '2024-12-31', availability: 4, user: usuarios[1], address: 'Calle 72 #23, Bogotá', city: 'Bogotá', latitude: 4.7110, longitude: -74.0721 },
-    { title: 'Talleres de Capacitación para Jóvenes', description: 'Conducir talleres para el desarrollo de habilidades en jóvenes.', requirements: 'Habilidades en educación y liderazgo.', start_date: '2024-10-07', end_date: '2024-12-20', availability: 4, user: usuarios[1], address: 'Carrera 13 #45-67, Bogotá', city: 'Bogotá', latitude: 4.7110, longitude: -74.0721 },
-    { title: 'Voluntariado en Centro de Rehabilitación', description: 'Apoyar en la rehabilitación de personas con adicciones.', requirements: 'Experiencia en psicología o trabajo social.', start_date: '2024-10-15', end_date: '2024-12-15', availability: 3, user: usuarios[1], address: 'Avenida 15 #78-90, Bogotá', city: 'Bogotá', latitude: 4.7110, longitude: -74.0721 }
+    {
+      title: 'Apoyo en Centro de Día para Adultos Mayores',
+      description: 'Asistir en actividades y cuidados de adultos mayores.',
+      requirements: 'Empatía y habilidades para el cuidado.',
+      start_date: '2024-10-02',
+      end_date: '2024-12-31',
+      availability: 4,
+      user: usuarios[1],
+      address: 'Calle 72 #23, Bogotá',
+      city: 'Bogotá',
+      latitude: 4.7110,
+      longitude: -74.0721,
+      type_of_volunteering: 'Mejora de la comunidad' # Nuevo campo agregado
+    },
+    {
+      title: 'Talleres de Capacitación para Jóvenes',
+      description: 'Conducir talleres para el desarrollo de habilidades en jóvenes.',
+      requirements: 'Habilidades en educación y liderazgo.',
+      start_date: '2024-10-07',
+      end_date: '2024-12-20',
+      availability: 4,
+      user: usuarios[1],
+      address: 'Carrera 13 #45-67, Bogotá',
+      city: 'Bogotá',
+      latitude: 4.7110,
+      longitude: -74.0721,
+      type_of_volunteering: 'Enseñanza e idiomas' # Nuevo campo agregado
+    },
+    {
+      title: 'Voluntariado en Centro de Rehabilitación',
+      description: 'Apoyar en la rehabilitación de personas con adicciones.',
+      requirements: 'Experiencia en psicología o trabajo social.',
+      start_date: '2024-10-15',
+      end_date: '2024-12-15',
+      availability: 3,
+      user: usuarios[1],
+      address: 'Avenida 15 #78-90',
+      city: 'Bogotá',
+      latitude: 4.7110,
+      longitude: -74.0721,
+      type_of_volunteering: 'Proyectos de construcción y restauración' # Nuevo campo agregado
+    }
   ]
 )
+
 puts "creando imagenes"
 offer_images = [
   "https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/MJK_08789_Robert_Pattinson_%28Damsel%2C_Berlinale_2018%29_%28cropped%29.jpg/800px-MJK_08789_Robert_Pattinson_%28Damsel%2C_Berlinale_2018%29_%28cropped%29.jpg",

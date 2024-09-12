@@ -11,4 +11,12 @@ class Offer < ApplicationRecord
   validates :address, presence: true
   validates :latitude, numericality: true, allow_nil: true
   validates :longitude, numericality: true, allow_nil: true
+
+  include PgSearch::Model
+
+  pg_search_scope :search_by_offers,
+                  against: [:city, :type_of_volunteering, :title, :country_name, :address],
+                  using: {
+                    tsearch: { prefix: true }
+                  }
 end

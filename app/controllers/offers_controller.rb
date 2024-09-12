@@ -1,9 +1,16 @@
 class OffersController < ApplicationController
   skip_before_action :authenticate_user!, only: :index
 
-
   def index
     @offers = Offer.all
+
+    if params[:query].present?
+      @offers = @offers.search_by_offers(params[:query])
+    end
+
+    if params[:type_of_volunteering].present?
+      @offers = @offers.where("type_of_volunteering ILIKE ?", params[:type_of_volunteering])
+    end
   end
 
   def show
