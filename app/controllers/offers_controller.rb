@@ -22,7 +22,6 @@ class OffersController < ApplicationController
   end
 
   def edit
-
   end
 
   def update
@@ -41,7 +40,7 @@ class OffersController < ApplicationController
   private
 
   def offer_params
-  params.require(:offer).permit(:title, :description, :requirements, :address, :availability)
+    params.require(:offer).permit(:title, :description, :requirements, :address, :availability, :start_date, :end_date, photos: [])
   end
 
   def set_offer

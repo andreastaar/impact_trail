@@ -3,5 +3,5 @@ import { application } from "controllers/application"
 import { eagerLoadControllersFrom } from "@hotwired/stimulus-loading"
 eagerLoadControllersFrom("controllers", application)
 
-import toggleController from "./toggle_controller";
-application.register("modal", ModalController);
+
+ 

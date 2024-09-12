@@ -1,9 +1,14 @@
-import { Controller } from "@hotwire/stimulus";
+import { Controller } from "@hotwired/stimulus";
 
-export default class extends toggleController {
-  static targets = ["form"];
-  connect() {console.log("hola")}
-  fire() {
+export default class extends Controller {
+  static targets = ["form"]
+
+  connect() {
+    console.log("hola")
+  }
+
+  fire(event) {
+    event.preventDefault()
     this.formTarget.classList.toggle("d-none");
   }
 }
