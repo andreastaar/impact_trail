@@ -1,1 +1,10 @@
 // Specific CSS for your home-page
+.custom-carousel .carousel-item img {
+  height: 600px; /* Ajusta la altura según tus necesidades */
+  object-fit: cover; /* Asegura que la imagen cubra el contenedor sin distorsionarse */
+}
+
+.container-custom-padding {
+  padding-top: 60px; /* Padding superior */
+  padding-bottom: 60px; /* Padding inferior */
+}
