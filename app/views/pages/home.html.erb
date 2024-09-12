@@ -57,7 +57,6 @@
 </div>
 
 <%# form de busqueda  %>
-
 <div class="container container-custom-padding">
   <div class="row justify-content-center">
     <div class="col-auto">
@@ -81,6 +80,24 @@
     </div>
   </div>
 </div>
+
+<%# prueba de form %>
+
+<%= form_with url: offers_path, method: :get, local: true do %>
+  <%= label_tag :query, "Buscar ofertas" %>
+  <%= text_field_tag :query, params[:query] %>
+
+  <%= label_tag :type_of_volunteering, "Tipo de Voluntariado" %>
+  <%= select_tag :type_of_volunteering, options_for_select([
+    ['Animales y medio ambiente', 'Animales y medio ambiente'],
+    ['Proyectos de construcción y restauración', 'Proyectos de construcción y restauración'],
+    ['Agricultura y granjas', 'Agricultura y granjas'],
+    ['Mejora de la comunidad', 'Mejora de la comunidad'],
+    ['Enseñanza e idiomas', 'Enseñanza e idiomas']
+  ], params[:type_of_volunteering]), prompt: "Selecciona un tipo" %>
+
+  <%= submit_tag "Buscar" %>
+<% end %>
 
 <%# cards de offers %>
 <div class="album py-5 bg-body-tertiary">
