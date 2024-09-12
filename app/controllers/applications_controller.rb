@@ -9,7 +9,6 @@ class ApplicationsController < ApplicationController
     @application = Application.new
   end
 
-
   # def show
   #   @applications = Applications.new
 
