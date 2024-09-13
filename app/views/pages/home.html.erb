@@ -15,7 +15,7 @@
         <div class="carousel-caption text-start">
           <h1>Viaja, Impacta y haz Comunidad</h1>
           <p class="opacity-75">Viaja con proposito</p>
-          <p><a class="custom-button" href="#">Registrate</a></p>
+          <%# <p><a class="custom-button" href= "/user/sign_up" >Regístrate</a></p> %>
         </div>
       </div>
     </div>
@@ -28,7 +28,7 @@
         <div class="carousel-caption">
           <h1>Explora el mundo, cambia vidas, sé voluntario.</h1>
           <p>Some representative placeholder content for the second slide of the carousel.</p>
-          <p><a class="custom-button" href="#">Learn more</a></p>
+          <%# <p><a class="custom-button" href="new_user_registration_path">Regístrate</a></p> %>
         </div>
       </div>
     </div>
@@ -41,7 +41,6 @@
         <div class="carousel-caption text-end">
           <h1>Tu aventura comienza ayudando a los demás.</h1>
           <p>Some representative placeholder content for the third slide of this carousel.</p>
-          <p><a class="custom-button" href="#">Browse gallery</a></p>
         </div>
       </div>
     </div>
@@ -56,191 +55,134 @@
   </button>
 </div>
 
-<%# form de busqueda  %>
-<div class="container container-custom-padding">
-  <div class="row justify-content-center">
-    <div class="col-auto">
-      <%= form_with(model: @model_instance, local: true, class: 'd-flex align-items-center') do |f| %>
-        <!-- Dropdown de país -->
-        <div class="form-group mx-2">
-          <%= f.country_select :location, { prompt: '¿En qué país quieres ser voluntario?' }, { class: 'form-control' } %>
-        </div>
+<%# buscador de filtro %>
+<%= form_with url: offers_path, method: :get, local: true, class: 'form-search' do %>
+  <div class="row g-3">
+    <!-- Campo de búsqueda -->
+    <div class="col-md-6">
+      <%= label_tag :query, "Buscar Voluntariado", class: "form-label" %>
+      <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "¿En qué lugar quieres ser voluntario?" %>
+    </div>
 
-        <!-- Dropdown de tipo de voluntariado -->
-        <div class="form-group mx-2">
-          <%= f.select :type, options_for_select([['Animales y medio ambiente', 'animales y medio ambiente'], ['Proyectos de construcción y restauración', 'proyectos de construcción y restauración'], ['Agricultura y granjas', 'agricultura y granjas'], ['Mejora de la comunidad', 'mejora de la comunidad'], ['Enseñanza e idiomas', 'enseñanza e idiomas']]),
-                { prompt: 'Selecciona el tipo de voluntariado' }, { class: 'form-control' } %>
-        </div>
+    <!-- Dropdown de tipo de voluntariado -->
+    <div class="col-md-4">
+      <%= label_tag :type_of_volunteering, "Tipo de Voluntariado", class: "form-label" %>
+      <%= select_tag :type_of_volunteering, options_for_select([
+        ['Animales y medio ambiente', 'Animales y medio ambiente'],
+        ['Proyectos de construcción y restauración', 'Proyectos de construcción y restauración'],
+        ['Agricultura y granjas', 'Agricultura y granjas'],
+        ['Mejora de la comunidad', 'Mejora de la comunidad'],
+        ['Enseñanza e idiomas', 'Enseñanza e idiomas']
+      ], params[:type_of_volunteering]), { prompt: "Tipo de voluntariado", class: "form-select" } %>
+    </div>
 
-        <!-- Botón de búsqueda -->
-        <div class="form-group mx-2">
-          <%= link_to 'Buscar', offers_path, class: 'custom-button' %>
-        </div>
-      <% end %>
+    <!-- Botón de búsqueda -->
+    <div class="col-md-2 align-self-end">
+      <%= submit_tag "Buscar", class: "custom-button  w-100" %>
     </div>
   </div>
-</div>
-
-<%# prueba de form %>
-
-<%= form_with url: offers_path, method: :get, local: true do %>
-  <%= label_tag :query, "Buscar ofertas" %>
-  <%= text_field_tag :query, params[:query] %>
-
-  <%= label_tag :type_of_volunteering, "Tipo de Voluntariado" %>
-  <%= select_tag :type_of_volunteering, options_for_select([
-    ['Animales y medio ambiente', 'Animales y medio ambiente'],
-    ['Proyectos de construcción y restauración', 'Proyectos de construcción y restauración'],
-    ['Agricultura y granjas', 'Agricultura y granjas'],
-    ['Mejora de la comunidad', 'Mejora de la comunidad'],
-    ['Enseñanza e idiomas', 'Enseñanza e idiomas']
-  ], params[:type_of_volunteering]), prompt: "Selecciona un tipo" %>
-
-  <%= submit_tag "Buscar" %>
 <% end %>
 
-<%# cards de offers %>
-<div class="album py-5 bg-body-tertiary">
-    <div class="container">
+  <!-- Seccion Destacado -->
+<section class="py-5 bg-light">
+    <div class="container text-center">
+      <h2 class="mb-4">¿Por qué ImpactTrail?</h2>
+      <p class="mb-5">Únete a una comunidad global de viajeros y voluntarios que buscan generar un impacto positivo en el mundo. Descubre los beneficios de participar con nosotros y transforma tu forma de viajar mientras ayudas a quienes más lo necesitan.</p>
 
-      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-        <div class="col">
-          <div class="card shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+      <div class="row">
+        <!-- Beneficio 1 -->
+        <div class="col-md-3">
+          <div class="card h-100 shadow-sm">
             <div class="card-body">
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                </div>
-                <small class="text-body-secondary">9 mins</small>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-            <div class="card-body">
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                </div>
-                <small class="text-body-secondary">9 mins</small>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-            <div class="card-body">
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                </div>
-                <small class="text-body-secondary">9 mins</small>
-              </div>
+               <div class="bi bi-globe fs-1 mb-3"></div>
+              <h5 class="card-title">Impacto en Comunidades Locales</h5>
+              <p class="card-text">Deja una huella positiva en cada destino. Ayuda a comunidades en situación de vulnerabilidad, promoviendo proyectos que generan un cambio real y sostenible.</p>
             </div>
           </div>
         </div>
 
-        <div class="col">
-          <div class="card shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+        <!-- Beneficio 2 -->
+        <div class="col-md-3">
+          <div class="card h-100 shadow-sm">
             <div class="card-body">
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                </div>
-                <small class="text-body-secondary">9 mins</small>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-            <div class="card-body">
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                </div>
-                <small class="text-body-secondary">9 mins</small>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-            <div class="card-body">
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                </div>
-                <small class="text-body-secondary">9 mins</small>
-              </div>
+              <div class="bi bi-people fs-1 mb-3"></div>
+              <h5 class="card-title">Conexión con Viajeros Voluntarios</h5>
+              <p class="card-text">Haz amigos que comparten tu pasión por ayudar. Conoce y trabaja junto a otros viajeros que comparten tu mentalidad solidaria.</p>
             </div>
           </div>
         </div>
 
-        <div class="col">
-          <div class="card shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+        <!-- Beneficio 3 -->
+        <div class="col-md-3">
+          <div class="card h-100 shadow-sm">
             <div class="card-body">
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                </div>
-                <small class="text-body-secondary">9 mins</small>
-              </div>
+              <div class="bi bi-airplane-engines fs-1 mb-3"></div>
+              <h5 class="card-title">Oportunidades en Varios Países</h5>
+              <p class="card-text">Elige tu próximo destino y vive la experiencia. Explora oportunidades de voluntariado en varios países mientras descubres nuevas culturas.</p>
             </div>
           </div>
         </div>
-        <div class="col">
-          <div class="card shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+
+        <!-- Beneficio 4 -->
+        <div class="col-md-3">
+          <div class="card h-100 shadow-sm">
             <div class="card-body">
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                </div>
-                <small class="text-body-secondary">9 mins</small>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-            <div class="card-body">
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                </div>
-                <small class="text-body-secondary">9 mins</small>
-              </div>
+              <div class="bi bi-heart fs-1 mb-3"></div>
+              <h5 class="card-title">Viajes con Propósito y Responsabilidad</h5>
+              <p class="card-text">Viaja de manera consciente y responsable. Vive una experiencia de viaje que marca la diferencia para ti y el mundo.</p>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
+  </section>
+
+  <!-- Sección: Oportunidades de Voluntariado Destacadas -->
+  <section class="py-5">
+    <div class="container">
+      <h2 class="text-center mb-5">Oportunidades de Voluntariado Destacadas</h2>
+      <div class="row">
+        <!-- Oportunidad 1 -->
+        <div class="col-md-4 mb-4">
+          <div class="card h-100 shadow-sm">
+            <img src="https://via.placeholder.com/400x200" class="card-img-top" alt="Imagen del voluntariado">
+            <div class="card-body">
+              <h5 class="card-title">Voluntariado en Educación</h5>
+              <p class="card-text">Participa en proyectos educativos que buscan mejorar las oportunidades de niños en áreas rurales.</p>
+              <p class="text-muted mb-1"><i class="bi bi-geo-alt"></i> Cusco, Perú</p>
+              <p class="text-muted mb-3"><i class="bi bi-clock"></i> 3 meses</p>
+              <a href="#" class="btn btn-primary">Ver más detalles</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Oportunidad 2 -->
+        <div class="col-md-4 mb-4">
+          <div class="card h-100 shadow-sm">
+            <img src="https://via.placeholder.com/400x200" class="card-img-top" alt="Imagen del voluntariado">
+            <div class="card-body">
+              <h5 class="card-title">Voluntariado en Conservación Ambiental</h5>
+              <p class="card-text">Ayuda a proteger el medio ambiente participando en proyectos de conservación en áreas naturales protegidas.</p>
+              <p class="text-muted mb-1"><i class="bi bi-geo-alt"></i> Patagonia, Argentina</p>
+              <p class="text-muted mb-3"><i class="bi bi-clock"></i> 6 semanas</p>
+              <a href="#" class="btn btn-primary">Ver más detalles</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Oportunidad 3 -->
+        <div class="col-md-4 mb-4">
+          <div class="card h-100 shadow-sm">
+            <img src="https://via.placeholder.com/400x200" class="card-img-top" alt="Imagen del voluntariado">
+            <div class="card-body">
+              <h5 class="card-title">Voluntariado en Salud Comunitaria</h5>
+              <p class="card-text">Únete a iniciativas que buscan mejorar la salud de las comunidades en regiones vulnerables.</p>
+              <p class="text-muted mb-1"><i class="bi bi-geo-alt"></i> Nairobi, Kenia</p>
+              <p class="text-muted mb-3"><i class="bi bi-clock"></i> 2 meses</p>
+              <a href="#" class="btn btn-primary">Ver más detalles</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>

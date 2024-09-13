@@ -12,7 +12,7 @@ class ReviewsController < ApplicationController
     if @review.save
       redirect_to organization_path(@organization), notice: 'El review fue creado con éxito.'
     else
-      flash[:alert] = "Something went wrong."
+      flash[:alert] = "Algo salió mal."
       render :new, status: :unprocessable_entity
     end
   end

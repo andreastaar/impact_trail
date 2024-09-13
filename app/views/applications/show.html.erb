@@ -1,0 +1,37 @@
+<div class="container my-3 py-3 border border-success" style="width: 600px;">
+  <div class= >
+    <p><%="Estimado/a #{current_user.first_name}," %></p>
+
+<p style="text-align: justify;">
+  <%=
+    "Bienvenido/a a #{@application.offer.title}! Estamos encantados de que te unas a nosotros como voluntario/a. Tu apoyo es valioso y estamos seguros de que harás una gran diferencia. Tu compromiso y entusiasmo son muy valiosos para nosotros.
+
+    Nos pondremos en contacto contigo a través de tu correo electrónico para coordinar una entrevista. Esta será una excelente oportunidad para conocernos mejor, discutir tu rol como voluntario/a y responder a cualquier pregunta que puedas tener.
+
+    Por favor, mantén un ojo en tu bandeja de entrada para recibir nuestra próxima comunicación con los detalles de la entrevista.
+
+    ¡Gracias nuevamente por unirte a nosotros! Estamos emocionados de comenzar esta colaboración y trabajar juntos para hacer una diferencia."
+  %>
+</p>
+
+<p>Atentamente,</p>
+
+
+
+
+
+    <p class="text-center"><strong>IMPACTTRAIL</strong></p>
+
+  </div>
+
+
+<div><h3><%= @application.offer.title %></h3></div>
+  <p><i class="fa-solid fa-plane"></i><%= @application.offer.start_date %></p>
+  <p><i class="fa-solid fa-plane-up"></i><%= @application.offer.end_date %></p>
+  <p><i class="fa-solid fa-location-dot"></i><%=@application.offer.address%></p>
+  <p><i class="fa-solid fa-star-of-life"></i><%=@application.status%></p>
+      <% if @application.offer.photos.attached? %>
+      <%= cl_image_tag @application.offer.photos.first.key, width: 150, height: 150, crop: :fill, alt: "Foto de #{@application.offer.title}", class: "offer-photo" %>
+    <% else %>
+      <p>No hay foto disponible</p>
+    <% end %>

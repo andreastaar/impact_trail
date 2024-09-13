@@ -1,13 +1,23 @@
-<%= @organization.organization_name %>
+<div class="container mb-5 mt-5">
+<h1 class= "mb-5"><strong><%= @organization.organization_name %></strong></h1>
+<h4 class= "mb-5"><%= @organization.description %></h4>
 <%= render "received_reviews", reviews: @reviews%>
 
-<% if current_user.role!= "organización" %>
-<div><h5>Crea una nueva review</h5>
+<%# Ver ofertas en general y las todas las postulaciones que tenga el boton de crear nueva %>
+<%=  %>
+
+
+
+<%# Reviews: crear, si eres voluntario %>
+<% if user_signed_in? && current_user.role!= "organización" %>
+<div class= "mt-5"><h5><strong>Crea una nueva review</strong></h5>
       <%= simple_form_for @review do |f| %>
-        <%= f.input :content %>
-        <%= f.input :rating, collection: (1..5).to_a, label: "Rate your experience", input_html: {data: {controller: "star-rating"}} %>
+        <%= f.input :content,label:"Escribe tu review" %>
+        <%= f.input :rating, collection: (1..5).to_a, label: "Califica tu Experiencia", input_html: {data: {controller: "star-rating"}} %>
         <%= f.input :organization_id, :as => :hidden, input_html: {value: params[:id]} %>
-        <%= f.submit "Send your review" %>
+        <%= f.submit "Envía review" %>
       <% end %>
 </div>
 <% end %>
+
+</div>
