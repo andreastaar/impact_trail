@@ -1,46 +1,29 @@
-<div class="container my-5 py-4">
-  <h1 class="text-center mb-4">Tus Voluntariados</h1>
+<div class="container my-3 py-3 border border-success" style="width: 900px">
+  <h1 class="text-center">Mis Voluntariados</h1>
+    <% @applications.each do |application|%>
+      <h3><%= application.offer.title %></h3>
+        <p><i class="fa-solid fa-plane"></i><%= application.offer.start_date %></p>
+        <p><i class="fa-solid fa-plane-up"></i><%= application.offer.end_date %></p>
+        <p><i class="fa-solid fa-location-dot"></i><%=application.offer.address%></p>
+        <p><i class="fa-solid fa-star-of-life"></i><%=application.status%></p>
+      <% if application.offer.photos.attached? %>
+        <%= cl_image_tag application.offer.photos.first.key, width: 150, height: 150, crop: :fill, alt: "Foto de #{application.offer.title}", class: "offer-photo" %>
+      <% else %>
+        <p>No hay foto disponible</p>
+      <% end %>
 
-  <div class="row">
-    <% @applications.each do |application| %>
-      <div class="col-md-6 mb-4">
-        <div class="card shadow-sm h-100">
-          <div class="card-body">
-            <h3 class="card-title"><%= application.offer.title %></h3>
-            <p class="card-text">
-              <i class="fas fa-calendar-alt"></i> Desde: <%= application.offer.start_date %>
-            </p>
-            <p class="card-text">
-              <i class="fas fa-calendar-check"></i> Hasta: <%= application.offer.end_date %>
-            </p>
-            <p class="card-text">
-              <i class="fas fa-map-marker-alt"></i> Ubicación: <%= application.offer.address %>
-            </p>
-            <p class="card-text">
-              <i class="fas fa-info-circle"></i> Estado: <%= application.status %>
-            </p>
-
-            <% if application.offer.photos.attached? %>
-              <div class="text-center my-3">
-                <%= cl_image_tag application.offer.photos.first.key, width: 150, height: 150, crop: :fill, alt: "Foto de #{application.offer.title}", class: "rounded" %>
-              </div>
-            <% else %>
-              <p class="text-muted text-center">No hay foto disponible</p>
-            <% end %>
-
-            <% if application.status == "Iniciado" || "Terminado" %>
-              <div class="d-flex justify-content-between">
-                <%= link_to 'Ver voluntarios', offer_location_users_path(application.offer.city), class: 'btn btn-outline-success' %>
-                <%= link_to 'Hacer review', organization_path(application.offer.user), class: 'btn btn-outline-primary' %>
-              </div>
-            <% end %>
-          </div>
-        </div>
-      </div>
+      <% if application.status == "Iniciado" || "Terminado" %>
+        <%= link_to 'Hacer review', organization_path(application.offer.user), class: 'btn btn-secondary' %>
+        <%= link_to 'Ver voluntarios que llegaran al mismo destino', offer_location_users_path(application.offer.city), class: 'btn btn-secondary' %>
+      <% end %>
     <% end %>
+
+
+
+  <div class="mt-5">
+    <%= link_to 'Volver a la lista', offers_path, class: 'btn btn-success' %>
+    <%# <%= link_to 'BTN', review_path, class: 'btn btn-secondary' %>
   </div>
 
-  <div class="text-center mt-5">
-    <%= link_to 'Volver a la lista', offers_path, class: 'btn btn-secondary' %>
-  </div>
-</div>
+ </div>
+
