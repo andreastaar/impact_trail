@@ -1,15 +1,16 @@
 <div class="container mb-5 mt-5">
+
+<%# Ver ofertas en general y las todas las postulaciones que tenga el boton de crear nueva %>
+
+
+
+
+<%# Vista si eres voluntario %>
+<% if user_signed_in? && current_user.role!= "organización" %>
 <h1 class= "mb-5"><strong><%= @organization.organization_name %></strong></h1>
 <h4 class= "mb-5"><%= @organization.description %></h4>
 <%= render "received_reviews", reviews: @reviews%>
 
-<%# Ver ofertas en general y las todas las postulaciones que tenga el boton de crear nueva %>
-<%=  %>
-
-
-
-<%# Reviews: crear, si eres voluntario %>
-<% if user_signed_in? && current_user.role!= "organización" %>
 <div class= "mt-5"><h5><strong>Crea una nueva review</strong></h5>
       <%= simple_form_for @review do |f| %>
         <%= f.input :content,label:"Escribe tu review" %>
@@ -18,6 +19,13 @@
         <%= f.submit "Envía review" %>
       <% end %>
 </div>
+
+<% else %>
+
+<h1 class= "mb-5"><strong><%= current_user.organization_name %></strong></h1>
+<h4 class= "mb-5"><%= current_user.description %></h4>
+<%# <%= render "received_reviews", reviews: @reviews%>
+
 <% end %>
 
 </div>
