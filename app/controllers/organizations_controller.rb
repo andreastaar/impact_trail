@@ -1,8 +1,9 @@
 class OrganizationsController < ApplicationController
+  skip_before_action :authenticate_user!, only: :show
 
   def show
     @organization = User.where(id: params[:id], role: "organización").first
-    @review= Review.new
+    @review = Review.new
     if @organization.nil?
       #renderizar una pagina de error
     else
@@ -10,6 +11,14 @@ class OrganizationsController < ApplicationController
     end
   end
 
+  def average_rating
+    reviews = Review.where(organization_id: @organization.id) # Obtiene todas las reviews de la organización actual
+    if reviews.exists?
+      reviews.average(:rating).to_f # Calcula el promedio del campo 'rating' y lo convierte a float
+    else
+      0 # Retorna 0 si no hay reviews
+    end
+  end
 
 
   # def create_review
