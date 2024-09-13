@@ -1,11 +1,27 @@
-<h1>Voluntarios cerca de tu voluntariado en  <%= params[:location] %></h1>
-<ul>
+<div class="container mt-5 mb-5">
+<h1 class="mb-5">Voluntarios cerca de tu voluntariado en:  <%= params[:location].capitalize %></h1>
 
-<% if @users.any? %>
-    <% @users.each do |user| %>
-      <li><%= user.first_name %> - <%= user.location %></li>
-    <% end %>
-<% else %>
-    <li> "NO HAY OTROS VOLUNTARIOS ACEPTADOS EN ESTA CIUDAD" </li>
-<% end %>
+<ul class="list-unstyled">
+  <% if @users.any? %>
+      <% @users.each do |user| %>
+    <div class="d-flex border-bottom">
+      <div class="p-2">
+        <li><%= cl_image_tag user.photo.key, width: 150, height: 150, crop: :fill, alt: "Foto de #{user.first_name}", class: "offer-photo" %></li>
+      </div>
+      <div class="p-2 flex-fill text-start">
+        <li><br></li>
+        <li><strong><%= user.first_name %></strong></li>
+        <li> <%= " #{user.location}" %></li>
+        <li><%= "Instagram: #{user.instagram_account}" %></li>
+        <li><%= "Facebook: #{user.facebook_account}" %></li>
+      </div>
+    </div>
+      <% end %>
+  <% else %>
+      <li> "NO HAY OTROS VOLUNTARIOS ACEPTADOS EN ESTA CIUDAD" </li>
+  <% end %>
 </ul>
+
+</div>
+
+</div>
