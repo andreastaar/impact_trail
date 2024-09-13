@@ -24,6 +24,7 @@ Rails.application.routes.draw do
     end
   end
 
+  
   resources :applications, only: [:index, :show]
   # resource :organizations, only: [:show]
   get "organizations/:id", to: "organizations#show", as: "organization"
