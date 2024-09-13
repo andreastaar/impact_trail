@@ -5,7 +5,20 @@
 
 <% if @reviews.any? %>
   <% @reviews.each do |review| %>
-  <%= review.rating  %>
+<div class="rating">
+  <%= review.rating %>
+  <%# <% rating_value = review.rating || 0 %>
+  <%# <% 5.times do |i| %>
+    <%# <% if i < rating_value %>
+       <%# <i class="bi bi-star-fill"></i>  <!-- Estrella llena -->
+    <%# <% else %>
+       <%# <i class="bi bi-star"></i> <!-- Estrella vacía -->
+    <%# <% end %>
+  <%# <% end %>
+    </div>
+
+
+
   <%= review.content  %>
   <% end %>
 <% else %>
