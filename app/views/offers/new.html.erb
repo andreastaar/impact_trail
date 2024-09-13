@@ -11,10 +11,14 @@
       <%= f.input :end_date, as: :string, input_html: {data: {controller: "datepicker"}}  %>
       </div>
     </div>
-    <%= f.input :address, class: 'form-control'%>
-    <%= f.input :availability, class: 'form-control' %>
-    <%= f.input :photos, as: :file, input_html: {multiple: true} %>
-    <%= f.submit 'Update Offer', class: 'btn btn-primary' %>
+      <%= f.input :country_name, class: 'form-control'%>
+      <%= f.input :city, class: 'form-control' %>
+      <%= f.input :address, class: 'form-control'%>
+      <%= f.input :type_of_volunteering, class: 'form-control'%>
+      <%= f.input :perks, class: 'form-control'%>
+      <%= f.input :availability, class: 'form-control' %>
+      <%= f.input :photos, as: :file, input_html: {multiple: true} %>
+      <%= f.submit 'Update Offer', class: 'btn btn-primary' %>
   <% end %>
 
 <%= link_to 'Back to Offers', offers_path, class: 'btn btn-secondary' %>
