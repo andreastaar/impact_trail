@@ -1,7 +1,7 @@
 <%= @organization.organization_name %>
 <%= render "received_reviews", reviews: @reviews%>
 
-<% if current_user.role!= "organización" %>
+<% if user_signed_in? && current_user.role!= "organización" %>
 <div><h5>Crea una nueva review</h5>
       <%= simple_form_for @review do |f| %>
         <%= f.input :content %>

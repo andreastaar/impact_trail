@@ -13,9 +13,12 @@
     <% else %>
       <p>No hay foto disponible</p>
     <% end %>
+<% if application.status == "Iniciado" %>
+  <%= link_to 'Ver voluntarios que llegaran al mismo destino', offer_location_users_path, class: 'btn btn-secondary' %>
+<% end %>
+
 <% end %>
 </div>
-
 
 <div class="center mt-5">
   <%= link_to 'Volver a la lista', offers_path, class: 'btn btn-secondary' %>

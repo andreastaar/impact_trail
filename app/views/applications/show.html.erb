@@ -1,16 +1,21 @@
 <div class="container my-3 py-3 border border-success" style="width: 600px;">
   <div class= >
-    <p >Estimado/a [Nombre del Voluntario],</p>
+    <p><%="Estimado/a #{current_user.first_name}," %></p>
 
-    <p class="text-align: justify">Bienvenido/a a [Nombre de la Comunidad]! Estamos encantados de que te unas a nosotros como voluntario/a. Tu apoyo es valioso y estamos seguros de que harás una gran diferencia. Tu compromiso y entusiasmo son muy valiosos para nosotros.
+<p style="text-align: justify;">
+  <%=
+    "Bienvenido/a a #{@application.offer.title}! Estamos encantados de que te unas a nosotros como voluntario/a. Tu apoyo es valioso y estamos seguros de que harás una gran diferencia. Tu compromiso y entusiasmo son muy valiosos para nosotros.
 
-    Nos pondremos en contacto con usted a través de su correo electrónico para coordinar una entrevista. Esta será una excelente oportunidad para conocernos mejor, discutir su rol como voluntario/a y responder a cualquier pregunta que pueda tener.
+    Nos pondremos en contacto contigo a través de tu correo electrónico para coordinar una entrevista. Esta será una excelente oportunidad para conocernos mejor, discutir tu rol como voluntario/a y responder a cualquier pregunta que puedas tener.
 
-    Por favor, mantenga un ojo en su bandeja de entrada para recibir nuestra próxima comunicación con los detalles de la entrevista.
+    Por favor, mantén un ojo en tu bandeja de entrada para recibir nuestra próxima comunicación con los detalles de la entrevista.
 
-    ¡Gracias nuevamente por unirse a nosotros! Estamos emocionados de comenzar esta colaboración y trabajar juntos para hacer una diferencia.</P>
+    ¡Gracias nuevamente por unirte a nosotros! Estamos emocionados de comenzar esta colaboración y trabajar juntos para hacer una diferencia."
+  %>
+</p>
 
-    <p>Atentamente,</p>
+<p>Atentamente,</p>
+
 
 
 
@@ -26,7 +31,7 @@
   <p><i class="fa-solid fa-location-dot"></i><%=@application.offer.address%></p>
   <p><i class="fa-solid fa-star-of-life"></i><%=@application.status%></p>
       <% if @application.offer.photos.attached? %>
-      <%= cl_image_tag @application.offer.photos.first.key, width: 150, height: 150, crop: :fill, alt: "Foto de #{application.offer.title}", class: "offer-photo" %>
+      <%= cl_image_tag @application.offer.photos.first.key, width: 150, height: 150, crop: :fill, alt: "Foto de #{@application.offer.title}", class: "offer-photo" %>
     <% else %>
       <p>No hay foto disponible</p>
     <% end %>
