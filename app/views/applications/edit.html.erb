@@ -1,0 +1,13 @@
+<h1> Editar el status </h1>
+<% simple_form_for @application do |f|%>
+  <div class="form-group" >
+    <%= f.label :status, 'Estado de la aplicación' %>
+    <%= f.select :status, ['Iniciado', 'Aceptado', 'Rechazado'], {}, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.submit 'Actualizar', class: 'btn btn-primary'%>
+  </div>
+<% end %>
+
+  <%= link_to 'Volver', application_path(@application), class: 'btn btn-primary'%>

@@ -26,6 +26,19 @@ class ApplicationsController < ApplicationController
     end
   end
 
+  def edit
+    @application = Application.find(params[:id])
+  end
+
+  def update
+    @application = Application.find(params[:id])
+    if @application.update(application_params)
+    redirect_to @application, notice: 'La aplicación fue actualizada con éxito'
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
   private
 
   def set_offer

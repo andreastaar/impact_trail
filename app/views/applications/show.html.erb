@@ -35,3 +35,7 @@
     <% else %>
       <p>No hay foto disponible</p>
     <% end %>
+
+  <% if current_user.role == "organización" %>
+    <%= link_to 'Editar', edit_application_path(@application), class: 'btn btn-primary'%>
+  <% end %>
