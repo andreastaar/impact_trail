@@ -9,10 +9,9 @@ class ApplicationsController < ApplicationController
     @application = Application.new
   end
 
-  # def show
-  #   @applications = Applications.new
-
-  # end
+  def show
+    @application = Application.find(params[:id])
+  end
 
   def create
     @application = Application.new(application_params)
@@ -21,7 +20,7 @@ class ApplicationsController < ApplicationController
     @application.status = 'Iniciado'
 
     if @application.save
-      redirect_to applications_path, notice: 'La aplicación fue realizada'
+      redirect_to application_path(@application), notice: 'La aplicación fue realizada'
     else
       render :new, status: :unprocessable_entity
     end

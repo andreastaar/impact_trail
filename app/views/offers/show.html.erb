@@ -58,10 +58,10 @@
 
             <div class="d-none" data-toggle-target="form">
               <h1>Agregar fechas de voluntariado</h1>
-              <%= simple_form_for [@offer, @application] do |f| %>
+              <%= simple_form_for [@offer, @application], data: {turbo: false} do |f| %>
                 <%= f.input :start_date, as: :string, input_html: {data: {controller: "datepicker"}} %>
                 <%= f.input :end_date, as: :string, input_html: {data: {controller: "datepicker"}} %>
-                <%= f.submit 'Enviar', class: 'btn btn-primary' %>
+                <%= f.submit 'Aplicar', class: 'btn btn-primary' %>
               <% end %>
               <%= link_to 'Volver a la lista', offers_path, class: 'btn btn-secondary' %>
             </div>
