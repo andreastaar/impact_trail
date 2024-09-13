@@ -84,7 +84,7 @@
 <% end %>
 
   <!-- Seccion Destacado -->
-<section class="py-5 bg-light">
+<section style="background-color: #e6e6e6" class="py-5">
     <div class="container text-center">
       <h2 class="mb-4">¿Por qué ImpactTrail?</h2>
       <p class="mb-5">Únete a una comunidad global de viajeros y voluntarios que buscan generar un impacto positivo en el mundo. Descubre los beneficios de participar con nosotros y transforma tu forma de viajar mientras ayudas a quienes más lo necesitan.</p>
@@ -137,52 +137,30 @@
     </div>
   </section>
 
-  <!-- Sección: Oportunidades de Voluntariado Destacadas -->
-  <section class="py-5">
-    <div class="container">
-      <h2 class="text-center mb-5">Oportunidades de Voluntariado Destacadas</h2>
-      <div class="row">
-        <!-- Oportunidad 1 -->
-        <div class="col-md-4 mb-4">
-          <div class="card h-100 shadow-sm">
-            <img src="https://via.placeholder.com/400x200" class="card-img-top" alt="Imagen del voluntariado">
-            <div class="card-body">
-              <h5 class="card-title">Voluntariado en Educación</h5>
-              <p class="card-text">Participa en proyectos educativos que buscan mejorar las oportunidades de niños en áreas rurales.</p>
-              <p class="text-muted mb-1"><i class="bi bi-geo-alt"></i> Cusco, Perú</p>
-              <p class="text-muted mb-3"><i class="bi bi-clock"></i> 3 meses</p>
-              <a href="#" class="btn btn-primary">Ver más detalles</a>
-            </div>
-          </div>
-        </div>
 
-        <!-- Oportunidad 2 -->
+<!-- Sección: Oportunidades de Voluntariado Destacadas -->
+<section class="py-5">
+  <div class="container">
+    <h2 class="text-center mb-5">Oportunidades de Voluntariado Destacadas</h2>
+    <div class="row">
+      <% @offers.each do |offer| %>
         <div class="col-md-4 mb-4">
           <div class="card h-100 shadow-sm">
-            <img src="https://via.placeholder.com/400x200" class="card-img-top" alt="Imagen del voluntariado">
+            <% if offer.photos.attached? %>
+              <%= cl_image_tag offer.photos.first.key, width: 400, height: 300, crop: :fill, class: "card-img-top", alt: "Foto de #{offer.title}" %>
+            <% else %>
+              <img src="https://conference.nbasbl.org/wp-content/uploads/2022/05/placeholder-image-1.png" class="card-img-top" alt="Imagen por defecto" style="width: 400px; height: 300px; object-fit: cover;">
+            <% end %>
             <div class="card-body">
-              <h5 class="card-title">Voluntariado en Conservación Ambiental</h5>
-              <p class="card-text">Ayuda a proteger el medio ambiente participando en proyectos de conservación en áreas naturales protegidas.</p>
-              <p class="text-muted mb-1"><i class="bi bi-geo-alt"></i> Patagonia, Argentina</p>
-              <p class="text-muted mb-3"><i class="bi bi-clock"></i> 6 semanas</p>
-              <a href="#" class="btn btn-primary">Ver más detalles</a>
+              <h5 class="card-title"><%= offer.title %></h5>
+              <p class="card-text"><%= truncate(offer.description, length: 100) %></p>
+              <p class="text-muted mb-1"><i class="bi bi-geo-alt"></i> <%= offer.city %>, <%= offer.country_name %></p>
+              <p class="text-muted mb-3"><i class="bi bi-clock"></i> <%= distance_of_time_in_words(offer.start_date, offer.end_date) %></p>
+              <%= link_to 'Ver más detalles', offer_path(offer), class: "btn btn-primary" %>
             </div>
           </div>
         </div>
-
-        <!-- Oportunidad 3 -->
-        <div class="col-md-4 mb-4">
-          <div class="card h-100 shadow-sm">
-            <img src="https://via.placeholder.com/400x200" class="card-img-top" alt="Imagen del voluntariado">
-            <div class="card-body">
-              <h5 class="card-title">Voluntariado en Salud Comunitaria</h5>
-              <p class="card-text">Únete a iniciativas que buscan mejorar la salud de las comunidades en regiones vulnerables.</p>
-              <p class="text-muted mb-1"><i class="bi bi-geo-alt"></i> Nairobi, Kenia</p>
-              <p class="text-muted mb-3"><i class="bi bi-clock"></i> 2 meses</p>
-              <a href="#" class="btn btn-primary">Ver más detalles</a>
-            </div>
-          </div>
-        </div>
-      </div>
+      <% end %>
     </div>
-  </section>
+  </div>
+</section>
