@@ -2,7 +2,8 @@ class ApplicationsController < ApplicationController
   before_action :set_offer, only: %i[new create]
 
   def index
-    @applications = Application.where(user: current_user)
+    # @applications = Application.where(user: current_user)
+    @applications = Application.all
   end
 
   def new

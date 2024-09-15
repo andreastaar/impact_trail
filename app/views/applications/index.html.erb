@@ -12,9 +12,12 @@
         <p>No hay foto disponible</p>
       <% end %>
 
-      <% if application.status == "Iniciado" || "Terminado" %>
+      <%     if current_user.role == "voluntario"%>
         <%= link_to 'Hacer review', organization_path(application.offer.user), class: 'btn btn-secondary' %>
-        <%= link_to 'Ver voluntarios que llegaran al mismo destino', offer_location_users_path(application.offer.city), class: 'btn btn-secondary' %>
+        <%= link_to 'Ver voluntarios que llegaran al mismo destino',
+         offer_location_users_path(application.offer.city), class: 'btn btn-secondary' %>
+         <% else %>
+        <%= link_to 'Editar aplicación', edit_application_path(application), class: 'btn btn-warning' %>
       <% end %>
     <% end %>
 
@@ -26,4 +29,3 @@
   </div>
 
  </div>
-

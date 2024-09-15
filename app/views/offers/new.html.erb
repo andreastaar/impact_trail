@@ -14,14 +14,20 @@
       <%= f.input :country_name, class: 'form-control'%>
       <%= f.input :city, class: 'form-control' %>
       <%= f.input :address, class: 'form-control'%>
-      <%= f.input :type_of_volunteering, class: 'form-control'%>
+      <%# <%= f.input :type_of_volunteering, class: 'form-control'%>
+      <%= f.input :type_of_volunteering, as: :select, collection: [
+        'Animales y medio ambiente',
+        'Proyectos de construcción y restauración',
+        'Agricultura y granjas',
+        'Mejora de la comunidad',
+        'Enseñanza e idiomas'], prompt: 'Seleccione una opción', label: 'Tipo de Voluntariado', class: 'form-control' %>
       <%= f.input :perks, class: 'form-control'%>
       <%= f.input :availability, class: 'form-control' %>
       <%= f.input :photos, as: :file, input_html: {multiple: true} %>
-      <%= f.submit 'Update Offer', class: 'btn btn-primary' %>
+      <%= f.submit 'Crear oferta', class: 'btn btn-primary' %>
   <% end %>
 
-<%= link_to 'Back to Offers', offers_path, class: 'btn btn-secondary' %>
+<%= link_to 'Volver a las Ofertas', offers_path, class: 'btn btn-secondary' %>
 
 
  <%# Crear acceso para el Host como mi Joyita , crear el método hacker de Andrés "pundit"
