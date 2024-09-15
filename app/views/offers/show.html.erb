@@ -35,6 +35,7 @@
         <div class="mt-5" data-controller="toggle">
           <button data-action="click->toggle#fire">edit</button>
           <%= link_to 'Volver a la lista', offers_path, class: 'btn btn-secondary' %>
+          <%= link_to 'Ver Aplicaciones', offer_applications_path(@offer), class: 'btn btn-secondary' %>
 
           <div class="d-none" data-toggle-target="form">
             <h1>Editar la oferta de voluntariado</h1>
@@ -54,11 +55,6 @@
         </div>
       <% end %>
 
-
-
-
-
-
             <% if current_user.role == "voluntario" %>
 
             <div data-controller= "toggle">
@@ -75,9 +71,6 @@
             </div>
 
             </div>
-
-
-
 
         <% end %>
 
