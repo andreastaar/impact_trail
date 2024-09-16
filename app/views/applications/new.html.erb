@@ -1,14 +1,16 @@
+<div class="text-center p-4" style="border: 1px solid #D0B8A8; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+  <h2 class="mb-4">¿Te Gustaría Unirte a Nuestra Familia de Voluntarios?</h2>
 
-
-  <div class="text-center">
-    <h2 class=>¿Te Gustaría Unirte a Nuestra Familia de Voluntarios?</h2>
-    <%= simple_form_for [@offer, @application] do |f| %>
-      <div class="form-group">
-        <%= f.input :status, :as => :hidden %>
-      </div>
-      <div class="form-group mt-4">
-        <%= f.submit "Deseo ser Voluntario", class: 'btn btn-primary' %>
-      </div>
-    <% end %>
+  <div class="status mb-3">
+    <p class="text-muted"><strong>Status actual:</strong> <%= @application.status %></p>
   </div>
+
+  <%= simple_form_for [@offer, @application] do |f| %>
+    <div class="form-group">
+      <%= f.input :status, as: :hidden %>
+    </div>
+    <div class="form-group mt-4">
+      <%= f.submit "Deseo ser Voluntario", class: 'btn btn-primary' %>
+    </div>
+  <% end %>
 </div>

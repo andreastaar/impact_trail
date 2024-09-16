@@ -1,53 +1,42 @@
+ <div class="container my-3 py-3" style="max-width: 900px;">
+  <h1 class="text-center mb-4">Mis Voluntariados</h1>
 
-<div class="container my-3 py-3 border border-success" style="width: 900px">
-  <h1 class="text-center">Mis Voluntariados</h1>
-  <%
-    if @applications
-
-  %>
-    <% @applications.each do |application|%>
-      <h3><%= application.offer.title %></h3>
-        <p><i class="fa-solid fa-plane"></i><%= application.offer.start_date %></p>
-        <p><i class="fa-solid fa-plane-up"></i><%= application.offer.end_date %></p>
-        <p><i class="fa-solid fa-location-dot"></i><%=application.offer.address%></p>
-        <p><i class="fa-solid fa-star-of-life"></i><%=application.status%></p>
-      <% if application.offer.photos.attached? %>
-        <%= cl_image_tag application.offer.photos.first.key, width: 150, height: 150, crop: :fill, alt: "Foto de #{application.offer.title}", class: "offer-photo" %>
-      <% else %>
-        <p>No hay foto disponible</p>
-      <% end %>
-
-      <% if current_user.role == "voluntario"%>
-        <%= link_to 'Hacer review', organization_path(application.offer.user), class: 'btn btn-secondary' %>
-        <%= link_to 'Ver voluntarios que llegaran al mismo destino',
-         offer_location_users_path(application.offer.city), class: 'btn btn-secondary' %>
-         <% else %>
-        <%= link_to 'Editar aplicación', edit_application_path(application), class: 'btn btn-warning' %>
-      <% end %>
-    <% end %>
-    <% end %>
-
-    <% if @offers
-
-    %>
-      <% @offers.each do |offer| %>
-        <%= offer.title %>
-        <% offer.applications.each do |application| %>
-        <div>
-          <%= application.user.first_name %>
-          <%= application.status %>
-          <%= application.start_date %>
-          <%= application.end_date %>
+  <% if @applications %>
+    <% @applications.each do |application| %>
+      <div class="card mb-4">
+        <div class="row g-0">
+          <div class="col-md-4">
+            <% if application.offer.photos.attached? %>
+              <%= cl_image_tag application.offer.photos.first.key, class: 'img-fluid rounded-start', alt: "Foto de #{application.offer.title}", style: "object-fit: cover; height: 200px; width: 100%;" %>
+            <% else %>
+              <img src="placeholder.jpg" class="img-fluid rounded-start" alt="Sin foto disponible" style="object-fit: cover; height: 200px; width: 100%;">
+            <% end %>
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title"><%= application.offer.title %></h5>
+              <p class="card-text">
+                <i class="fa-solid fa-plane"></i> <%= application.offer.start_date %> - <i class="fa-solid fa-plane-up"></i> <%= application.offer.end_date %><br>
+                <i class="fa-solid fa-location-dot"></i> <%= application.offer.address %><br>
+                <i class="fa-solid fa-star-of-life"></i> <%= application.status %>
+              </p>
+              <div class="d-flex justify-content-start gap-2">
+                <% if current_user.role == "voluntario" %>
+                  <%= link_to 'Hacer review', organization_path(application.offer.user), class: 'btn btn-secondary btn-sm' %>
+                  <%= link_to 'Ver voluntarios en destino', offer_location_users_path(application.offer.city), class: 'btn btn-secondary btn-sm' %>
+                <% else %>
+                  <%= link_to 'Editar aplicación', edit_application_path(application), class: 'btn btn-warning btn-sm' %>
+                <% end %>
+              </div>
+            </div>
+          </div>
         </div>
-        <% end %>
-      <% end %>
+      </div>
     <% end %>
-
+  <% end %>
 
   <div class="mt-5 text-center">
     <%= link_to 'Volver a la lista', offers_path, class: 'btn btn-success' %>
   </div>
 </div>
-
-
-
+ 
