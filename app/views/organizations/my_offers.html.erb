@@ -1,0 +1,37 @@
+<% @my_offers.each do |offer| %>
+<div class="m-4 shadow" >
+<h1><%= offer.title %></h1>
+<% offer.applications.each do |application| %>
+<%= cl_image_tag application.user.photo.key, class: "avatar" %>
+ <%= application.user.first_name %>
+ <%= application.user.last_name %>
+ <%= application.user.full_location %>
+  <% case application.user.location %>
+  <% when "IT" %>
+ <%= "🇮🇹" %>
+ <% when "IT" %>
+ <%= "🇮🇹" %>
+ <% when "IT" %>
+ <%= "🇮🇹" %>
+ <% when "IT" %>
+ <%= "🇮🇹" %>
+ <% when "IT" %>
+ <%= "🇮🇹" %>
+ <% end %>
+ <%= application.status %>
+
+
+
+ <%= simple_form_for application, url: update_status_path(application), method: :patch do|f|%>
+  <div class="form-group" >
+    <%= f.label :status, 'Estado de la aplicación' %>
+    <%= f.select :status, ['Iniciado', 'Aceptado', 'Rechazado'], {}, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.submit 'Actualizar', class: 'btn btn-primary' %>
+  </div>
+<% end %>
+<% end %>
+</div>
+<% end %>

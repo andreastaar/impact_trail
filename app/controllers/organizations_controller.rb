@@ -20,6 +20,12 @@ class OrganizationsController < ApplicationController
     end
   end
 
+  def my_offers
+    @my_offers = current_user.offers
+  end
+
+
+
 
   # def create_review
   #   @review = Review.new(review_params)

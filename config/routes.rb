@@ -25,6 +25,9 @@ Rails.application.routes.draw do
   end
 
   resources :applications, only: [:show, :edit, :update, :index]
+  patch "/applications/:id/update_status", to: "applications#update_status", as: :update_status
   # resource :organizations, only: [:show]
   get "organizations/:id", to: "organizations#show", as: "organization"
+  get "organizations/:id/my_offers", to: "organizations#my_offers", as: :my_offers
+
 end

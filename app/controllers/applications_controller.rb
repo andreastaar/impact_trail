@@ -40,6 +40,15 @@ class ApplicationsController < ApplicationController
     end
   end
 
+  def update_status
+    @application = Application.find(params[:id])
+    if @application.update(application_params)
+    redirect_to my_offers_path(@application.offer.user), notice: 'La aplicación fue actualizada con éxito'
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
   private
 
   def set_offer
