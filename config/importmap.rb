@@ -11,6 +11,7 @@ pin "@popperjs/core", to: "popper.js", preload: true
 pin "star-rating.js" # @4.3.1
 # pin "flatpickr" # @4.6.13
 
- 
+
 pin "flatpickr", to: "https://cdn.skypack.dev/flatpickr"
- 
+
+pin "mapbox", to: "https://api.mapbox.com/mapbox-gl-js/v3.6.0/mapbox-gl.js"
