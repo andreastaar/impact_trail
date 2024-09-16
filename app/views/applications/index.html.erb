@@ -1,5 +1,9 @@
 <div class="container my-3 py-3 border border-success" style="width: 900px">
   <h1 class="text-center">Mis Voluntariados</h1>
+  <%
+    if @applications
+
+  %>
     <% @applications.each do |application|%>
       <h3><%= application.offer.title %></h3>
         <p><i class="fa-solid fa-plane"></i><%= application.offer.start_date %></p>
@@ -12,7 +16,7 @@
         <p>No hay foto disponible</p>
       <% end %>
 
-      <%     if current_user.role == "voluntario"%>
+      <% if current_user.role == "voluntario"%>
         <%= link_to 'Hacer review', organization_path(application.offer.user), class: 'btn btn-secondary' %>
         <%= link_to 'Ver voluntarios que llegaran al mismo destino',
          offer_location_users_path(application.offer.city), class: 'btn btn-secondary' %>
@@ -20,8 +24,23 @@
         <%= link_to 'Editar aplicación', edit_application_path(application), class: 'btn btn-warning' %>
       <% end %>
     <% end %>
+    <% end %>
 
+    <% if @offers
 
+    %>
+      <% @offers.each do |offer| %>
+        <%= offer.title %>
+        <% offer.applications.each do |application| %>
+        <div>
+          <%= application.user.first_name %>
+          <%= application.status %>
+          <%= application.start_date %>
+          <%= application.end_date %>
+        </div>
+        <% end %>
+      <% end %>
+    <% end %>
 
   <div class="mt-5">
     <%= link_to 'Volver a la lista', offers_path, class: 'btn btn-success' %>
