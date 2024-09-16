@@ -14,15 +14,15 @@ class OffersController < ApplicationController
     end
   end
 
-
   def show
     @application = Application.new
-
-    @marker =
+    @offers = Offer.where(id: params[:id])
+    @markers = @offers.geocoded.map do |offer|
       {
-        lat: @offer.latitude,
-        lng: @offer.longitude
+        lat: offer.latitude,
+        lng: offer.longitude
       }
+    end
 
   end
 

@@ -1,15 +1,15 @@
 import { Controller } from "@hotwired/stimulus"
-import mapboxgl from 'mapbox-gl' // Don't forget this!
+// import mapboxgl from 'mapbox' // Don't forget this!
 
 export default class extends Controller {
   static values = {
     apiKey: String,
-    marker: Object
+    markers: Array
   }
 
   connect() {
 
-    console.log("mapa conectado")
+    console.log("holahola",this.markersValue)
     mapboxgl.accessToken = this.apiKeyValue
 
     this.map = new mapboxgl.Map({
@@ -21,10 +21,12 @@ export default class extends Controller {
   }
 
   #addMarkersToMap() {
+    this.markersValue.forEach((marker) => {
       new mapboxgl.Marker()
         .setLngLat([ marker.lng, marker.lat ])
         .addTo(this.map)
-  }
+    })}
+
   #fitMapToMarkers() {
     const bounds = new mapboxgl.LngLatBounds()
     this.markersValue.forEach(marker => bounds.extend([ marker.lng, marker.lat ]))
