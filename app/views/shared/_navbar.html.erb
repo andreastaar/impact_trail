@@ -17,7 +17,7 @@
       <li class="nav-item dropdown">
       <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
       <% if current_user.photo.attached? %>
-        <%= image_tag rails_blob_path(current_user.photo, only_path: true), alt: "Profile photo", class: "avatar" %>
+        <%= cl_image_tag current_user.photo.key, width: 150, height: 150, crop: :thumb, gravity: :face, class: 'img-fluid product-image avatar'%>
       <% else %>
         <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar", alt: "Placeholder image" %>
       <% end %>

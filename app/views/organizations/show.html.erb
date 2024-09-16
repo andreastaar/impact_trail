@@ -7,9 +7,15 @@
 
 <%# Vista si eres voluntario %>
 <% if user_signed_in? && current_user.role!= "organización" %>
+<%# mapa %>
+<div style="width: 100%; height: 600px;"
+  data-controller="map"
+  data-map-markers-value="<%= @marker.to_json %>"
+  data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+
 <h1 class= "mb-5"><strong><%= @organization.organization_name %></strong></h1>
 <h4 class= "mb-5"><%= @organization.description %></h4>
-  <p><%= @average_rating %></p>
+  <p><%= "Rating: #{@average_rating}" %></p>
 <%= render "received_reviews", reviews: @reviews%>
 
 <div class= "mt-5"><h5><strong>Crea una nueva review</strong></h5>
@@ -24,12 +30,10 @@
 <% else %>
   <%# Vista si eres organizacion %>
   <h1 class= "mb-5"><strong><%= current_user.organization_name %></strong></h1>
-  <p><%= @average_rating %></p>
+  <p><%= "Rating: #{@average_rating}" %></p>
   <h4 class= "mb-5"><%= current_user.description %></h4>
   <%= render "received_reviews", reviews: @reviews%>
 
 <% end %>
 
 </div>
-
-<% console %>

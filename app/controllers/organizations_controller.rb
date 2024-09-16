@@ -10,6 +10,14 @@ class OrganizationsController < ApplicationController
     else
       @reviews = Review.where(organization_id: @organization.id)
     end
+
+
+    @marker =
+      {
+        lat: @organization.latitude,
+        lng: @organization.longitude
+      }
+
   end
 
   def average_rating
