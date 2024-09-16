@@ -54,7 +54,6 @@
     <span class="visually-hidden">Next</span>
   </button>
 </div>
-
 <%# buscador de filtro %>
 <%= form_with url: offers_path, method: :get, local: true, class: 'form-search' do %>
   <div class="row g-3">
@@ -63,7 +62,6 @@
       <%= label_tag :query, "Buscar Voluntariado", class: "form-label" %>
       <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "¿En qué lugar quieres ser voluntario?" %>
     </div>
-
     <!-- Dropdown de tipo de voluntariado -->
     <div class="col-md-4">
       <%= label_tag :type_of_volunteering, "Tipo de Voluntariado", class: "form-label" %>
@@ -75,20 +73,17 @@
         ['Enseñanza e idiomas', 'Enseñanza e idiomas']
       ], params[:type_of_volunteering]), { prompt: "Tipo de voluntariado", class: "form-select" } %>
     </div>
-
     <!-- Botón de búsqueda -->
     <div class="col-md-2 align-self-end">
       <%= submit_tag "Buscar", class: "custom-button  w-100" %>
     </div>
   </div>
 <% end %>
-
   <!-- Seccion Destacado -->
-<section style="background-color: #e6e6e6" class="py-5">
+<section style="background-color: #E6E6E6" class="py-5">
     <div class="container text-center">
       <h2 class="mb-4">¿Por qué ImpactTrail?</h2>
       <p class="mb-5">Únete a una comunidad global de viajeros y voluntarios que buscan generar un impacto positivo en el mundo. Descubre los beneficios de participar con nosotros y transforma tu forma de viajar mientras ayudas a quienes más lo necesitan.</p>
-
       <div class="row">
         <!-- Beneficio 1 -->
         <div class="col-md-3">
@@ -100,7 +95,6 @@
             </div>
           </div>
         </div>
-
         <!-- Beneficio 2 -->
         <div class="col-md-3">
           <div class="card h-100 shadow-sm">
@@ -111,7 +105,6 @@
             </div>
           </div>
         </div>
-
         <!-- Beneficio 3 -->
         <div class="col-md-3">
           <div class="card h-100 shadow-sm">
@@ -122,7 +115,6 @@
             </div>
           </div>
         </div>
-
         <!-- Beneficio 4 -->
         <div class="col-md-3">
           <div class="card h-100 shadow-sm">
@@ -136,8 +128,6 @@
       </div>
     </div>
   </section>
-
-
 <!-- Sección: Oportunidades de Voluntariado Destacadas -->
 <section class="py-5">
   <div class="container">
