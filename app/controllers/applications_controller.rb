@@ -2,7 +2,8 @@ class ApplicationsController < ApplicationController
   before_action :set_offer, only: %i[new create]
 
   def index
-    @applications = Application.where(user: current_user)
+    # @applications = Application.where(user: current_user)
+    @applications = Application.all
   end
 
   def new
@@ -23,6 +24,19 @@ class ApplicationsController < ApplicationController
       redirect_to application_path(@application), notice: 'La aplicación fue realizada'
     else
       render :new, status: :unprocessable_entity
+    end
+  end
+
+  def edit
+    @application = Application.find(params[:id])
+  end
+
+  def update
+    @application = Application.find(params[:id])
+    if @application.update(application_params)
+    redirect_to @application, notice: 'La aplicación fue actualizada con éxito'
+    else
+      render :edit, status: :unprocessable_entity
     end
   end
 

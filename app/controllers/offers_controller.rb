@@ -52,7 +52,8 @@ class OffersController < ApplicationController
   private
 
   def offer_params
-    params.require(:offer).permit(:title, :description, :requirements, :address, :availability, :start_date, :end_date, photos: [])
+    params.require(:offer).permit(:title, :description, :requirements, :country_name, :city, :type_of_volunteering,
+      :perks, :address, :availability, :start_date, :end_date, photos: [])
   end
 
   def set_offer
