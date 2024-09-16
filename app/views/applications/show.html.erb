@@ -1,40 +1,39 @@
-<div class="container my-3 py-3 border border-success" style="width: 600px">
-  <div class= >
-    <p><%="Estimado/a #{current_user.first_name}," %></p>
+<div class="container my-4 py-4" style="width: 600px; background-color: #E3F2FD; border-radius: 15px; box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); color: #333;">
+  <div class="p-4" style="border-bottom: 2px dashed #ccc;">
+    <p><%= "Estimado/a #{current_user.first_name}," %></p>
 
-<p style="text-align: justify;">
-  <%= "Bienvenido/a al #{@application.offer.title}! ¡Nos alegra que te unas como voluntario/a! Tu apoyo es valioso y confiamos en que marcarás la diferencia.
+    <p style="text-align: justify;">
+      <%= "¡Bienvenido/a al #{@application.offer.title}! Nos alegra que te unas como voluntario/a. Tu apoyo es valioso y confiamos en que marcarás la diferencia.
 
-Te contactaremos por correo para coordinar una entrevista, donde discutiremos tu rol y resolveremos tus dudas.
+      Te contactaremos por correo para coordinar una entrevista, donde discutiremos tu rol y resolveremos tus dudas.
 
-Revisa tu bandeja de entrada para más detalles sobre la entrevista.
-
-¡Gracias por unirte! Estamos entusiasmados de empezar a trabajar juntos."
-  %>
-</p>
-
-<p>Atentamente,</p>
-
-    <p class="text-center"><strong>IMPACTTRAIL</strong></p>
-
+      ¡Gracias por unirte! Estamos entusiasmados de empezar a trabajar juntos." %>
+    </p>
   </div>
 
+  <div class="card-body p-4" style="border-bottom: 2px dashed #ccc;">
+    <div class="d-flex align-items-start mb-3">
+      <div class="info-section" style="flex: 2;">
+        <h3><%= @application.offer.title %></h3>
+        <p><i class="fa-solid fa-plane"></i> <strong>Desde:</strong> <%= @application.offer.start_date %></p>
+        <p><i class="fa-solid fa-plane-up"></i> <strong>Hasta:</strong> <%= @application.offer.end_date %></p>
+        <p><i class="fa-solid fa-location-dot"></i> <strong>Ubicación:</strong> <%= @application.offer.address %></p>
+        <p><i class="fa-solid fa-star-of-life"></i> <strong>Status:</strong> <%= @application.status %></p>
+      </div>
 
-<div class="text-center"><h3><%= @application.offer.title %></h3></div>
-  <p><i class="fa-solid fa-plane"></i><%= @application.offer.start_date %></p>
-  <p><i class="fa-solid fa-plane-up"></i><%= @application.offer.end_date %></p>
-  <p><i class="fa-solid fa-location-dot"></i><%=@application.offer.address%></p>
-  <p><i class="fa-solid fa-star-of-life"></i><%=@application.status%></p>
       <% if @application.offer.photos.attached? %>
-      <%= cl_image_tag @application.offer.photos.first.key, width: 150, height: 150, crop: :fill, alt: "Foto de #{@application.offer.title}", class: "offer-photo" %>
-    <% else %>
-      <p>No hay foto disponible</p>
-    <% end %>
-
+        <div class="photo-section ml-4" style="flex: 1;">
+          <%= cl_image_tag @application.offer.photos.first.key, width: 180, height: 180, crop: :fill, alt: "Foto de #{@application.offer.title}", class: "img-fluid rounded" %>
+        </div>
+      <% else %>
+        <p>No hay foto disponible</p>
+      <% end %>
+    </div>
+  </div>
 
   <% if current_user.role == "organización" %>
-    <%= link_to 'Editar', edit_application_path(@application), class: 'btn btn-primary'%>
+    <div class="text-center mt-3">
+      <%= link_to 'Editar', edit_application_path(@application), class: 'btn btn-primary' %>
+    </div>
   <% end %>
-
 </div>
-
