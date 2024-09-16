@@ -14,9 +14,16 @@ class OffersController < ApplicationController
     end
   end
 
-
   def show
     @application = Application.new
+    @offers = Offer.where(id: params[:id])
+    @markers = @offers.geocoded.map do |offer|
+      {
+        lat: offer.latitude,
+        lng: offer.longitude
+      }
+    end
+
   end
 
   def new
@@ -49,6 +56,8 @@ class OffersController < ApplicationController
     @offer.destroy
     redirect_to offers_url, notice: 'La oferta fue eliminada'
   end
+
+
 
   private
 

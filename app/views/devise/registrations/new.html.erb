@@ -30,10 +30,28 @@
       </div>
 
       <!-- Campos comunes -->
-      <div class="form-group">
+      <div class="form-group" data-controller = "location-full">
         <%= f.label :location, "País" %>
-        <%= f.country_select :location, { prompt: 'Selecciona tu país' }, { class: 'form-control' } %>
+        <%= f.country_select  :location,
+                              { prompt: 'Selecciona tu país' },
+                              {
+                                class: 'form-control',
+                                value_method: :name,
+                                data: {
+                                  location_full_target: "location",
+                                  action: "change->location-full#updateFullLocation"
+                                } } %>
+        <%= f.input :city_name,
+                    label: "Ciudad",
+                    input_html: {
+                      data: {
+                        location_full_target: "city",
+                        action: "keyup->location-full#updateFullLocation"
+                      } }%>
+
+        <%= f.input :full_location, wrapper_html: { class: "visuallyu-hidden" }, input_html:{data:{location_full_target:"full"}} %>
       </div>
+
       <%= f.input :instagram_account, label: "Instagram" %>
       <%= f.input :facebook_account, label: "Facebook" %>
       <%= f.input :email,
@@ -49,7 +67,6 @@
                   input_html: { autocomplete: "new-password" } %>
       <%= f.input :photo, as: :file%>
     </div>
-
     <div class="form-actions">
       <%= f.button :submit, "Sign up" %>
     </div>

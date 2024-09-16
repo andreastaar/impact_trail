@@ -10,11 +10,25 @@ class OrganizationsController < ApplicationController
     else
       @reviews = Review.where(organization_id: @organization.id)
     end
+
+
+    @marker =
+      {
+        lat: @organization.latitude,
+        lng: @organization.longitude
+      }
+
   end
 
   def average_rating
     return (Review.where(organization_id: params[:id]).map(&:rating).sum / Review.where(organization_id: params[:id]).map(&:rating).count).round(1)
   end
+
+  def my_offers
+    @my_offers = current_user.offers
+  end
+
+
 
 
   # def create_review
