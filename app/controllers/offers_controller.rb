@@ -45,6 +45,7 @@ class OffersController < ApplicationController
   end
 
   def destroy
+    @offer = Offer.find_by(id: params[:id])
     @offer.destroy
     redirect_to offers_url, notice: 'La oferta fue eliminada'
   end

@@ -33,6 +33,7 @@
           <button data-action="click->toggle#fire" class="btn btn-warning text-light">Editar Oferta</button>
           <%= link_to 'Volver a la lista', offers_path, class: 'btn btn-secondary mt-3' %>
           <%= link_to 'Ver Aplicaciones', offer_applications_path(@offer), class: 'btn btn-secondary mt-3' %>
+          <%= button_to 'Eliminar', @offer, method: :delete, class: 'btn btn-secondary mt-3', data: { confirm: '¿Estás seguro?' } %>
 
           <div data-toggle-target="form" class="d-none mt-3">
             <h1>Editar la oferta de voluntariado</h1>
@@ -49,11 +50,28 @@
               <div class="form-group mt-3">
                 <%= f.input :address, class: 'form-control' %>
               </div>
+
               <div class="form-group mt-3">
-                <%= f.input :start_date, as: :string, input_html: {data: {controller: "datepicker"}} %>
+                <%= f.input :start_date,
+                            as: :string,
+                            input_html: {
+                              data: {
+                                controller: "datepicker",
+                                datepicker_start_date_value: @offer.start_date,
+                                datepicker_end_date_value: @offer.end_date,
+                              }
+                            } %>
               </div>
               <div class="form-group mt-3">
-                <%= f.input :end_date, as: :string, input_html: {data: {controller: "datepicker"}} %>
+                <%= f.input :end_date,
+                            as: :string,
+                            input_html: {
+                              data: {
+                                controller: "datepicker",
+                                datepicker_start_date_value: @offer.start_date,
+                                datepicker_end_date_value: @offer.end_date,
+                              }
+                            } %>
               </div>
               <div class="form-group mt-3">
                 <%= f.input :availability, class: 'form-control' %>
