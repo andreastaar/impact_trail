@@ -1,4 +1,8 @@
 class Offer < ApplicationRecord
+  # inicio de geocoding
+  geocoded_by :address
+  after_validation :geocode, if: :will_save_change_to_address?
+  # fin de geocoding
   belongs_to :user
   has_many :applications, dependent: :destroy
   has_many_attached :photos

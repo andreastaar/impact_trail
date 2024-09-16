@@ -12,11 +12,8 @@
 @import "pages/index";
 
 
+
 // @import "star-rating.js/dist/star-rating.css";
 
-img.avatar {
-  width: 40px;
-  height: 40px;
-  object-fit: cover;
-  object-position: 0px 1px;
-}
+//importmap
+@import url("https://api.mapbox.com/mapbox-gl-js/v3.1.2/mapbox-gl.css");

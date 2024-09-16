@@ -2,8 +2,8 @@ class ReviewsController < ApplicationController
 
   def received_reviews
     @reviews = User.find(params[:id]).reviews
+    @user = :user_id
   end
-
 
   def create
     @review = Review.new(review_params)

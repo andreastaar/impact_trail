@@ -2,8 +2,9 @@ class ApplicationsController < ApplicationController
   before_action :set_offer, only: %i[new create]
 
   def index
-    # @applications = Application.where(user: current_user)
-    @applications = Application.all
+    @applications = Application.where(user: current_user) if current_user.role == "voluntario"
+    @offers = Offer.where(user: current_user) if current_user.role == "organización"
+    # @applications = Application.all
   end
 
   def new
