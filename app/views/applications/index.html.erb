@@ -1,16 +1,22 @@
 <div class="container my-3 py-3 border border-success" style="width: 800px">
   <h1 class="text-center mb-4">Mis Voluntariados</h1>
-
   <% @applications.each do |application| %>
     <div class="container postulation-container">
       <div class="d-flex align-items-start">
         <!-- Contenedor para el texto -->
-        <div class="text-container-center ">
+        <div class="text-container-center">
           <h3><%= application.offer.title %></h3>
           <p><i class="fa-solid fa-plane"></i> <%= application.offer.start_date %></p>
           <p><i class="fa-solid fa-plane-up"></i> <%= application.offer.end_date %></p>
           <p><i class="fa-solid fa-location-dot"></i> <%= application.offer.address %></p>
           <p><i class="fa-solid fa-star-of-life"></i> <%= application.status %></p>
+
+          <% if current_user.role == "voluntario" %>
+            <%= link_to 'Hacer review', organization_path(application.offer.user), class: 'btn btn-secondary' %>
+            <%= link_to 'Ver voluntarios que llegarán al mismo destino', offer_location_users_path(application.offer.city), class: 'btn btn-secondary' %>
+          <% else %>
+            <%= link_to 'Editar aplicación', edit_application_path(application), class: 'btn btn-warning' %>
+          <% end %>
 
           <% if application.status == "Iniciado" || application.status == "Terminado" %>
             <div class="d-flex">
@@ -21,7 +27,7 @@
         </div>
 
         <!-- Contenedor para la imagen -->
-        <div class="image-container">
+        <div class="image-container ms-3">
           <% if application.offer.photos.attached? %>
             <%= cl_image_tag application.offer.photos.first.key, width: 150, height: 150, crop: :fill, alt: "Foto de #{application.offer.title}", class: "offer-photo" %>
           <% else %>
@@ -35,3 +41,7 @@
   <div class="mt-5 text-center">
     <%= link_to 'Volver a la lista', offers_path, class: 'btn btn-success' %>
   </div>
+</div>
+
+
+
