@@ -57,6 +57,8 @@ class OffersController < ApplicationController
     redirect_to offers_url, notice: 'La oferta fue eliminada'
   end
 
+
+
   private
 
   def offer_params

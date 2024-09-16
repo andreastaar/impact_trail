@@ -24,6 +24,12 @@ class OrganizationsController < ApplicationController
     return (Review.where(organization_id: params[:id]).map(&:rating).sum / Review.where(organization_id: params[:id]).map(&:rating).count).round(1)
   end
 
+  def my_offers
+    @my_offers = current_user.offers
+  end
+
+
+
 
   # def create_review
   #   @review = Review.new(review_params)

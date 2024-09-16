@@ -29,7 +29,7 @@
 
         <%= link_to "Mi Perfil", organization_path(current_user), class: "dropdown-item" %>
         <%= link_to "Nueva oferta", new_offer_path, class: "dropdown-item"%>
-        <%= link_to "Todas las ofertas", offers_path, class: "dropdown-item"%>
+        <%= link_to "Todas mis ofertas", my_offers_path(current_user), class: "dropdown-item"%>
 
 
         <% end %>
