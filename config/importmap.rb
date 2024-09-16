@@ -13,4 +13,3 @@ pin "star-rating.js" # @4.3.1
 
 
 pin "flatpickr", to: "flatpickr.js"
-

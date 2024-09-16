@@ -2,6 +2,7 @@ class OrganizationsController < ApplicationController
   skip_before_action :authenticate_user!, only: :show
 
   def show
+    @average_rating = average_rating
     @organization = User.where(id: params[:id], role: "organización").first
     @review = Review.new
     if @organization.nil?
@@ -12,12 +13,7 @@ class OrganizationsController < ApplicationController
   end
 
   def average_rating
-    reviews = Review.where(organization_id: @organization.id) # Obtiene todas las reviews de la organización actual
-    if reviews.exists?
-      reviews.average(:rating).to_f # Calcula el promedio del campo 'rating' y lo convierte a float
-    else
-      0 # Retorna 0 si no hay reviews
-    end
+    return (Review.where(organization_id: params[:id]).map(&:rating).sum / Review.where(organization_id: params[:id]).map(&:rating).count).round(1)
   end
 
 
