@@ -82,3 +82,5 @@ gem 'country_select'
 gem 'flatpickr'
 
 gem "pg_search"
+
+gem "geocoder"
