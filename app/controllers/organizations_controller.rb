@@ -21,7 +21,9 @@ class OrganizationsController < ApplicationController
   end
 
   def average_rating
+    if Review.where(organization_id: params[:id]).map(&:rating).count > 0
     return (Review.where(organization_id: params[:id]).map(&:rating).sum / Review.where(organization_id: params[:id]).map(&:rating).count).round(1)
+    end
   end
 
   def my_offers
