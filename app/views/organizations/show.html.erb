@@ -2,26 +2,37 @@
 
 <%# Ver ofertas en general y las todas las postulaciones que tenga el boton de crear nueva %>
 
-
-
-
 <%# Vista si eres voluntario %>
 <% if user_signed_in? && current_user.role!= "organización" %>
-<%# mapa %>
-<div style="width: 100%; height: 600px;"
-  data-controller="map"
-  data-map-markers-value="<%= @markers.to_json %>"
-  data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
 
-<h1 class= "mb-5"><strong><%= @organization.organization_name %></strong></h1>
-<h4 class= "mb-5"><%= @organization.description %></h4>
-  <% @average_rating.to_i.times do %>
-  <i class="fa-solid fa-star"></i>
-  <% end %>
+<h1 class= "mb-2"><strong><%= @organization.organization_name.upcase %></strong></h1>
+          <%# estrellas amarillas, del promedio %>
+        <% if @reviews.any? %>
+          <% @average_rating.to_i.times do %>
+            <i class="fa-solid fa-star text-warning mb-2"></i>
+          <% end %>
+            <i><%= "#{@average_rating}" %></i>
+        <% end %>
 
-  <p><%= "Rating: #{@average_rating.to_i}" %></p>
-<%= render "received_reviews", reviews: @reviews%>
+<h4 class= "mb-5"><%= @organization.description.capitalize %></h4>
 
+  <div class="container">
+  <div class="row">
+    <div class="col  mt-3">
+            <%= render "received_reviews", reviews: @reviews%>
+    </div>
+    <div class="col">
+        <%# mapa %>
+        <div style="width: 100%; height: 300px;"
+          data-controller="map"
+          data-map-markers-value="<%= @markers.to_json %>"
+          data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+        </div>
+    </div>
+  </div>
+  </div>
+
+<%# agregar review, si eres voluntario %>
 <div class= "mt-5"><h5><strong>Crea una nueva review</strong></h5>
       <%= simple_form_for @review do |f| %>
         <%= f.input :content,label:"Escribe tu review" %>
@@ -33,11 +44,33 @@
 
 <% else %>
   <%# Vista si eres organizacion %>
-  <h1 class= "mb-5"><strong><%= current_user.organization_name %></strong></h1>
-  <p><%= "Rating: #{@average_rating}" %></p>
-  <h4 class= "mb-5"><%= current_user.description %></h4>
-  <%= render "received_reviews", reviews: @reviews%>
+  <h1 class= "mb-5"><strong><%= current_user.organization_name.upcase %></strong></h1>
+            <%# estrellas amarillas, del promedio %>
+          <% if @reviews.any? %>
+            <% @average_rating.to_i.times do %>
+              <i class="fa-solid fa-star text-warning mb-2"></i>
+            <% end %>
+              <i><%= "#{@average_rating}" %></i>
+          <% end %>
+  <h4 class= "mb-5"><%= current_user.description.capitalize %></h4>
+
+  <div class="container">
+   <div class="row">
+    <div class="col mt-3">
+              <%= render "received_reviews", reviews: @reviews%>
+    </div>
+    <div class="col">
+    <%# mapa %>
+      <div style="width: 100%; height: 300px;"
+        data-controller="map"
+        data-map-markers-value="<%= @markers.to_json %>"
+        data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+      </div>
+    </div>
+  </div>
+</div>
 
 <% end %>
+
 
 </div>
