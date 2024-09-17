@@ -21,3 +21,17 @@
 body{
   font-family: "Poppins", sans-serif;
 }
+
+.custom-button-grey {
+  background-color: #767676; /* Color de fondo del botón */
+  color: white; /* Color del texto */
+  padding: 10px 20px; /* Espaciado interior */
+  border: none; /* Sin borde */
+  border-radius: 5px; /* Bordes redondeados */
+  font-size: 16px; /* Tamaño del texto */
+  text-align: center; /* Alineación del texto */
+  text-decoration: none; /* Sin subrayado */
+  display: inline-block; /* Para permitir padding y márgenes */
+  cursor: pointer; /* Cambia el cursor al pasar por encima */
+  transition: background-color 0.3s, transform 0.2s; /* Transición para el color y la transformación */
+}
