@@ -1,4 +1,76 @@
-footer {
-  background: #121417;
-  font-family: "Poppins", sans-serif;
+.footer-section {
+  position: relative;
+  background-color: #333; // Color de fondo del footer
+  color: #fff; // Color del texto
+  padding: 40px 0;
+
+  // Estilos para el triángulo superior
+  .footer-triangle {
+    position: absolute;
+    top: -60px;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-left: 1265px solid transparent; // Triángulo que cubre todo el ancho de la pantalla
+    border-right: 0 solid transparent;
+    border-bottom: 60px solid #333; // Color del triángulo
+  }
+
+  .footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+
+    .footer-info {
+      flex: 1;
+
+      h3 {
+        font-family: Poppins, sans-serif;
+        font-size: 24px;
+        margin-bottom: 10px;
+      }
+
+      p {
+        font-family: Inter, sans-serif;
+        font-size: 16px;
+        line-height: 1.5;
+      }
+    }
+
+    .footer-links {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+
+      a {
+        color: #fff;
+        text-decoration: none;
+        margin-bottom: 10px;
+        font-family: Poppins, sans-serif;
+        font-size: 16px;
+
+        &:hover {
+          color: #007bff; // Color de enlace al pasar el mouse
+        }
+      }
+    }
+  }
+
+  // Parte inferior del footer
+  .footer-bottom {
+    text-align: center;
+    padding: 20px;
+    background-color: #222; // Color de la sección inferior del footer
+
+    p {
+      margin: 0;
+      font-family: Inter, sans-serif;
+      font-size: 14px;
+      color: #bbb;
+    }
+  }
+
 }
