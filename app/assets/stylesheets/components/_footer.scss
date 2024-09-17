@@ -5,16 +5,16 @@
   padding: 40px 0;
 
   // Estilos para el triángulo superior
-  // .footer-triangle {
-  //   position: absolute;
-  //   top: -60px;
-  //   left: 0;
-  //   width: 0;
-  //   height: 0;
-  //   border-left: 1265px solid transparent; // Triángulo que cubre todo el ancho de la pantalla
-  //   border-right: 0 solid transparent;
-  //   border-bottom: 60px solid #333; // Color del triángulo
-  // }
+  .footer-triangle {
+    position: absolute;
+    top: -60px;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-left: 1265px solid transparent; // Triángulo que cubre todo el ancho de la pantalla
+    border-right: 0 solid transparent;
+    border-bottom: 60px solid #333; // Color del triángulo
+  }
 
   .footer-content {
     display: flex;

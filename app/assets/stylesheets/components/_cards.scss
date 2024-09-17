@@ -1,0 +1,18 @@
+.cardapplication {
+  border: 2px solid #d80536; // Color medio amarillo oscuro
+  border-radius: 8px;
+}
+
+.btnapplication {
+  display: inline-block;
+  padding: 12px 24px;
+  font-family: Poppins, Inter, -apple-system, "system-ui", sans-serif;
+  font-size: 12px;
+  color: #fff; // Color del texto
+  background-color: #f6a90e; // Color de fondo
+  border: none;
+  border-radius: 15px; // Bordes redondeados
+  text-decoration: none;
+  text-align: center;
+  transition: background-color 0.3s ease, transform 0.3s ease; // Transiciones suaves
+}

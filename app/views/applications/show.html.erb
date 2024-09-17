@@ -1,4 +1,4 @@
- <div class="container my-4 py-4 contenedor" style="width: 600px; background-color: #E3F2FD; border-radius: 15px; box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); color: #333;">
+ <div class="container contenedor py-5" style="width: 600px; background-color: #F7E7DC border-radius: 15px; box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); color: #333;">
   <div class="p-4" style="border-bottom: 2px dashed #ccc;">
     <p><%= "Estimado/a #{current_user.first_name}," %></p>
 
@@ -14,7 +14,7 @@
   <div class="card-body p-4" style="border-bottom: 2px dashed #ccc;">
     <div class="d-flex align-items-start mb-3">
       <div class="info-section" style="flex: 2;">
-        <h3><%= @application.offer.title %></h3>
+        <h2><%= @application.offer.title %></h2>
         <p><i class="fa-solid fa-plane"></i> <strong>Desde:</strong> <%= @application.offer.start_date %></p>
         <p><i class="fa-solid fa-plane-up"></i> <strong>Hasta:</strong> <%= @application.offer.end_date %></p>
         <p><i class="fa-solid fa-location-dot"></i> <strong>Ubicación:</strong> <%= @application.offer.address %></p>

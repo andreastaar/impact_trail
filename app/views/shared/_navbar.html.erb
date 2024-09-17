@@ -22,7 +22,7 @@
         <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar", alt: "Placeholder image" %>
       <% end %>
 
-      <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+      <div class="dropdown-menu dropdown-menu-end" style="background-color: #495579 border-radius: 25px" aria-labelledby="navbarDropdown">
       <%     if current_user.role == "voluntario"%>
         <%= link_to "Mis Postulaciones", applications_path, class: "dropdown-item" %>
       <% else %>
