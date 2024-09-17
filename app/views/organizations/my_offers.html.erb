@@ -9,18 +9,26 @@
   <% case application.user.location %>
   <% when "IT" %>
  <%= "🇮🇹" %>
- <% when "IT" %>
- <%= "🇮🇹" %>
- <% when "IT" %>
- <%= "🇮🇹" %>
- <% when "IT" %>
- <%= "🇮🇹" %>
- <% when "IT" %>
- <%= "🇮🇹" %>
+ <% when "PE" %>
+ <%= "🇵🇪" %>
+ <% when "AR" %>
+ <%= "🇦🇷" %>
+ <% when "MX" %>
+ <%= "🇲🇽" %>
+ <% when "CL" %>
+ <%= "🇨🇱" %>
+  <% when "BR" %>
+ <%= "🇧🇷" %>
+ <% when "CO" %>
+ <%= "🇨🇴" %>
+ <% when "USA" %>
+ <%= "🇺🇸" %>
+ <% when "ES" %>
+ <%= "🇪🇸" %>
+ <% when "JP" %>
+ <%= "🇯🇵" %>
  <% end %>
  <%= application.status %>
-
-
 
  <%= simple_form_for application, url: update_status_path(application), method: :patch do|f|%>
   <div class="form-group" >

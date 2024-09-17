@@ -10,6 +10,61 @@
 }
 
 
+body{
+  font-family: "Poppins", sans-serif;;
+}
+
+.video-container {
+  position: relative;
+  width: 100%;
+}
+
+video {
+  width: 100%;
+  height: auto;
+}
+
+.filter-search {
+  position: absolute;
+  bottom: 5%; /* Ajusta según lo bajo que desees posicionarlo */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%; /* Ajusta el ancho para hacerlo más alargado */
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 15px;
+  border-radius: 25px; /* Bordes redondeados */
+}
+
+.filter-group {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.filter-item {
+  flex: 1;
+  margin: 0 10px;
+}
+
+.form-control {
+  height: 50px; /* Ajusta la altura de los campos */
+  border-radius: 15px; /* Bordes redondeados en los inputs */
+  text-align: center;
+}
+
+
+
+/* Estilos adicionales para el formulario */
+.form-search {
+  display: flex;
+  justify-content: space-between;
+}
+
+.form-label {
+  font-weight: bold;
+}
+
+
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
 .hero-section {
