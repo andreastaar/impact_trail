@@ -1,30 +1,63 @@
-<div class="container mt-5 mb-5 contenedor">
+<div class="contenedor"></div>
+<div class="container mb-5 ">
+
+      <div class="badge text-bg-secondary fs-5 mb-2">Proyecto</div>
+      <h3 class="display-4 text-dark fs-3"><%= @offer.title.capitalize %> </h3>
+
+
   <div class="row">
+
     <!-- Imágenes de la oferta -->
-    <% if @offer.photos.present? %>
-      <div class="col-md-6">
-        <div class="product-image-wrapper">
-          <% @offer.photos.each do |photo| %>
-            <%= cl_image_tag(photo.key, class: 'img-fluid product-image', alt: @offer.title) %>
-          <% end %>
+    <div class="d-flex justify-content-center ">
+      <div id="carusel-container" class="mt-4">
+        <div id="carouselExample" class="carousel slide carousel-fade">
+          <div class="carousel-inner">
+              <% @offer.photos.each_with_index do |photo, index| %>
+                <div class="carousel-item carusel-photo-container <%= "active" if index == 0 %>">
+                  <%= cl_image_tag(photo.key, class: 'img-fluid product-image carusel-photo rounded', alt: @offer.title, id: photo.id) %>
+                </div>
+              <% end %>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
         </div>
       </div>
-    <% end %>
+    </div>
+
 
     <!-- Detalles de la oferta -->
     <div class="col-md-6">
-      <h1 class="display-4 text-dark"><%= @offer.title %></h1>
-
-
-      <p class="text-muted h4 mt-3"><%= @offer.address %></p>
-      <p class="text-muted h5 mt-3">Disponibilidad: <%= @offer.availability %> puestos</p>
-      <p class="text-muted h5 mt-3">Postulaciones: <%= @offer.applications.count %></p>
+    <div class="d-flex row">
+      <div class="col">
+      <ul class="list-unstyled">
+        <li class="d-flex align-items-center">
+          <i class="fa-solid fa-location-dot me-3"></i>
+          <div class="text-muted h5 mt-3"><%= @offer.address.capitalize %></div>
+        </li>
+      </ul>
+      </div>
+    </div>
+      <p class="text-muted h5 mt-3"><strong>Disponibilidad: </strong> <%= @offer.availability %> puestos</p>
+      <p class="text-muted h5 mt-3"><strong>Postulaciones: </strong><%= @offer.applications.count %></p>
 
       <p class="mt-4"><strong>Descripción:</strong></p>
-      <p class="text-secondary"><%= @offer.description %></p>
+      <p class="text-secondary"><%= @offer.description.capitalize %></p>
 
       <p class="mt-4"><strong>Requisitos:</strong></p>
-      <p class="text-secondary"><%= @offer.requirements %></p>
+      <p class="text-secondary"><%= @offer.requirements.capitalize %></p>
+
+      <p class="mt-4"><strong>Beneficios:</strong></p>
+      <ul>
+      <% @offer.perks.split("|").each do |beneficio| %>
+        <li class="text-secondary"> <%= beneficio %></li>
+      <% end %>
+      </ul>
 
       <p class="mt-4"><strong>Fechas:</strong></p>
       <p class="text-secondary">De <%= @offer.start_date %> a <%= @offer.end_date %></p>
@@ -113,11 +146,13 @@
       <% end %>
     </div>
   </div>
-</div>
 
-<%# mapa %>
-  <div class="ms-5 mb-5 me-5", style="width: 33%; height: 300px;"
-    data-controller="map"
-    data-map-markers-value="<%= @markers.to_json %>"
-    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
-  </div>
+
+    <%# mapa %>
+      <div class="ms-5 mb-5 me-5 rounded", style="width: 30%; height: 200px;"
+          data-controller="map"
+          data-map-markers-value="<%= @markers.to_json %>"
+          data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+      </div>
+
+</div>

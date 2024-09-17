@@ -32,6 +32,9 @@ class OffersController < ApplicationController
 
   def create
     @offer = Offer.new(offer_params)
+    perks_array = params[:perks]
+    perks_array.shift
+    @offer.perks = perks_array.join("|")
     @offer.user_id = current_user.id
     if @offer.save
       redirect_to @offer, notice: 'La oferta fue creada exitosamente'
