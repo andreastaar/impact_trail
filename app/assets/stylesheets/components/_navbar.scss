@@ -1,8 +1,11 @@
 .navbar-lewagon {
   justify-content: space-between;
-
+  font-family: "Poppins", sans-serif;
   background: #ffffff;
-
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000; /* Asegura que el navbar esté por encima del video */
 }
 
 .navbar-lewagon .navbar-collapse {
