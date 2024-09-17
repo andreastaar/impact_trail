@@ -9,11 +9,7 @@ class UsersController < ApplicationController
   end
 
   def offer_locations
-    # if applications.status == "ACEPTADO"
-      @users = User.joins(applications: :offer).where("offers.city ILIKE ?", "%#{params[:location]}%").where(applications: { status: 'ACEPTADO' }).distinct
-    # else
-    #   "NO TIENE OFERTAS ACEPTADAS"
-    # end
+      @users = User.joins(applications: :offer).where("offers.city ILIKE ?", "%#{params[:location]}%").where(applications: { status: 'Aceptado' }).distinct
   end
 
 end

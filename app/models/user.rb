@@ -8,7 +8,7 @@ class User < ApplicationRecord
   has_many :applications
   has_one_attached :photo
 
+  geocoded_by :organization_address
+  after_validation :geocode, if: :will_save_change_to_organization_address?
   # has_many :reviews, through: :offers
-
-
 end
