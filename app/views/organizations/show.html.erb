@@ -15,13 +15,14 @@
 
 <h1 class= "mb-5"><strong><%= @organization.organization_name %></strong></h1>
 <h4 class= "mb-5"><%= @organization.description %></h4>
-  <% @average_rating.to_i.times do %>
+  <%if @organization.reviews.any?%><% @average_rating.to_i.times do %>
   <i class="fa-solid fa-star"></i>
   <% end %>
 
+
   <p><%= "Rating: #{@average_rating.to_i}" %></p>
 <%= render "received_reviews", reviews: @reviews%>
-
+<% end %>
 <div class= "mt-5"><h5><strong>Crea una nueva review</strong></h5>
       <%= simple_form_for @review do |f| %>
         <%= f.input :content,label:"Escribe tu review" %>
