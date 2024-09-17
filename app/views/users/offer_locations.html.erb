@@ -1,5 +1,6 @@
 <div class="container mt-5 mb-5">
-<h1 class="mb-5">Voluntarios cerca de tu voluntariado en:  <%= params[:location].capitalize %></h1>
+<h1 class="text-center">Voluntarios cerca de tu destino</h1>
+<h3 class="mt-2 mb-5 text-center"><strong><%= params[:location].upcase %></strong></h3>
 
 <ul class="list-unstyled">
   <% if @users.any? %>
@@ -9,12 +10,28 @@
         <li><%= cl_image_tag user.photo.key, width: 150, height: 150, crop: :fill, alt: "Foto de #{user.first_name}", class: "offer-photo" %></li>
       </div>
       <div class="p-2 flex-fill text-start">
-      <% instagram= "<a href=https://www.instagram.com/>#{user.instagram_account}</a>" %>
-        <li><br></li>
-        <li><strong><%= user.first_name %></strong></li>
-        <li> <%= " #{user.location}" %></li>
-        <li><%= "Instagram: instagram"%></li>
-        <li><%= "Facebook: #{user.facebook_account}" %></li>
+
+        <%# <li><br></li> %>
+        <li class="mt-2"><strong><%= "#{user.first_name.capitalize} #{user.last_name.capitalize}"%></strong></li>
+        <li>
+          <i class="fa-solid fa-location-dot"></i>
+          <%= "#{user.location}" %>
+        </li>
+        <br>
+        <% if user.instagram_account != nil  %>
+          <li>
+            <i class="fa-brands fa-instagram"></i>
+            <%= link_to "#{user.instagram_account}", "https://www.instagram.com/#{user.instagram_account}/", target: "_blank", rel: "noopener" %>
+          </li>
+        <% end %>
+        <% if user.facebook_account != nil  %>
+          <li>
+          <i class="fa-brands fa-facebook"></i>
+          <%= link_to "#{user.facebook_account}", "https://www.instagram.com/#{user.facebook_account}/", target: "_blank", rel: "noopener" %>
+          </li>
+        <% end %>
+        <%# <%= link_to "WhatsApp Link", "https://wa.me/", target: "_blank", rel: "noopener" %>
+
       </div>
     </div>
       <% end %>
