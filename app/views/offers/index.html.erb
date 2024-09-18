@@ -16,10 +16,10 @@
             <% end %>
               <h4 class="card-title text-center p-3"><%= link_to offer.title, offer_path(offer), style: "text-decoration: none; color: black;" %></h4>
                 <p class="card-text">
-                  <i class="fa-solid fa-house"></i> Comunidad: <%= offer.user.organization_name %> <br>
-                  <i class="fa-solid fa-map-location-dot"></i>  Ubicación: <%= offer.address %> <br>
-                  <i class="fa-solid fa-user"></i>  Disponibilidad: <%= offer.availability %> puestos <br>
-                  <i class="fa-solid fa-check"></i> <%= truncate(offer.description, length: 100) %>
+                  <i class="fa-solid fa-house"></i><strong> Organización: </strong><%= offer.user.organization_name %> <br>
+                  <i class="fa-solid fa-map-location-dot"></i><strong>  Ubicación: </strong><%= offer.address %> <br>
+                  <i class="fa-solid fa-user"></i><strong>  Disponibilidad: </strong><%= offer.availability %> puestos <br>
+                  <i class="fa-solid fa-check"></i><strong></strong> <%= truncate(offer.description, length: 100) %>
                 </p>
             </div>
             <div class="d-flex justify-content-end p-3">
