@@ -168,12 +168,12 @@
           <div class="d-none mt-3" data-toggle-target="form">
             <div class="fs-4">Agregar fechas de voluntariado</div>
             <%= simple_form_for [@offer, @application], data: {turbo: false} do |f| %>
-              <div class="form-group">
+              <%# <div class="form-group">
                 <%= f.input :start_date,label:"Fecha de inicio:", as: :string, input_html: {data: {controller: "datepicker"}} %>
-              </div>
+              <%# </div>
               <div class="form-group mt-3">
                 <%= f.input :end_date, label:"Fecha de fin:", as: :string, input_html: {data: {controller: "datepicker"}} %>
-              </div>
+              <%# </div> %>
               <div class="form-group mt-4">
                 <%= f.submit 'Aplicar', class: 'custom-button' %>
               </div>
