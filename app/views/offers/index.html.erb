@@ -10,9 +10,9 @@
           <div class="card shadow-sm h-100 rounded-5">
             <div class="card-body">
             <% if offer.photos.attached? %>
-              <%= cl_image_tag offer.photos.first.key, class: 'img-fluid rounded-5', alt: "Foto de #{offer.title}", style: "object-fit: cover; height: 200px; width: 100%;" %>
+              <%= cl_image_tag offer.photos.first.key, class: 'img-fluid rounded-5', alt: "Foto de #{offer.title}", style: "object-fit: cover; height: 250px; width: 100%;" %>
             <% else %>
-              <img src="placeholder.jpg" class="img-fluid rounded-5 " alt="Sin foto disponible" style="object-fit: cover; height: 200px; width: 100%; ">
+              <img src="placeholder.jpg" class="img-fluid rounded-5 " alt="Sin foto disponible" style="object-fit: cover; height: 250px; width: 100%; ">
             <% end %>
               <h4 class="card-title text-center p-3"><%= link_to offer.title, offer_path(offer), style: "text-decoration: none; color: black;" %></h4>
                 <p class="card-text">

@@ -7,9 +7,9 @@
         <div class="row g-0">
           <div class="col-md-4">
             <% if application.offer.photos.attached? %>
-              <%= cl_image_tag application.offer.photos.first.key, class: 'img-fluid rounded-start', alt: "Foto de #{application.offer.title}", style: "object-fit: cover; height: 200px; width: 100%;" %>
+              <%= cl_image_tag application.offer.photos.first.key, class: 'img-fluid rounded-start', alt: "Foto de #{application.offer.title}", style: "object-fit: cover; height: 250px; width: 100%;" %>
             <% else %>
-              <img src="placeholder.jpg" class="img-fluid rounded-start" alt="Sin foto disponible" style="object-fit: cover; height: 200px; width: 100%;">
+              <img src="placeholder.jpg" class="img-fluid rounded-start" alt="Sin foto disponible" style="object-fit: cover; height: 250px; width: 100%;">
             <% end %>
           </div>
           <div class="col-md-8">
