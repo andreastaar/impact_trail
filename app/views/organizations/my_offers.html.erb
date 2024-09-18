@@ -1,36 +1,93 @@
 <div class="contenedor">
-  <div class="container mt-4">
-  <table class="table table-bordered">
-    <thead>
-      <tr class="text-center">
-        <th>Voluntariado</th>
-        <th>Candidatos</th>
-        <th>Puesto</th>
-        <th>Vacantes</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @my_offers.each do |offer| %>
-        <tr>
-          <td><%= offer.title %></td>
-          <td>
-            <div class="d-flex align-items-center">
-              <% offer.applications.limit(2).each do |application| %>
-                <%= cl_image_tag application.user.photo.key, class: "rounded-circle", width: 40, height: 40 %>
-              <% end %>
-              <% if offer.applications.count > 2 %>
-                <span class="badge badge-pill">+<%= offer.applications.count - 2 %></span>
-              <% end %>
-            </div>
-          </td>
-          <td><%= offer.requirements %></td>
-          <td>
-            <span class="color-number"><%= offer.availability %></span>
-          </td>
+  <div class="custom-container mt-4">
+    <table class="custom-table">
+      <thead>
+        <tr class="text-center">
+          <th>Voluntariado</th>
+          <th>Candidatos</th>
+          <th>Puesto</th>
+          <th>Vacantes</th>
         </tr>
-      <% end %>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+        <% @my_offers.each do |offer| %>
+          <tr>
+            <!-- Columna: Voluntariado -->
+            <td> <span class="custom-color-text"><%= offer.title %> </span></td>
+
+            <!-- Columna: Candidatos con Modal -->
+            <td>
+              <div class="custom-d-flex">
+                <!-- Link para abrir el modal de candidatos -->
+                <a href="#candidatesModal-<%= offer.id %>" data-bs-toggle="modal">
+                  <% offer.applications.limit(2).each do |application| %>
+                    <%= cl_image_tag application.user.photo.key, class: "custom-rounded-circle", width: 40, height: 40 %>
+                  <% end %>
+                  <% if offer.applications.count > 2 %>
+                    <span class="custom-color-text">+<%= offer.applications.count - 2 %></span>
+                  <% end %>
+                </a>
+              </div>
+            </td>
+
+            <!-- Columna: Puesto -->
+            <td> <span class="custom-color-text"><%= offer.requirements %></span></td>
+
+            <!-- Columna: Vacantes -->
+            <td>
+              <span class="custom-color-text"><%= offer.availability %></span>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 </div>
 
-</div>
+<%# Modal de voluntarios %>
+<% @my_offers.each do |offer| %>
+  <div class="modal fade" id="candidatesModal-<%= offer.id %>" tabindex="-1" aria-labelledby="candidatesModalLabel-<%= offer.id %>" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="candidatesModalLabel-<%= offer.id %>">Candidatos para <%= offer.title %></h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <% offer.applications.each do |application| %>
+              <div class="col-md-6 mb-4">
+                <div class="card shadow-sm">
+                  <div class="card-header text-center">
+                    <%= cl_image_tag application.user.photo.key, class: "rounded-circle", width: 100, height: 100 %>
+                  </div>
+                  <div class="card-body">
+                    <h5 class="card-title text-center"><%= application.user.first_name %> <%= application.user.last_name %></h5>
+                    <p class="card-text text-center">
+                      <%= application.user.full_location %>
+
+                    </p>
+                    <p class="card-text"><strong>Fecha de inicio:</strong> <%= application.start_date %></p>
+                    <p class="card-text"><strong>Fecha de finalización:</strong> <%= application.end_date %></p>
+                    <p class="card-text"><strong>Estado:</strong> <%= application.status %></p>
+                  </div>
+                  <div class="card-footer text-center">
+                    <%= simple_form_for application, url: update_status_path(application), method: :patch do |f| %>
+                      <div class="form-group">
+                        <%= f.label :status, 'Estado de la aplicación' %>
+                        <%= f.select :status, ['Iniciado', 'Aceptado', 'Rechazado'], {}, class: 'form-control' %>
+                      </div>
+                      <div class="form-group mt-2">
+                        <%= f.submit 'Actualizar', class: 'btn btn-primary' %>
+                      </div>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
