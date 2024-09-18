@@ -10,7 +10,7 @@ export default class extends Controller {
   }
   connect() {
 
-    // console.log("hello")
+    console.log(this.startDateValue)
     // console.log("hello World")
     flatpickr(this.element, {
       // minDate: "today", maxDate: "2024-09-30"
