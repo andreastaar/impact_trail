@@ -176,7 +176,7 @@ video {
   z-index: 1;
 }
 
-.container {
+.cards-flotantes {
   position: relative;
   z-index: 2; /* Para que el contenido esté por encima del filtro */
 }
@@ -294,7 +294,6 @@ video {
 .contenedor {
   margin-top: 100px;
   margin-bottom: 60px;
-}
 
 .contenedor {
   margin-top: 100px;
@@ -308,4 +307,5 @@ video {
 
 .card-text {
   line-height: 2; /* Ajusta el espacio entre las líneas de <p> */
+
 }
