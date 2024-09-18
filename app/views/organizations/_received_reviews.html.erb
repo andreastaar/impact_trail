@@ -1,34 +1,34 @@
 <div class="container">
 
 <div class="row">
-<div class="col-xs-4">
+<div class="col-xs-3">
 
-  <div class="fs-5 pt-2"><strong>Reviews</strong></div>
+  <div class="pt-2"><strong>Reviews</strong></div>
 <% if @reviews.any? %>
   <% @reviews.each do |review| %>
 <div class="d-flex">
   <div class="rating pt-2">
-      <%= cl_image_tag review.user.photo.key, width: 400, height: 400, crop: :thumb, gravity: :face, class: 'img-fluid avatar me-3' %>
+      <%= cl_image_tag review.user.photo.key, width: 100, height: 100, crop: :thumb, gravity: :face, class: 'img-fluid avatar me-3' %>
   </div>
   <div class="rating">
     <ul class="list-unstyled">
-    <div class="d-flex">
+    <div class="d-flex review-rating">
       <div><i class="fa-solid fa-star text-warning me-2"></i></div>
       <div><li ><i><%= review.rating %></i></li></div>
     </div>
-    <div>
+    <div class="d-flex review-user">
       <div>
         <li class="text-muted"><i><%= review.user.first_name %></i></li>
       </div>
-      <div>
+      <div class="ms-2 text-muted">
         <li><i><%= review.created_at.strftime("%d-%m-%Y") %></i></li>
       </div>
     </div>
-      <li><i><%= review.content  %></i></li>
+      <li class="review-content"><i><%= review.content.capitalize  %></i></li>
     </ul>
   </div>
 </div>
-
+      <%= content_tag :hr %>
   <% end %>
 <% else %>
   <p>No tiene reviews registradas.</p>
