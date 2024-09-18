@@ -4,17 +4,17 @@
     Your browser does not support the video tag.
   </video>
 
-  <%# Formulario de filtro sobre el video %>
+<%# Formulario de filtro sobre el video %>
   <div class="filter-search">
     <%= form_with url: offers_path, method: :get, local: true, class: 'form-search' do %>
-      <div class="row g-3">
+      <div class="filter-group ">
         <!-- Campo de búsqueda -->
-        <div class="col-md-6">
+        <div class="filter-item">
           <%= label_tag :query, "Buscar Voluntariado", class: "form-label" %>
           <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "¿En qué lugar quieres ser voluntario?" %>
         </div>
         <!-- Dropdown de tipo de voluntariado -->
-        <div class="col-md-4">
+        <div class="filter-item">
           <%= label_tag :type_of_volunteering, "Tipo de Voluntariado", class: "form-label" %>
           <%= select_tag :type_of_volunteering, options_for_select([
             ['Animales y medio ambiente', 'Animales y medio ambiente'],
@@ -22,66 +22,61 @@
             ['Agricultura y granjas', 'Agricultura y granjas'],
             ['Mejora de la comunidad', 'Mejora de la comunidad'],
             ['Enseñanza e idiomas', 'Enseñanza e idiomas']
-          ], params[:type_of_volunteering]), { prompt: "Tipo de voluntariado", class: "form-select" } %>
+          ], params[:type_of_volunteering]), { prompt: "Tipo de voluntariado", class: "form-control" } %>
         </div>
         <!-- Botón de búsqueda -->
-        <div class="col-md-2 align-self-end">
-          <%= submit_tag "Buscar", class: "custom-button  w-100" %>
-        </div>
+
+          <%= submit_tag "Buscar", class: "custom-button align-self-end button-home" %>
+
       </div>
     <% end %>
   </div>
 </div>
 
   <!-- Seccion Destacado -->
-<section style="background-color: #E6E6E6" class="py-5">
-    <div class="container text-center">
-      <h2 class="mb-4">¿Por qué ImpactTrail?</h2>
-      <p class="mb-5">Únete a una comunidad global de viajeros y voluntarios que buscan generar un impacto positivo en el mundo. Descubre los beneficios de participar con nosotros y transforma tu forma de viajar mientras ayudas a quienes más lo necesitan.</p>
-      <div class="row">
-        <!-- Beneficio 1 -->
-        <div class="col-md-3">
-          <div class="card h-100 shadow-sm">
-            <div class="card-body">
-               <div class="bi bi-globe fs-1 mb-3"></div>
-              <h5 class="card-title">Impacto en Comunidades Locales</h5>
-              <p class="card-text">Deja una huella positiva en cada destino. Ayuda a comunidades en situación de vulnerabilidad, promoviendo proyectos que generan un cambio real y sostenible.</p>
-            </div>
-          </div>
+
+<section class="impact-section">
+  <div class="container">
+      <h2 class="mb-4 text-center">¿Por qué usar ImpactTrail?</h2>
+    <div class="impact-grid">
+      <!-- Card 1 -->
+      <div class="impact-card">
+        <div class="impact-icon">
+          <i class="fas fa-hand-holding-heart"></i> <!-- Icono representativo -->
         </div>
-        <!-- Beneficio 2 -->
-        <div class="col-md-3">
-          <div class="card h-100 shadow-sm">
-            <div class="card-body">
-              <div class="bi bi-people fs-1 mb-3"></div>
-              <h5 class="card-title">Conexión con Viajeros Voluntarios</h5>
-              <p class="card-text">Haz amigos que comparten tu pasión por ayudar. Conoce y trabaja junto a otros viajeros que comparten tu mentalidad solidaria.</p>
-            </div>
-          </div>
+        <h3>Viajes con Propósito y Responsabilidad</h3>
+        <p>Viaja de manera consciente y responsable. Vive una experiencia de viaje que marca la diferencia para ti y el mundo.</p>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="impact-card">
+        <div class="impact-icon">
+          <i class="fas fa-globe"></i>
         </div>
-        <!-- Beneficio 3 -->
-        <div class="col-md-3">
-          <div class="card h-100 shadow-sm">
-            <div class="card-body">
-              <div class="bi bi-airplane-engines fs-1 mb-3"></div>
-              <h5 class="card-title">Oportunidades en Varios Países</h5>
-              <p class="card-text">Elige tu próximo destino y vive la experiencia. Explora oportunidades de voluntariado en varios países mientras descubres nuevas culturas.</p>
-            </div>
-          </div>
+        <h3>Oportunidades en Varios Países</h3>
+        <p>Elige tu próximo destino y vive la experiencia. Explora oportunidades de voluntariado en varios países mientras descubres nuevas culturas.</p>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="impact-card">
+        <div class="impact-icon">
+          <i class="fas fa-seedling"></i>
         </div>
-        <!-- Beneficio 4 -->
-        <div class="col-md-3">
-          <div class="card h-100 shadow-sm">
-            <div class="card-body">
-              <div class="bi bi-heart fs-1 mb-3"></div>
-              <h5 class="card-title">Viajes con Propósito y Responsabilidad</h5>
-              <p class="card-text">Viaja de manera consciente y responsable. Vive una experiencia de viaje que marca la diferencia para ti y el mundo.</p>
-            </div>
-          </div>
+        <h3>Impacto en Comunidades Locales</h3>
+        <p>Deja una huella positiva en cada destino. Ayuda a comunidades en situación de vulnerabilidad, promoviendo proyectos que generan un cambio real y sostenible.</p>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="impact-card">
+        <div class="impact-icon">
+          <i class="fas fa-users"></i>
         </div>
+        <h3>Conexión con Viajeros Voluntarios</h3>
+        <p>Viaja de manera consciente y responsable. Vive una experiencia de viaje que marca la diferencia para ti y el mundo.</p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
 
 <section class="hero-section">
@@ -98,34 +93,33 @@
   </div>
 </section>
 
+<%# Voluntariados destacados %>
 
-
-
-
-
-
-
-
-
-
-
-
-<!-- Sección: Oportunidades de Voluntariado Destacadas -->
 <section class="py-5">
   <div class="container">
     <h2 class="text-center mb-5">Oportunidades de Voluntariado!</h2>
     <div class="row">
       <% @offers.each do |offer| %>
         <div class="col-md-4 mb-4">
-          <div class="card h-100 shadow-sm">
+          <div class="explore-card">
             <% if offer.photos.attached? %>
-              <%= cl_image_tag offer.photos.first.key, width: 400, height: 300, crop: :fill, class: "card-img-top", alt: "Foto de #{offer.title}" %>
+              <%= cl_image_tag offer.photos.first.key, width: 400, height: 300, crop: :fill, class: "explore-image", alt: "Foto de #{offer.title}" %>
             <% else %>
-              <img src="https://conference.nbasbl.org/wp-content/uploads/2022/05/placeholder-image-1.png" class="card-img-top" alt="Imagen por defecto" style="width: 100%; height: auto; object-fit: cover;">
+
+              <img src="https://conference.nbasbl.org/wp-content/uploads/2022/05/placeholder-image-1.png" class="explore-image" alt="Imagen por defecto" style="width: 400px; height: 300px; object-fit: cover;">
             <% end %>
-            <div class="card-body">
-              <h5 class="card-title"><%= offer.title %></h5>
+            <div class="explore-content">
+              <h2><%= offer.title %></h2>
               <p class="card-text"><%= truncate(offer.description, length: 100) %></p>
+
+              <p class="mb-1">
+                <i class="bi bi-geo-alt"></i> <%= offer.city %>, <%= offer.country_name %>
+              </p>
+              <p class="mb-3">
+                <i class="bi bi-clock"></i> <%= distance_of_time_in_words(offer.start_date, offer.end_date) %>
+              </p>
+              <a href="<%= offer_path(offer) %>" class="explore-btn">Explora</a>
+
               <p class="text-muted mb-1"><i class="bi bi-geo-alt"></i> <%= offer.city %>, <%= offer.country_name %></p>
               <p class="text-muted mb-3"><i class="bi bi-clock"></i> <%= distance_of_time_in_words(offer.start_date, offer.end_date) %></p>
               <%= link_to 'Ver más detalles', offer_path(offer), class: "btn btn-primary1" %>
@@ -136,3 +130,13 @@
     </div>
   </div>
 </section>
+
+<%# 
+<div class="explore-card">
+  <div class="explore-image"></div>
+  <div class="explore-content">
+    <h2>Explore our Seoul</h2>
+    <p>200 hotels, 345 local flights and 234 bus providers</p>
+    <a href="#" class="explore-btn">Explore</a>
+  </div>
+</div> %>
