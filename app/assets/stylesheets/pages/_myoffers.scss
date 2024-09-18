@@ -1,4 +1,4 @@
-.table {
+.custom-table {
   /* Ajusta el ancho de la tabla y el margen */
   width: 80%;
   margin: 0 auto;
@@ -6,32 +6,51 @@
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Agrega sombra a la tabla */
 }
 
-.table-td{
-  color:#e4e8f0;
+.custom-table td {
+  color: #e4e8f0;
 }
-.table th {
+
+.custom-table th {
   /* Ajusta el padding y el tamaño de fuente */
   padding: 1rem;
   font-size: 1.2rem;
   color: #464a64; /* Color de letra por defecto  #e4e8f0*/
-  // background-color: #f8f9fa; /* Color de fondo para los encabezados */
+  background-color: #f8f9fa !important; /* Color de fondo para los encabezados */
 }
 
-
-
-.table tbody tr:nth-child(odd) {
-  background-color: #f40df4 !important;/* Color de fondo para filas impares */
+.custom-table tbody tr:nth-child(odd) {
+  background-color: #d9e1e9 !important; /* Color de fondo para filas impares */
 }
 
-table.table tbody tr:nth-child(even) {
-  background-color: #137be3 !important; /* Color de fondo para filas pares */
+.custom-table tbody tr:nth-child(even) {
+  background-color:#f8fafb  !important; /* Color de fondo para filas pares */
 }
 
-// .table tbody tr:hover {
-//   // background-color: #e9ecef; /* Color de fondo cuando se pasa el cursor sobre una fila */
+// .custom-table tbody tr:hover {
+//   background-color: #e9ecef !important; /* Color de fondo cuando se pasa el cursor sobre una fila */
 // }
 
-.table-bordered th,
-.table-bordered td {
+.custom-table th,
+.custom-table td {
   border: 1px solid #dee2e6; /* Borde mínimo para la tabla */
+}
+
+.custom-d-flex {
+  display: flex;
+  align-items: center;
+}
+
+.custom-rounded-circle {
+  border-radius: 50%;
+}
+
+.custom-badge {
+  border-radius: 1rem;
+  padding: 0.25rem 0.5rem;
+  background-color:#efeffe;
+  color:#8c85dd;
+}
+
+.custom-color-text {
+  color:#717c8b; /* Ajusta el color según sea necesario */
 }
