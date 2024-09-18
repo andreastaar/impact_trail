@@ -85,3 +85,5 @@ gem 'flatpickr'
 gem "pg_search"
 
 gem "geocoder"
+
+

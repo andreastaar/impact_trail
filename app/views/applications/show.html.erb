@@ -1,4 +1,4 @@
- <div class="container my-4 py-4" style="width: 600px; background-color: #E3F2FD; border-radius: 15px; box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); color: #333;">
+ <div class="container contenedor py-5" style="width: 600px; border-radius: 15px; box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); color: #333; background: #e6ecef">
   <div class="p-4" style="border-bottom: 2px dashed #ccc;">
     <p><%= "Estimado/a #{current_user.first_name}," %></p>
 
@@ -11,14 +11,15 @@
     </p>
   </div>
 
-  <div class="card-body p-4" style="border-bottom: 2px dashed #ccc;">
+  <div class="card-body p-4 .cardapplicationn" style="border-bottom: 2px dashed #ccc;">
     <div class="d-flex align-items-start mb-3">
       <div class="info-section" style="flex: 2;">
-        <h3><%= @application.offer.title %></h3>
-        <p><i class="fa-solid fa-plane"></i> <strong>Desde:</strong> <%= @application.offer.start_date %></p>
-        <p><i class="fa-solid fa-plane-up"></i> <strong>Hasta:</strong> <%= @application.offer.end_date %></p>
-        <p><i class="fa-solid fa-location-dot"></i> <strong>Ubicación:</strong> <%= @application.offer.address %></p>
-        <p><i class="fa-solid fa-star-of-life"></i> <strong>Status:</strong> <%= @application.status %></p>
+        <h2><%= @application.offer.title %></h2>
+        <p><i class="fa-solid fa-building"></i> <strong> Organización:</strong> <%= @application.offer.user.organization_name %></p>
+        <p><i class="fa-solid fa-plane"></i> <strong> Desde:</strong> <%= @application.offer.start_date %></p>
+        <p><i class="fa-solid fa-plane-up"></i> <strong> Hasta:</strong> <%= @application.offer.end_date %></p>
+        <p><i class="fa-solid fa-location-dot"></i> <strong> Ubicación:</strong> <%= @application.offer.address %></p>
+        <p><i class="fa-solid fa-star-of-life"></i> <strong> Status:</strong> <%= @application.status %></p>
       </div>
 
       <% if @application.offer.photos.attached? %>
@@ -37,4 +38,3 @@
     </div>
   <% end %>
 </div>
- 

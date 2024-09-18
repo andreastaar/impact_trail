@@ -1,9 +1,9 @@
- <div class="container my-3 py-3" style="max-width: 900px;">
-  <h1 class="text-center mb-4">Mis Voluntariados</h1>
+ <div class="container my-5 py-5" style="max-width: 900px;">
+  <h1 class="text-center mb-4 title">Mis Aplicaciones</h1>
 
   <% if @applications %>
     <% @applications.each do |application| %>
-      <div class="card mb-4">
+      <div class="card mb-4 cardapplication">
         <div class="row g-0">
           <div class="col-md-4">
             <% if application.offer.photos.attached? %>
@@ -22,10 +22,10 @@
               </p>
               <div class="d-flex justify-content-start gap-2">
                 <% if current_user.role == "voluntario" %>
-                  <%= link_to 'Hacer review', organization_path(application.offer.user), class: 'btn btn-secondary btn-sm' %>
-                  <%= link_to 'Ver voluntarios en destino', offer_location_users_path(application.offer.city), class: 'btn btn-secondary btn-sm' %>
+                  <%= link_to 'Ver Organización', organization_path(application.offer.user), class: 'btnapplication btn btn-secondary btn-sm' %>
+                  <%= link_to 'Ver voluntarios en destino', offer_location_users_path(application.offer.city), class: 'btnapplication btn btn-secondary btn-sm' %>
                 <% else %>
-                  <%= link_to 'Editar aplicación', edit_application_path(application), class: 'btn btn-warning btn-sm' %>
+                  <%= link_to 'Editar aplicación', edit_application_path(application), class: 'btnapplication btn btn-warning btn-sm' %>
                 <% end %>
               </div>
             </div>
@@ -35,8 +35,7 @@
     <% end %>
   <% end %>
 
-  <div class="mt-5 text-center">
-    <%= link_to 'Volver a la lista', offers_path, class: 'btn btn-success' %>
+  <div class="mt-5 text-center  ">
+    <%= link_to 'Volver a la lista', offers_path, class: 'btnapplication btn btn-success' %>
   </div>
 </div>
- 

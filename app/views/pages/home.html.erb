@@ -82,8 +82,9 @@
 <section class="hero-section">
   <div class="hero-container">
     <div class="hero-text">
-      <h1 class="poppins-semibold">Este es el NUEVO ImpactTrail.</h1>
-      <p>Ayudándote a <span class=> conectar con viajeros. </span> Incluso antes de que llegues a tu destino.</p>
+      <h1 class="poppins-semibold">ImpactTrail, diseñado para ti</h1>
+
+      <p>Facilitamos la <span class=> conexión con viajeros y destinos </span> desde el momento en que decides viajar</p>
       <a href="#discover" class="btn btn-primary">Descubre las novedades</a>
     </div>
     <div class="hero-image">
@@ -96,7 +97,7 @@
 
 <section class="py-5">
   <div class="container">
-    <h2 class="text-center mb-5">Oportunidades de Voluntariado Destacadas</h2>
+    <h2 class="text-center mb-5">Oportunidades de Voluntariado!</h2>
     <div class="row">
       <% @offers.each do |offer| %>
         <div class="col-md-4 mb-4">
@@ -104,11 +105,13 @@
             <% if offer.photos.attached? %>
               <%= cl_image_tag offer.photos.first.key, width: 400, height: 300, crop: :fill, class: "explore-image", alt: "Foto de #{offer.title}" %>
             <% else %>
+
               <img src="https://conference.nbasbl.org/wp-content/uploads/2022/05/placeholder-image-1.png" class="explore-image" alt="Imagen por defecto" style="width: 400px; height: 300px; object-fit: cover;">
             <% end %>
             <div class="explore-content">
               <h2><%= offer.title %></h2>
               <p class="card-text"><%= truncate(offer.description, length: 100) %></p>
+
               <p class="mb-1">
                 <i class="bi bi-geo-alt"></i> <%= offer.city %>, <%= offer.country_name %>
               </p>
@@ -116,6 +119,10 @@
                 <i class="bi bi-clock"></i> <%= distance_of_time_in_words(offer.start_date, offer.end_date) %>
               </p>
               <a href="<%= offer_path(offer) %>" class="explore-btn">Explora</a>
+
+              <p class="text-muted mb-1"><i class="bi bi-geo-alt"></i> <%= offer.city %>, <%= offer.country_name %></p>
+              <p class="text-muted mb-3"><i class="bi bi-clock"></i> <%= distance_of_time_in_words(offer.start_date, offer.end_date) %></p>
+              <%= link_to 'Ver más detalles', offer_path(offer), class: "btn btn-primary1" %>
             </div>
           </div>
         </div>
