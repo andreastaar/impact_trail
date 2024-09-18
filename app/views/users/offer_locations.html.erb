@@ -1,32 +1,42 @@
+<div class="contenedor"></div>
 <div class="container mt-5 mb-5">
 <h1 class="text-center">Voluntarios cerca de tu destino</h1>
-<h3 class="mt-2 mb-5 text-center"><strong><%= params[:location].upcase %></strong></h3>
+<div class="d-flex align-items-center justify-content-center mt-2 mb-5">
+  <div class=""><i class="fa-solid fa-location-dot text-danger"></i></div>
+  <div><h3 class="ms-2 mt-2"><strong><%= params[:location].upcase %></strong></h3></div>
+</div>
 
 <ul class="list-unstyled">
   <% if @users.any? %>
       <% @users.each do |user| %>
     <div class="d-flex border-bottom">
-      <div class="p-2">
-        <li><%= cl_image_tag user.photo.key, width: 150, height: 150, crop: :fill, alt: "Foto de #{user.first_name}", class: "offer-photo" %></li>
+      <div class="p-2 ">
+        <li><%= cl_image_tag user.photo.key, width: 200, height: 200, crop: :fill, alt: "Foto de #{user.first_name}", class: "offer-photo rounded-4" %></li>
       </div>
       <div class="p-2 flex-fill text-start">
 
         <%# <li><br></li> %>
         <li class="mt-2"><strong><%= "#{user.first_name.capitalize} #{user.last_name.capitalize}"%></strong></li>
         <li>
-          <i class="fa-solid fa-location-dot"></i>
+          <i class="fa-solid fa-earth-americas"></i>
           <%= "#{user.location}" %>
         </li>
         <br>
+        <% if user.description.nil? %>
+          <li>
+            <i class="fa-solid fa-heart"></i>
+            <%= user.description %>
+          </li>
+          <% end %>
         <% if user.instagram_account != nil  %>
           <li>
-            <i class="fa-brands fa-instagram"></i>
+            <i class="fa-brands fa-instagram text-muted"></i>
             <%= link_to "#{user.instagram_account}", "https://www.instagram.com/#{user.instagram_account}/", target: "_blank", rel: "noopener" %>
           </li>
         <% end %>
         <% if user.facebook_account != nil  %>
           <li>
-          <i class="fa-brands fa-facebook"></i>
+          <i class="fa-brands fa-facebook text-primary"></i>
           <%= link_to "#{user.facebook_account}", "https://www.instagram.com/#{user.facebook_account}/", target: "_blank", rel: "noopener" %>
           </li>
         <% end %>

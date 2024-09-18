@@ -1,18 +1,29 @@
-<div class="container mb-5 mt-5">
+<div class="container contenedor mb-5 mt-5">
 
+<%if @organization.nil? && current_user.role!= "organización" %>
+<% @organization= current_user %>
+<% end %>
 <%# Ver ofertas en general y las todas las postulaciones que tenga el boton de crear nueva %>
 
 <%# Vista si eres voluntario %>
-<% if user_signed_in? && current_user.role!= "organización" %>
-
-<h1 class= "mb-2"><strong><%= @organization.organization_name.upcase %></strong></h1>
-          <%# estrellas amarillas, del promedio %>
+<h1><strong><%= @organization.organization_name.upcase %></strong></h1>
+    <%# estrellas amarillas, del promedio %>
         <% if @reviews.any? %>
           <% @average_rating.to_i.times do %>
             <i class="fa-solid fa-star text-warning mb-2"></i>
           <% end %>
             <i><%= "#{@average_rating}" %></i>
         <% end %>
+
+    <%# Ubicacion hub %>
+     <div class="col">
+      <ul class="list-unstyled">
+        <li class="d-flex align-items-center">
+          <i class="fa-solid fa-location-dot me-3"></i>
+          <div class="h5 mt-3"><strong>Dirección principal: </strong><%= @organization.organization_address.capitalize %></div>
+        </li>
+      </ul>
+      </div>
 
 <h4 class= "mb-5"><%= @organization.description.capitalize %></h4>
 
@@ -23,7 +34,7 @@
     </div>
     <div class="col">
         <%# mapa %>
-        <div style="width: 100%; height: 300px;"
+        <div style="width: 100%; height: 300px; border-radius: 30px;"
           data-controller="map"
           data-map-markers-value="<%= @markers.to_json %>"
           data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
@@ -32,7 +43,9 @@
   </div>
   </div>
 
+
 <%# agregar review, si eres voluntario %>
+<% if user_signed_in? && current_user.role!= "organización" %>
 <div class= "mt-5"><h5><strong>Crea una nueva review</strong></h5>
       <%= simple_form_for @review do |f| %>
         <%= f.input :content,label:"Escribe tu review" %>
@@ -41,36 +54,8 @@
         <%= f.submit "Envía review" %>
       <% end %>
 </div>
-
-<% else %>
-  <%# Vista si eres organizacion %>
-  <h1 class= "mb-5"><strong><%= current_user.organization_name.upcase %></strong></h1>
-            <%# estrellas amarillas, del promedio %>
-          <% if @reviews.any? %>
-            <% @average_rating.to_i.times do %>
-              <i class="fa-solid fa-star text-warning mb-2"></i>
-            <% end %>
-              <i><%= "#{@average_rating}" %></i>
-          <% end %>
-  <h4 class= "mb-5"><%= current_user.description.capitalize %></h4>
-
-  <div class="container">
-   <div class="row">
-    <div class="col mt-3">
-              <%= render "received_reviews", reviews: @reviews%>
-    </div>
-    <div class="col">
-    <%# mapa %>
-      <div style="width: 100%; height: 300px;"
-        data-controller="map"
-        data-map-markers-value="<%= @markers.to_json %>"
-        data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
-      </div>
-    </div>
-  </div>
-</div>
-
 <% end %>
 
+<%# Fotos de la organization %>
 
 </div>
