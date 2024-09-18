@@ -1,19 +1,42 @@
-// form
 
-.form-search {
-  max-width: 900px;
-  margin: 50px auto;
+.filter-search {
+  position: absolute;
+  bottom: 30%; /* Ajusta según lo bajo que desees posicionarlo */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%; /* Ajusta el ancho para hacerlo más alargado */
+  background-color: rgba(255, 255, 255, 0.9);
   padding: 20px;
+  border-radius: 25px; /* Bordes redondeados */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra ligera */
 }
 
-.form-search .form-label {
+.filter-group {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+}
+
+.filter-item {
+  flex: 1;
+  margin: 0 10px;
+}
+
+.form-control {
+  height: 50px; /* Ajusta la altura de los campos */
+  width: 380px;
+  border-radius: 15px; /* Bordes redondeados en los inputs */
+  border: 2px solid #ccc;
+  text-align: center;
+}
+
+/* Estilos adicionales para el formulario */
+.form-search {
+  display: flex;
+  justify-content: space-between;
+}
+
+.form-label {
   font-weight: bold;
-  color: #343a40;
-}
-
-.form-search .form-control,
-.form-search .form-select {
-  height: 45px;
-  padding: 10px;
-  font-size: 16px;
 }
