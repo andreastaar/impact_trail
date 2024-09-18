@@ -86,10 +86,4 @@ gem "pg_search"
 
 gem "geocoder"
 
-gem 'aws-sdk-s3'
-
-
-
-
-
 
