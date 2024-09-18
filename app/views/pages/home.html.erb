@@ -110,7 +110,7 @@
             <% end %>
             <div class="explore-content">
               <h2><%= offer.title %></h2>
-              <p class="card-text"><%= truncate(offer.description, length: 100) %></p>
+              <p><%= truncate(offer.description, length: 100) %></p>
 
               <p class="mb-1">
                 <i class="bi bi-geo-alt"></i> <%= offer.city %>, <%= offer.country_name %>
@@ -119,10 +119,6 @@
                 <i class="bi bi-clock"></i> <%= distance_of_time_in_words(offer.start_date, offer.end_date) %>
               </p>
               <a href="<%= offer_path(offer) %>" class="explore-btn">Explora</a>
-
-              <p class="text-muted mb-1"><i class="bi bi-geo-alt"></i> <%= offer.city %>, <%= offer.country_name %></p>
-              <p class="text-muted mb-3"><i class="bi bi-clock"></i> <%= distance_of_time_in_words(offer.start_date, offer.end_date) %></p>
-              <%= link_to 'Ver más detalles', offer_path(offer), class: "btn btn-primary1" %>
             </div>
           </div>
         </div>
@@ -131,7 +127,7 @@
   </div>
 </section>
 
-<%# 
+<%#
 <div class="explore-card">
   <div class="explore-image"></div>
   <div class="explore-content">
