@@ -23,7 +23,9 @@
               <div class="d-flex justify-content-start gap-2">
                 <% if current_user.role == "voluntario" %>
                   <%= link_to 'Ver Organización', organization_path(application.offer.user), class: 'btnapplication btn btn-secondary btn-sm' %>
+                  <% if application.status == "Aceptado" %>
                   <%= link_to 'Ver voluntarios en destino', offer_location_users_path(application.offer.city), class: 'btnapplication btn btn-secondary btn-sm' %>
+                  <% end %>
                 <% else %>
                   <%= link_to 'Editar aplicación', edit_application_path(application), class: 'btnapplication btn btn-warning btn-sm' %>
                 <% end %>
