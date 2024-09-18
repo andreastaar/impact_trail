@@ -3,17 +3,28 @@
 <div class="row">
 <div class="col-xs-4">
 
+  <div class="fs-5 pt-2"><strong>Reviews</strong></div>
 <% if @reviews.any? %>
   <% @reviews.each do |review| %>
 <div class="d-flex">
   <div class="rating pt-2">
-      <%= cl_image_tag review.user.photo.key, width: 250, height: 250, crop: :thumb, gravity: :face, class: 'img-fluid product-image avatar' %>
+      <%= cl_image_tag review.user.photo.key, width: 400, height: 400, crop: :thumb, gravity: :face, class: 'img-fluid avatar me-3' %>
   </div>
   <div class="rating">
-    <ul>
-      <i><%= review.rating %></i>
-      <br>
-      <i><%= review.content  %></i>
+    <ul class="list-unstyled">
+    <div class="d-flex">
+      <div><i class="fa-solid fa-star text-warning me-2"></i></div>
+      <div><li ><i><%= review.rating %></i></li></div>
+    </div>
+    <div>
+      <div>
+        <li class="text-muted"><i><%= review.user.first_name %></i></li>
+      </div>
+      <div>
+        <li><i><%= review.created_at.strftime("%d-%m-%Y") %></i></li>
+      </div>
+    </div>
+      <li><i><%= review.content  %></i></li>
     </ul>
   </div>
 </div>
