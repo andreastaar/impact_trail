@@ -7,29 +7,30 @@
 <%# Ver ofertas en general y las todas las postulaciones que tenga el boton de crear nueva %>
 
 <%# Vista si eres voluntario %>
-<h1><strong><%= @organization.organization_name.upcase %></strong></h1>
-  <div>
+<h2><strong><%= @organization.organization_name.upcase %></strong></h2>
+  <div class="organization-rating-address">
     <%# estrellas amarillas, del promedio %>
+    <div>
         <% if @reviews.any? %>
           <% @average_rating.to_i.times do %>
-            <i class="fa-solid fa-star text-warning mb-2"></i>
+            <i class="fa-solid fa-star text-warning mb-1"></i>
           <% end %>
-            <i><%= "#{@average_rating}" %></i>
+          <i><%= "#{@average_rating}" %></i>
         <% end %>
-
+    </div>
     <%# Ubicacion hub %>
-     <div class="col">
+     <div>
       <ul class="list-unstyled">
         <li class="d-flex align-items-center">
-          <i class="fa-solid fa-location-dot text-danger me-3"></i>
-          <div class="mt-3"><strong>Dirección principal: </strong><%= @organization.organization_address.capitalize %></div>
+          <i class="fa-solid fa-location-dot text-danger me-1"></i>
+          <div><strong>Dirección principal: </strong><%= @organization.organization_address.capitalize %></div>
         </li>
       </ul>
       </div>
 
   </div>
 
-<h4 class= "mb-5"><%= @organization.description.capitalize %></h4>
+<h5 class= "mb-5"><%= @organization.description.capitalize %></h5>
 
         <%# reviews %>
   <div class="row">
