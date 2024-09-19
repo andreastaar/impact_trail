@@ -1,38 +1,32 @@
 .custom-table {
-  /* Ajusta el ancho de la tabla y el margen */
   width: 80%;
   margin: 0 auto;
-  border-collapse: collapse; /* Asegura que los bordes se colapsen correctamente */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Agrega sombra a la tabla */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Sombra más notable */
+  border-radius: 25px; /* Bordes más redondeados */
+  overflow: hidden; /* Para asegurar que los bordes redondeados sean aplicados correctamente */
+  text-align: center;
 }
-
-.custom-table td {
-  color: #e4e8f0;
-}
-
-.custom-table th {
-  /* Ajusta el padding y el tamaño de fuente */
-  padding: 1rem;
-  font-size: 1.2rem;
-  color: #464a64; /* Color de letra por defecto  #e4e8f0*/
-  background-color: #f8f9fa !important; /* Color de fondo para los encabezados */
-}
-
-.custom-table tbody tr:nth-child(odd) {
-  background-color: #d9e1e9 !important; /* Color de fondo para filas impares */
-}
-
-.custom-table tbody tr:nth-child(even) {
-  background-color:#f8fafb  !important; /* Color de fondo para filas pares */
-}
-
-// .custom-table tbody tr:hover {
-//   background-color: #e9ecef !important; /* Color de fondo cuando se pasa el cursor sobre una fila */
-// }
 
 .custom-table th,
 .custom-table td {
-  border: 1px solid #dee2e6; /* Borde mínimo para la tabla */
+  padding: 1.5rem; /* Aumenta el espaciado arriba y abajo */
+  border: none; /* Sin borde */
+}
+
+.custom-table th {
+  font-size: 1.2rem;
+  color: #464a64;
+  background-color: #f8f9fa !important;
+}
+
+.custom-table tbody tr {
+  background-color: #f8fafb !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Sombra en cada fila */
+  border-radius: 25px; /* Bordes más redondeados en filas */
+}
+
+.custom-table tbody tr:nth-child(odd) {
+  background-color: #eff2f6!important;
 }
 
 .custom-d-flex {
@@ -44,15 +38,129 @@
   border-radius: 50%;
 }
 
-.custom-badge {
-  border-radius: 1rem;
-  padding: 0.25rem 0.5rem;
-  background-color:#efeffe;
-  color:#8c85dd;
-}
 
 .custom-color-text {
-  color:#717c8b; /* Ajusta el color según sea necesario */
+  color: #717c8b;
+  font-weight: 500;
 }
 
+/* Para el "+X" dentro de un círculo morado */
+.custom-circle {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #8c85dd; /* Color morado */
+  color: white;
+  text-align: center;
+  line-height: 30px; /* Centra verticalmente el texto */
+  font-size: 0.85rem;
+}
 
+.card {
+  background-color: white;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  max-width: 350px;
+  margin: auto;
+  text-align: center;
+  font-family: 'Arial', sans-serif;
+  position: relative;
+}
+
+/* Imagen circular */
+.card-header img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-top: -50px; /* Ajuste para que la imagen sobresalga */
+  background-color: white;
+}
+
+/* Estilo para el nombre */
+.card-title {
+  font-size: 1.5em;
+  color: #333;
+  font-weight: 700;
+  margin-top: 10px;
+}
+
+/* Información centrada */
+.card-text {
+  color: #666;
+  margin: 5px 0;
+  font-size: 1em;
+}
+
+/* Botones estilo */
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+
+.btn {
+  width: 45%;
+  padding: 10px;
+  font-size: 1em;
+  border-radius: 30px;
+  cursor: pointer;
+  border: none;
+  transition: all 0.3s ease;
+}
+
+/* Botón de rechazar */
+.btn.reject {
+  background-color: #fcebea;
+  color: #e3342f;
+  border: 2px solid #e3342f;
+}
+
+.btn.reject:hover {
+  background-color: #f9acaa;
+}
+
+/* Botón de aceptar */
+.btn.accept {
+  background-color: #e3fcec;
+  color: #38c172;
+  border: 2px solid #38c172;
+}
+
+.btn.accept:hover {
+  background-color: #a2f5bf;
+}
+
+/* Ajuste del formulario */
+form {
+  margin-top: 15px;
+}
+
+/* Select personalizado */
+.form-control {
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  padding: 10px;
+  width: 100%;
+  font-size: 1em;
+  color: #333;
+}
+
+/* Botón actualizar personalizado */
+.btn-primary {
+  background-color: #3490dc;
+  border-color: #3490dc;
+  padding: 10px 20px;
+  font-size: 1em;
+  border-radius: 30px;
+  width: 100%;
+}
+
+.btn-primary:hover {
+  background-color: #2779bd;
+  border-color: #2779bd;
+}

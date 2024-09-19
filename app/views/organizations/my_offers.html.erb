@@ -20,16 +20,16 @@
               <div class="custom-d-flex">
                 <!-- Link para abrir el modal de candidatos -->
                 <a href="#candidatesModal-<%= offer.id %>" data-bs-toggle="modal">
+
                   <% offer.applications.limit(2).each do |application| %>
                     <%= cl_image_tag application.user.photo.key, class: "custom-rounded-circle", width: 40, height: 40 %>
                   <% end %>
                   <% if offer.applications.count > 2 %>
-                    <span class="custom-color-text">+<%= offer.applications.count - 2 %></span>
+                    <span class="custom-color-text custom-circle">+<%= offer.applications.count - 2 %></span>
                   <% end %>
                 </a>
               </div>
             </td>
-
             <!-- Columna: Puesto -->
             <td> <span class="custom-color-text"><%= offer.requirements %></span></td>
 
@@ -64,7 +64,29 @@
                   <div class="card-body">
                     <h5 class="card-title text-center"><%= application.user.first_name %> <%= application.user.last_name %></h5>
                     <p class="card-text text-center">
-                      <%= application.user.full_location %>
+                     <%= application.user.full_location %>
+                      <% case application.user.location %>
+                          <% when "IT" %>
+                        <%= "🇮🇹" %>
+                        <% when "PE" %>
+                        <%= "🇵🇪" %>
+                        <% when "AR" %>
+                        <%= "🇦🇷" %>
+                        <% when "MX" %>
+                        <%= "🇲🇽" %>
+                        <% when "CL" %>
+                        <%= "🇨🇱" %>
+                          <% when "BR" %>
+                        <%= "🇧🇷" %>
+                        <% when "CO" %>
+                        <%= "🇨🇴" %>
+                        <% when "USA" %>
+                        <%= "🇺🇸" %>
+                        <% when "ES" %>
+                        <%= "🇪🇸" %>
+                        <% when "JP" %>
+                        <%= "🇯🇵" %>
+                        <% end %>
 
                     </p>
                     <p class="card-text"><strong>Fecha de inicio:</strong> <%= application.start_date %></p>
