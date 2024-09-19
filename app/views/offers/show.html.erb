@@ -1,8 +1,10 @@
 <div class="contenedor"></div>
 <div class="container mb-5 ">
   <div class="d-flex align-items-center mb-2">
+  <% if current_user.role == "voluntario" %>
     <div class="badge text-bg-dark fs-6 me-1">Proyecto de:</div>
-    <div class="fs-5"><strong><%= "Organización #{@offer.user.organization_name.capitalize}" %></strong></div>
+    <div class="fs-5"><strong><%= link_to @offer.user.organization_name.upcase , organization_path(@offer.user), class: "custom-color-text hover-link" %></strong></div>
+    <% end %>
     <% if @offer.user.reviews.any? %>
      <div><%=@offer.user.reviews.average_rating %></div>
     <% end %>
@@ -44,11 +46,7 @@
             <p class="text-muted mt-3"><strong>DISPONIBILIDAD:   </strong> <%= @offer.availability %> puestos</p>
             <p class="text-muted mt-3"><strong>POSTULACIONES: </strong><%= @offer.applications.count %></p>
       </div>
-      <div class="col">
-            <% if current_user.role == "organización" %>
-              <%= link_to 'Ver Aplicaciones', offer_applications_path(@offer), class: 'custom-button-grey' %>
-            <% end %>
-      </div>
+
     </div>
       <%= content_tag :hr %>
       <p class="mt-4"><strong>DESCRIPCIÓN:</strong></p>
@@ -63,7 +61,7 @@
 
       <ul class="list-unstyled">
       <div class="d-flex">
-        <% @offer.perks.split("|").each do |beneficio| %>
+        <% @offer.perks[1..-2].split("|").each do |beneficio| %>
 
 
         <div class="text-center me-5">
@@ -88,7 +86,13 @@
                 <i class="fa-solid fa-person-biking fs-3"></i>
             <% end %>
 
-          <li class="text-secondary fs-6 mt-1"> <%= beneficio %></li>
+          <% if beneficio == "1 día libre" %>
+             <li class="text-secondary fs-6 mt-1"> día libre</li>
+             <% elsif beneficio == "2 días libres" %>
+              <li class="text-secondary fs-6 mt-1"> días libres</li>
+              <% else %>
+               <li class="text-secondary fs-6 mt-1"> <%= beneficio %></li>
+               <% end %>
         </div>
         <% end %>
       </div>

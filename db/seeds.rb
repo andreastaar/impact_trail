@@ -221,12 +221,12 @@ puts "creando imagenes"
 # Crear aplicaciones para los voluntarios
 aplicaciones = Application.create!(
   [
-    { offer: ofertas[0], user: usuarios[3], status: 'INICIADO', start_date: '2024-10-10', end_date: '2024-10-25' },
-    { offer: ofertas[1], user: usuarios[3], status: 'ACEPTADO', start_date: '2024-10-10', end_date: '2024-10-25' },
-    { offer: ofertas[2], user: usuarios[4], status: 'INICIADO', start_date: '2024-10-11', end_date: '2024-10-20' },
-    { offer: ofertas[3], user: usuarios[4], status: 'ACEPTADO', start_date: '2024-10-11', end_date: '2024-10-20' },
-    { offer: ofertas[4], user: usuarios[5], status: 'INICIADO', start_date: '2024-10-15', end_date: '2024-10-30' },
-    { offer: ofertas[5], user: usuarios[5], status: 'ACEPTADO', start_date: '2024-10-15', end_date: '2024-10-30' }
+    { offer: ofertas[0], user: usuarios[3], status: 'Iniciado', start_date: '2024-10-10', end_date: '2024-10-25' },
+    { offer: ofertas[1], user: usuarios[3], status: 'Aceptado', start_date: '2024-10-10', end_date: '2024-10-25' },
+    { offer: ofertas[2], user: usuarios[4], status: 'Iniciado', start_date: '2024-10-11', end_date: '2024-10-20' },
+    { offer: ofertas[3], user: usuarios[4], status: 'Aceptado', start_date: '2024-10-11', end_date: '2024-10-20' },
+    { offer: ofertas[4], user: usuarios[5], status: 'Iniciado', start_date: '2024-10-15', end_date: '2024-10-30' },
+    { offer: ofertas[5], user: usuarios[5], status: 'Aceptado', start_date: '2024-10-15', end_date: '2024-10-30' }
   ]
 )
 
