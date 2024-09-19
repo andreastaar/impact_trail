@@ -1,26 +1,30 @@
 <div class="contenedor_medio">
 <div class="container mb-5">
   <div class="col-md-12 text-center">
-    <h1 class="display-4 mb-4">Ofertas Disponibles</h1>
+    <h1 class="title1">Ofertas Disponibles</h1>
   </div>
   <% if @offers.any? %>
     <div class="row">
       <% @offers.each do |offer| %>
         <div class="col-md-6 col-lg-4 mb-4 ">
           <div class="card shadow-sm h-100 rounded-5">
-            <div class="card-body">
+            <div class="card-body flex-column mb-3">
+            <div class="d-flex justify-content-center">
             <% if offer.photos.attached? %>
               <%= cl_image_tag offer.photos.first.key, class: 'img-fluid rounded-5', alt: "Foto de #{offer.title}", style: "object-fit: cover; height: 250px; width: 100%;" %>
             <% else %>
               <img src="placeholder.jpg" class="img-fluid rounded-5 " alt="Sin foto disponible" style="object-fit: cover; height: 250px; width: 100%; ">
             <% end %>
+            </div>
               <h4 class="card-title text-center p-3"><%= link_to offer.title, offer_path(offer), style: "text-decoration: none; color: black;" %></h4>
-                <p class="card-text">
+              <div class="card-text">
+                <p>
                   <i class="fa-solid fa-house"></i><strong> Organización: </strong><%= offer.user.organization_name %> <br>
                   <i class="fa-solid fa-map-location-dot"></i><strong>  Ubicación: </strong><%= offer.address %> <br>
                   <i class="fa-solid fa-user"></i><strong>  Disponibilidad: </strong><%= offer.availability %> puestos <br>
                   <i class="fa-solid fa-check"></i><strong></strong> <%= truncate(offer.description, length: 100) %>
                 </p>
+                </div>
             </div>
             <div class="d-flex justify-content-end p-3">
               <%= link_to 'Ver más', offer_path(offer), class:'btn custom-button'%>
@@ -41,7 +45,7 @@
   <% if current_user&.role == "organización" %>
     <div class="row">
       <div class="col-md-12 text-center">
-        <%= link_to 'Nueva Oferta', new_offer_path, class: 'btn btn-primary mt-4 rounded-3' %>
+        <%= link_to 'Nueva Oferta', new_offer_path, class: 'btn custom-button' %>
       </div>
     </div>
   <% end %>

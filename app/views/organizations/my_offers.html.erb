@@ -13,23 +13,23 @@
         <% @my_offers.each do |offer| %>
           <tr>
             <!-- Columna: Voluntariado -->
-            <td> <span class="custom-color-text"><%= offer.title %> </span></td>
+            <td> <%= link_to offer.title, offer_path(offer), class:"custom-color-text hover-link" %></td>
 
             <!-- Columna: Candidatos con Modal -->
             <td>
-              <div class="custom-d-flex">
+              <div class="custom-d-flex justify-content-center">
                 <!-- Link para abrir el modal de candidatos -->
-                <a href="#candidatesModal-<%= offer.id %>" data-bs-toggle="modal">
+                <a class="modal-link" href="#candidatesModal-<%= offer.id %>" data-bs-toggle="modal">
+
                   <% offer.applications.limit(2).each do |application| %>
-                    <%= cl_image_tag application.user.photo.key, class: "custom-rounded-circle", width: 40, height: 40 %>
+                    <%= cl_image_tag application.user.photo.key, class: "custom-rounded-circle", crop: :thumb, gravity: :face, width: 40, height: 40 %>
                   <% end %>
                   <% if offer.applications.count > 2 %>
-                    <span class="custom-color-text">+<%= offer.applications.count - 2 %></span>
+                    <span class="custom-color-text custom-circle">+<%= offer.applications.count - 2 %></span>
                   <% end %>
                 </a>
               </div>
             </td>
-
             <!-- Columna: Puesto -->
             <td> <span class="custom-color-text"><%= offer.requirements %></span></td>
 
@@ -59,28 +59,50 @@
               <div class="col-md-6 mb-4">
                 <div class="card shadow-sm">
                   <div class="card-header text-center">
-                    <%= cl_image_tag application.user.photo.key, class: "rounded-circle", width: 100, height: 100 %>
+                    <%= cl_image_tag application.user.photo.key, class: "rounded-circle", crop: :thumb, gravity: :face, width: 100, height: 100 %>
                   </div>
                   <div class="card-body">
                     <h5 class="card-title text-center"><%= application.user.first_name %> <%= application.user.last_name %></h5>
                     <p class="card-text text-center">
-                      <%= application.user.full_location %>
+                     <%= application.user.full_location %>
+                      <% case application.user.location %>
+                          <% when "IT" %>
+                        <%= "🇮🇹" %>
+                        <% when "PE" %>
+                        <%= "🇵🇪" %>
+                        <% when "AR" %>
+                        <%= "🇦🇷" %>
+                        <% when "MX" %>
+                        <%= "🇲🇽" %>
+                        <% when "CL" %>
+                        <%= "🇨🇱" %>
+                          <% when "BR" %>
+                        <%= "🇧🇷" %>
+                        <% when "CO" %>
+                        <%= "🇨🇴" %>
+                        <% when "USA" %>
+                        <%= "🇺🇸" %>
+                        <% when "ES" %>
+                        <%= "🇪🇸" %>
+                        <% when "JP" %>
+                        <%= "🇯🇵" %>
+                        <% end %>
 
                     </p>
                     <p class="card-text"><strong>Fecha de inicio:</strong> <%= application.start_date %></p>
                     <p class="card-text"><strong>Fecha de finalización:</strong> <%= application.end_date %></p>
                     <p class="card-text"><strong>Estado:</strong> <%= application.status %></p>
                   </div>
-                  <div class="card-footer text-center">
-                    <%= simple_form_for application, url: update_status_path(application), method: :patch do |f| %>
-                      <div class="form-group">
-                        <%= f.label :status, 'Estado de la aplicación' %>
-                        <%= f.select :status, ['Iniciado', 'Aceptado', 'Rechazado'], {}, class: 'form-control' %>
-                      </div>
-                      <div class="form-group mt-2">
-                        <%= f.submit 'Actualizar', class: 'btn btn-primary' %>
-                      </div>
-                    <% end %>
+                  <div class="text-center">
+
+                 <%= simple_form_for application, url: update_status_path(application), method: :patch do |f| %>
+                  <div class="d-flex justify-content-around" role="group"> <%= f.hidden_field :status, id: "application_status_#{application.id}" %>
+                    <button type="button" class="btn reject" onclick="document.getElementById('application_status_<%= application.id %>').value='Rechazado'; this.form.submit();"> Rechazar
+                    </button>
+                    <button type="button" class="btn accept" onclick="document.getElementById('application_status_<%= application.id %>').value='Aceptado'; this.form.submit();"> Aceptar </button>
+                  </div>
+                <% end %>
+
                   </div>
                 </div>
               </div>

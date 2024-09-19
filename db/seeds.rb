@@ -204,29 +204,38 @@ ofertas = Offer.create!(
 )
 
 puts "creando imagenes"
-# offer_images = [
-#   "https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/MJK_08789_Robert_Pattinson_%28Damsel%2C_Berlinale_2018%29_%28cropped%29.jpg/800px-MJK_08789_Robert_Pattinson_%28Damsel%2C_Berlinale_2018%29_%28cropped%29.jpg",
-#   "https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/MJK_08789_Robert_Pattinson_%28Damsel%2C_Berlinale_2018%29_%28cropped%29.jpg/800px-MJK_08789_Robert_Pattinson_%28Damsel%2C_Berlinale_2018%29_%28cropped%29.jpg",
-#   "https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/MJK_08789_Robert_Pattinson_%28Damsel%2C_Berlinale_2018%29_%28cropped%29.jpg/800px-MJK_08789_Robert_Pattinson_%28Damsel%2C_Berlinale_2018%29_%28cropped%29.jpg",
-#   "https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/MJK_08789_Robert_Pattinson_%28Damsel%2C_Berlinale_2018%29_%28cropped%29.jpg/800px-MJK_08789_Robert_Pattinson_%28Damsel%2C_Berlinale_2018%29_%28cropped%29.jpg",
-# ]
+ 
+offer_images = [
+  ["https://res.cloudinary.com/dij1c8lht/image/upload/v1726758191/nin%CC%83os_2_keyinb.jpg", "https://res.cloudinary.com/dij1c8lht/image/upload/v1726759447/nin%CC%83os_dsdqxn.jpg"],
+  ["https://res.cloudinary.com/dij1c8lht/image/upload/v1726758192/nin%CC%83os_3_xgiyly.jpg", "https://res.cloudinary.com/dij1c8lht/image/upload/v1726758437/027a426d-bf15-4a37-93ee-9564766dd3f7_i2lrcl.jpg"],
+  ["https://res.cloudinary.com/dij1c8lht/image/upload/v1726757993/reco_alimentos1_kpmjv1.webp", "https://res.cloudinary.com/dij1c8lht/image/upload/v1726759641/reco_alimentos13_qiu2uf.jpg"],
+  ["https://res.cloudinary.com/dij1c8lht/image/upload/v1726757956/adulto_mayor1_xavafw.jpg", "https://res.cloudinary.com/dij1c8lht/image/upload/v1726757956/adulto_mayor1_xavafw.jpg"],
+  ["https://res.cloudinary.com/dij1c8lht/image/upload/v1726757999/reco_alimentos2_jixvkk.webp", "https://res.cloudinary.com/dij1c8lht/image/upload/v1726758010/volun_cons1_xt9rsu.jpg"],
+  ["https://res.cloudinary.com/dij1c8lht/image/upload/v1726757981/adulto_mayor4_j8mndd.jpg", "https://res.cloudinary.com/dij1c8lht/image/upload/v1726759599/capacitacion_de_jovenes_pnvap6.webp"]
+]
 
 # # Adjuntar imágenes a las ofertas
-# offer_images.each_with_index do |imagen, index|
-#   file = URI.parse(imagen).open
-#   oferta = ofertas[index]
-#   oferta.photos.attach(io: file, filename: "#{oferta.title.parameterize}.jpg", content_type: "image/jpg")
-# end
+offer_images.each_with_index do |imagenes, index|
+  oferta = ofertas[index]
+  imagenes.each do |imagen_url|
+    file = URI.parse(imagen_url).open
+    oferta.photos.attach(io: file, filename: "#{oferta.title}.jpg", content_type: "image/jpg")
+  end
+  oferta.save!
+end
+ 
 
 # Crear aplicaciones para los voluntarios
 aplicaciones = Application.create!(
   [
-    { offer: ofertas[0], user: usuarios[3], status: 'INICIADO', start_date: '2024-10-10', end_date: '2024-10-25' },
-    { offer: ofertas[1], user: usuarios[3], status: 'ACEPTADO', start_date: '2024-10-10', end_date: '2024-10-25' },
-    { offer: ofertas[2], user: usuarios[4], status: 'INICIADO', start_date: '2024-10-11', end_date: '2024-10-20' },
-    { offer: ofertas[3], user: usuarios[4], status: 'ACEPTADO', start_date: '2024-10-11', end_date: '2024-10-20' },
-    { offer: ofertas[4], user: usuarios[5], status: 'INICIADO', start_date: '2024-10-15', end_date: '2024-10-30' },
-    { offer: ofertas[5], user: usuarios[5], status: 'ACEPTADO', start_date: '2024-10-15', end_date: '2024-10-30' }
+ 
+    { offer: ofertas[0], user: usuarios[3], status: 'Iniciado', start_date: '2024-10-10', end_date: '2024-10-25' },
+    { offer: ofertas[1], user: usuarios[3], status: 'Aceptado', start_date: '2024-10-10', end_date: '2024-10-25' },
+    { offer: ofertas[2], user: usuarios[4], status: 'Iniciado', start_date: '2024-10-11', end_date: '2024-10-20' },
+    { offer: ofertas[3], user: usuarios[4], status: 'Aceptado', start_date: '2024-10-11', end_date: '2024-10-20' },
+    { offer: ofertas[4], user: usuarios[5], status: 'Iniciado', start_date: '2024-10-15', end_date: '2024-10-30' },
+    { offer: ofertas[5], user: usuarios[5], status: 'Aceptado', start_date: '2024-10-15', end_date: '2024-10-30' }
+ 
   ]
 )
 
@@ -239,5 +248,6 @@ resenas = Review.create!(
     { rating: 5.0, content: 'La organización fue muy profesional y me brindaron el apoyo necesario para adaptarme al entorno local.', user: usuarios[4], organization_id: usuarios[1].id }, #nuevo
     { rating: 4.0, content: 'Los anfitriones fueron muy acogedores y me enseñaron valiosas lecciones sobre cómo llevar una vida más autosuficiente y respetuosa con el medio ambiente.', user: usuarios[5], organization_id: usuarios[2].id }, #nuevo
     { rating: 5.0, content: 'Muy bien organizado y un equipo muy acogedor.', user: usuarios[5], organization_id: usuarios[2].id }
+ 
   ]
 )
