@@ -1,16 +1,15 @@
 .custom-button {
-  height: 50px; /* Ajusta la altura de los campos */
-  background-color: #F8A34C; /* Color de fondo del botón */
-  color: white; /* Color del texto */
-  padding: 10px 20px; /* Espaciado interior */
-  border: none; /* Sin borde */
-  border-radius: 15px; /* Bordes redondeados */
-  font-size: 16px; /* Tamaño del texto */
-  text-align: center; /* Alineación del texto */
-  text-decoration: none; /* Sin subrayado */
-  display: inline-block; /* Para permitir padding y márgenes */
-  cursor: pointer; /* Cambia el cursor al pasar por encima */
-  transition: background-color 0.3s, transform 0.2s; /* Transición para el color y la transformación */
+  display: inline-block;
+  padding: 12px 24px;
+  font-family: Poppins, Inter, -apple-system, "system-ui", sans-serif;
+  font-size: 18px;
+  color: #fff; // Color del texto
+  background-color: #F8A34C; // Color de fondo
+  border: none;
+  border-radius: 15px; // Bordes redondeados
+  text-decoration: none;
+  text-align: center;
+  transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .custom-button:hover {
@@ -23,16 +22,15 @@ body{
 }
 
 .custom-button-grey {
-  background-color: #767676; /* Color de fondo del botón */
-  color: white; /* Color del texto */
-  padding: 10px 20px; /* Espaciado interior */
-  border: none; /* Sin borde */
-  border-radius: 5px; /* Bordes redondeados */
-  font-size: 16px; /* Tamaño del texto */
-  text-align: center; /* Alineación del texto */
-  text-decoration: none; /* Sin subrayado */
-  display: inline-block; /* Para permitir padding y márgenes */
-  cursor: pointer; /* Cambia el cursor al pasar por encima */
-  transition: background-color 0.3s, transform 0.2s; /* Transición para el color y la transformación */
+  display: inline-block;
+  padding: 12px 24px;
+  font-family: Poppins, Inter, -apple-system, "system-ui", sans-serif;
+  font-size: 18px;
+  color: #fff; // Color del texto
+  background-color: #767676; // Color de fondo
+  border: none;
+  border-radius: 15px; // Bordes redondeados
+  text-decoration: none;
+  text-align: center;
+  transition: background-color 0.3s ease, transform 0.3s ease;
 }
-

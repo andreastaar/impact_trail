@@ -119,7 +119,7 @@ ofertas = Offer.create!(
       country_name: 'Mexico', # nuevo
       latitude: 19.4326,
       longitude: -99.1332,
-      perks: '2 días libres|Habitación privada|Desayuno', # nuevo
+      perks: '|2 días libres|Habitación privada|Desayuno|', # nuevo
       type_of_volunteering: 'Enseñanza e idiomas' # Nuevo campo agregado
     },
     {
@@ -135,7 +135,7 @@ ofertas = Offer.create!(
       country_name: 'Mexico', # nuevo
       latitude: 19.4326,
       longitude: -99.1332,
-      perks: '2 días libres|Habitación compartida|Cena', # nuevo
+      perks: '|2 días libres|Habitación compartida|Cena|', # nuevo
       type_of_volunteering: 'Mejora de la comunidad' # Nuevo campo agregado
     },
     {
@@ -149,7 +149,7 @@ ofertas = Offer.create!(
       address: 'Calle 5 de Febrero 456, Ciudad de México',
       city: 'Ciudad de Mexico',
       country_name: 'Mexico', # nuevo
-      perks: '1 día libre|Habitación privada|Almuerzo', # nuevo
+      perks: '|1 día libre|Habitación privada|Almuerzo|', # nuevo
       type_of_volunteering: 'Proyectos de construcción y restauración' # Nuevo campo agregado
     },
     {
@@ -165,7 +165,7 @@ ofertas = Offer.create!(
       country_name: 'Colombia', # nuevo
       latitude: 4.7110,
       longitude: -74.0721,
-      perks: '1 día libre|Habitación privada|Almuerzo', # nuevo
+      perks: '|1 día libre|Habitación privada|Almuerzo|', # nuevo
       type_of_volunteering: 'Mejora de la comunidad' # Nuevo campo agregado
     },
     {
@@ -181,7 +181,7 @@ ofertas = Offer.create!(
       country_name: 'Colombia', # nuevo
       latitude: 4.7110,
       longitude: -74.0721,
-      perks: '1 día libre|Habitación privada|Almuerzo', # nuevo
+      perks: '|1 día libre|Habitación privada|Almuerzo|', # nuevo
       type_of_volunteering: 'Enseñanza e idiomas' # Nuevo campo agregado
     },
     {
@@ -197,14 +197,14 @@ ofertas = Offer.create!(
       country_name: 'Colombia', # nuevo
       latitude: 4.7110,
       longitude: -74.0721,
-      perks: '1 día libre|Habitación privada|Almuerzo', # nuevo
+      perks: '|1 día libre|Habitación privada|Almuerzo|', # nuevo
       type_of_volunteering: 'Proyectos de construcción y restauración' # Nuevo campo agregado
     }
   ]
 )
 
 puts "creando imagenes"
- 
+
 offer_images = [
   ["https://res.cloudinary.com/dij1c8lht/image/upload/v1726758191/nin%CC%83os_2_keyinb.jpg", "https://res.cloudinary.com/dij1c8lht/image/upload/v1726759447/nin%CC%83os_dsdqxn.jpg"],
   ["https://res.cloudinary.com/dij1c8lht/image/upload/v1726758192/nin%CC%83os_3_xgiyly.jpg", "https://res.cloudinary.com/dij1c8lht/image/upload/v1726758437/027a426d-bf15-4a37-93ee-9564766dd3f7_i2lrcl.jpg"],
@@ -223,19 +223,19 @@ offer_images.each_with_index do |imagenes, index|
   end
   oferta.save!
 end
- 
+
 
 # Crear aplicaciones para los voluntarios
 aplicaciones = Application.create!(
   [
- 
+
     { offer: ofertas[0], user: usuarios[3], status: 'Iniciado', start_date: '2024-10-10', end_date: '2024-10-25' },
     { offer: ofertas[1], user: usuarios[3], status: 'Aceptado', start_date: '2024-10-10', end_date: '2024-10-25' },
     { offer: ofertas[2], user: usuarios[4], status: 'Iniciado', start_date: '2024-10-11', end_date: '2024-10-20' },
     { offer: ofertas[3], user: usuarios[4], status: 'Aceptado', start_date: '2024-10-11', end_date: '2024-10-20' },
     { offer: ofertas[4], user: usuarios[5], status: 'Iniciado', start_date: '2024-10-15', end_date: '2024-10-30' },
     { offer: ofertas[5], user: usuarios[5], status: 'Aceptado', start_date: '2024-10-15', end_date: '2024-10-30' }
- 
+
   ]
 )
 
@@ -248,6 +248,6 @@ resenas = Review.create!(
     { rating: 5.0, content: 'La organización fue muy profesional y me brindaron el apoyo necesario para adaptarme al entorno local.', user: usuarios[4], organization_id: usuarios[1].id }, #nuevo
     { rating: 4.0, content: 'Los anfitriones fueron muy acogedores y me enseñaron valiosas lecciones sobre cómo llevar una vida más autosuficiente y respetuosa con el medio ambiente.', user: usuarios[5], organization_id: usuarios[2].id }, #nuevo
     { rating: 5.0, content: 'Muy bien organizado y un equipo muy acogedor.', user: usuarios[5], organization_id: usuarios[2].id }
- 
+
   ]
 )

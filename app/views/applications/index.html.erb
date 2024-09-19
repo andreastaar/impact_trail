@@ -1,9 +1,9 @@
  <div class="container my-5 py-5" style="max-width: 900px;">
-  <h1 class="text-center mb-4 title">Mis Aplicaciones</h1>
+  <h1 class="text-center mb-4 title1">Mis Aplicaciones</h1>
 
   <% if @applications %>
     <% @applications.each do |application| %>
-      <div class="card mb-4 cardapplication">
+      <div class="mb-4 cardapplication">
         <div class="row g-0">
           <div class="col-md-4">
             <% if application.offer.photos.attached? %>
@@ -14,20 +14,20 @@
           </div>
           <div class="col-md-8">
             <div class="card-body">
-              <h5 class="card-title"><%= application.offer.title %></h5>
+              <h5 class="card-title mt-4 mb-2"><%= application.offer.title %></h5>
               <p class="card-text">
                 <i class="fa-solid fa-plane"></i> <%= application.offer.start_date %> - <i class="fa-solid fa-plane-up"></i> <%= application.offer.end_date %><br>
                 <i class="fa-solid fa-location-dot"></i> <%= application.offer.address %><br>
                 <i class="fa-solid fa-star-of-life"></i> <%= application.status %>
               </p>
-              <div class="d-flex justify-content-start gap-2">
+              <div class="d-flex justify-content-start gap-2 pt-2">
                 <% if current_user.role == "voluntario" %>
-                  <%= link_to 'Ver Organización', organization_path(application.offer.user), class: 'btnapplication btn btn-secondary btn-sm' %>
+                  <%= link_to 'Ver Organización', organization_path(application.offer.user), class: 'custom-button btn btn-sm' %>
                   <% if application.status == "Aceptado" %>
-                  <%= link_to 'Ver voluntarios en destino', offer_location_users_path(application.offer.city), class: 'btnapplication btn btn-secondary btn-sm' %>
+                  <%= link_to 'Ver voluntarios en destino', offer_location_users_path(application.offer.city), class: 'custom-button btn btn-sm' %>
                   <% end %>
                 <% else %>
-                  <%= link_to 'Editar aplicación', edit_application_path(application), class: 'btnapplication btn btn-warning btn-sm' %>
+                  <%= link_to 'Editar aplicación', edit_application_path(application), class: 'custom-button-grey btn btn-sm' %>
                 <% end %>
               </div>
             </div>
@@ -38,6 +38,6 @@
   <% end %>
 
   <div class="mt-5 text-center  ">
-    <%= link_to 'Volver a la lista', offers_path, class: 'btnapplication btn btn-success' %>
+    <%= link_to 'Volver a la lista', offers_path, class: 'custom-button-grey btn' %>
   </div>
 </div>
