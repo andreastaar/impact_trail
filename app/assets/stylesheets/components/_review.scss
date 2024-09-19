@@ -13,3 +13,72 @@
 .organization-rating-address{
   font-size: 12px;
 }
+
+// andre
+.content-wrapper {
+  padding: 40px;
+  background-color: #f0f0f5; // algo más fancy
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); // sombra para que resalte
+}
+
+.rating-location-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; // centrado sexy
+  margin-bottom: 25px;
+
+  i {
+    color: #FFD700; // oro dorado, baby
+    font-size: 1.5rem; // estrellas más grandes
+  }
+
+  .average-rating {
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: #555;
+  }
+}
+
+.location-list {
+  margin-top: 15px;
+
+  li {
+    font-size: 1.1rem;
+    color: #666;
+    display: flex;
+    align-items: center;
+
+    i {
+      margin-right: 10px;
+      color: #FF5A5F; // puntito rojo tipo Airbnb vibes
+    }
+  }
+}
+
+.organization-title {
+  font-size: 2.5rem;
+  color: #2c3e50;
+  text-align: center;
+  margin-bottom: 30px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  border-bottom: 2px solid #ccc; // una rayita pro
+  padding-bottom: 10px;
+}
+
+.organization-description {
+  font-size: 1.25rem;
+  color: #34495e;
+  text-align: justify;
+  line-height: 1.8; // más espacio entre líneas, que respire
+  margin-bottom: 40px;
+}
+
+.review-column {
+  margin-top: 30px;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); // más sombra, porque why not?
+}
