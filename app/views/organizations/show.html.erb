@@ -56,7 +56,7 @@
         <%= f.input :content,label:"Escribe tu review" %>
         <%= f.input :rating, collection: (1..5).to_a, label: "Califica tu Experiencia", input_html: {data: {controller: "star-rating"}} %>
         <%= f.input :organization_id, :as => :hidden, input_html: {value: params[:id]} %>
-        <%= f.submit "Envía review" %>
+        <%= f.submit "Envía review", class: 'custom-button' %>
       <% end %>
 </div>
 <% end %>
