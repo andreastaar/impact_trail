@@ -86,4 +86,6 @@ gem "pg_search"
 
 gem "geocoder"
 
+gem "ruby-vips"
 
+gem "activestorage-cloudinary-service"
