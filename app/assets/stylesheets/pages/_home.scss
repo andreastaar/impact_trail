@@ -303,3 +303,12 @@ video {
 .card-text {
   line-height: 2; /* Ajusta el espacio entre las líneas de <p> */
 }
+
+.title1 {
+  text-align: center; /* Centra el texto */
+  margin-bottom: 1.5rem; /* Espaciado inferior equivalente a mb-4 en Bootstrap */
+  color: #495579; /* Color personalizado */
+  font-family: 'Poppins', sans-serif;
+  font-size: 40px;
+  font-weight: bold;
+}
