@@ -243,10 +243,10 @@ aplicaciones = Application.create!(
 resenas = Review.create!(
   [
     { rating: 5.0, content: 'Una experiencia muy enriquecedora. ¡Altamente recomendado!', user: usuarios[3], organization_id: usuarios[0].id },
-    { rating: 4.0, content: 'Excelente organización y muy bien gestionado.', user: usuarios[3], organization_id: usuarios[0].id },
+    { rating: 4.0, content: 'Excelente organización y muy bien gestionado.', user: usuarios[4], organization_id: usuarios[0].id },
     { rating: 5.0, content: 'Buena experiencia, aunque podría haber más actividades.', user: usuarios[4], organization_id: usuarios[1].id },
-    { rating: 5.0, content: 'La organización fue muy profesional y me brindaron el apoyo necesario para adaptarme al entorno local.', user: usuarios[4], organization_id: usuarios[1].id }, #nuevo
-    { rating: 4.0, content: 'Los anfitriones fueron muy acogedores y me enseñaron valiosas lecciones sobre cómo llevar una vida más autosuficiente y respetuosa con el medio ambiente.', user: usuarios[5], organization_id: usuarios[2].id }, #nuevo
+    { rating: 5.0, content: 'La organización fue muy profesional y me brindaron el apoyo necesario para adaptarme al entorno local.', user: usuarios[5], organization_id: usuarios[1].id }, #nuevo
+    { rating: 4.0, content: 'Los anfitriones fueron muy acogedores y me enseñaron valiosas lecciones sobre cómo llevar una vida más autosuficiente y respetuosa con el medio ambiente.', user: usuarios[3], organization_id: usuarios[2].id }, #nuevo
     { rating: 5.0, content: 'Muy bien organizado y un equipo muy acogedor.', user: usuarios[5], organization_id: usuarios[2].id }
 
   ]

@@ -3,13 +3,13 @@
   <div class="d-flex align-items-center mb-2">
   <% if current_user.role == "voluntario" %>
     <div class="badge text-bg-dark fs-6 me-1">Proyecto de:</div>
-    <div class="fs-5"><strong><%= link_to @offer.user.organization_name.upcase , organization_path(@offer.user), class: "custom-color-text hover-link" %></strong></div>
+    <div class="fs-5 "><strong><%= link_to @offer.user.organization_name.upcase , organization_path(@offer.user), class: "custom-color-text hover-link" %></strong></div>
     <% end %>
     <% if @offer.user.reviews.any? %>
      <div><%=@offer.user.reviews.average_rating %></div>
     <% end %>
   </div>
-    <h3 class ="display-4 text-dark fs-3"><%= @offer.title.capitalize %> </h3>
+    <h3 class ="display-4 title1-izq fs-3"><%= @offer.title.capitalize %> </h3>
     <div><i class="fa-solid fa-location-dot me-1"></i><%= " #{@offer.city.capitalize}, #{@offer.country_name.capitalize}"%></div>
 
 
