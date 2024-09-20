@@ -47,7 +47,7 @@ usuarios = User.create!(
       organization_address: 'Belgrano 1800, Buenos Aires',
       description: 'Promueve el bienestar social y la inclusión.' },
       # voluntario
-    { email: 'voluntario@gmail.com',
+    { email: 'lucas.gonzales@gmail.com',
       password: '123456',
       password_confirmation: '123456',
       first_name: 'Lucas',
@@ -94,7 +94,43 @@ usuarios = User.create!(
       instagram_account: 'pamela23a',
       facebook_account: 'pamela.cantara.37',
       organization_name: nil,
-      description: 'Encantada de poder viajar con un propósito.' }
+      description: 'Encantada de poder viajar con un propósito.' },
+    { email: 'andrea@gmail.com',
+      password: '123456',
+      password_confirmation: '123456',
+      first_name: 'Andrea',
+      last_name: 'Estrella',
+      role: 'voluntario',
+      location: 'Peru',
+      city_name: 'Lima',
+      instagram_account: 'andreaa_staar',
+      facebook_account: 'andreacarol.estrellaoliva',
+      organization_name: nil,
+      description: 'Hola, soy Andrea, pero mis amigos me llaman Andre, me gusta la fotografía, viajar y hacer surf. ' },
+    { email: 'milagros@gmail.com',
+      password: '123456',
+      password_confirmation: '123456',
+      first_name: 'Milagros',
+      last_name: 'Avila',
+      role: 'voluntario',
+      location: 'Peru',
+      city_name: 'Lima',
+      instagram_account: 'milagrosavila',
+      facebook_account: 'MilagrosAvilaM',
+      organization_name: nil,
+      description: 'Ingeniera industrial buscando experiencias nuevas, ayudando a comunidades necesitadas de Latinoamérica.' },
+    { email: 'lourdes@gmail.com',
+      password: '123456',
+      password_confirmation: '123456',
+      first_name: 'Lourdes',
+      last_name: 'Correa',
+      role: 'voluntario',
+      location: 'Peru',
+      city_name: 'Lima',
+      instagram_account: 'lourdesmcc',
+      facebook_account: 'lourdescorrea',
+      organization_name: nil,
+      description: 'Soy una apasionada viajera que disfruta explorar nuevos lugares y culturas. Me encanta conocer personas de diferentes orígenes, ya que cada encuentro enriquece mis experiencias y amplía mi perspectiva del mundo' }
   ]
 )
 
@@ -107,6 +143,9 @@ user_images = [
   "https://res.cloudinary.com/dij1c8lht/image/upload/v1726783030/mujer1_bh4mu7.jpg",
   "https://res.cloudinary.com/dij1c8lht/image/upload/v1726784522/hombre4_muzkdd.jpg",
   "https://res.cloudinary.com/dij1c8lht/image/upload/v1726789838/profile_qipky5.jpg",
+  "https://res.cloudinary.com/dij1c8lht/image/upload/v1726789727/andre_bya9kd.jpg",
+  "https://res.cloudinary.com/dij1c8lht/image/upload/v1726780179/Milagros_Avila_k2sqzi.jpg",
+  "https://res.cloudinary.com/dij1c8lht/image/upload/v1726780336/WhatsApp_Image_2024-09-19_at_16.08.37_ojudig.jpg"
 ]
 
 user_images.each_with_index do |imagen, index|
@@ -122,7 +161,7 @@ ofertas = Offer.create!(
     {
       title: 'Voluntariado en Educación Infantil',
       description: 'Apoyar en la educación de niños en situación de vulnerabilidad.',
-      requirements: 'Paciencia y habilidades educativas.',
+      requirements: 'Habilidades educativas.',
       start_date: '2024-10-01',
       end_date: '2024-12-31',
       availability: 4,
@@ -168,7 +207,7 @@ ofertas = Offer.create!(
     {
       title: 'Apoyo en Centro de Día para Adultos Mayores',
       description: 'Asistir en actividades y cuidados de adultos mayores.',
-      requirements: 'Empatía y habilidades para el cuidado.',
+      requirements: 'Habilidades para el cuidado del adulto mayor.',
       start_date: '2024-10-02',
       end_date: '2024-12-31',
       availability: 4,
@@ -255,12 +294,12 @@ aplicaciones = Application.create!(
 # Crear reseñas para las ofertas asociadas a las aplicaciones
 resenas = Review.create!(
   [
-    { rating: 5.0, content: 'Una experiencia muy enriquecedora. ¡Altamente recomendado!', user: usuarios[3], organization_id: usuarios[0].id },
-    { rating: 4.0, content: 'Excelente organización y muy bien gestionado.', user: usuarios[4], organization_id: usuarios[0].id },
-    { rating: 5.0, content: 'Buena experiencia, aunque podría haber más actividades.', user: usuarios[4], organization_id: usuarios[1].id },
-    { rating: 5.0, content: 'La organización fue muy profesional y me brindaron el apoyo necesario para adaptarme al entorno local.', user: usuarios[5], organization_id: usuarios[1].id }, #nuevo
-    { rating: 4.0, content: 'Los anfitriones fueron muy acogedores y me enseñaron valiosas lecciones sobre cómo llevar una vida más autosuficiente y respetuosa con el medio ambiente.', user: usuarios[3], organization_id: usuarios[2].id }, #nuevo
-    { rating: 5.0, content: 'Muy bien organizado y un equipo muy acogedor.', user: usuarios[5], organization_id: usuarios[2].id }
+    { rating: 5.0, content: 'Una experiencia muy enriquecedora. ¡Altamente recomendado!', user: usuarios[8], organization_id: usuarios[0].id },
+    { rating: 4.0, content: 'Excelente organización y muy bien gestionado.', user: usuarios[9], organization_id: usuarios[0].id },
+    { rating: 5.0, content: 'Buena experiencia, aunque podría haber más actividades.', user: usuarios[9], organization_id: usuarios[1].id },
+    { rating: 5.0, content: 'La organización fue muy profesional y me brindaron el apoyo necesario para adaptarme al entorno local.', user: usuarios[10], organization_id: usuarios[1].id }, #nuevo
+    { rating: 4.0, content: 'Los anfitriones fueron muy acogedores y me enseñaron valiosas lecciones sobre cómo llevar una vida más autosuficiente y respetuosa con el medio ambiente.', user: usuarios[8], organization_id: usuarios[2].id }, #nuevo
+    { rating: 5.0, content: 'Muy bien organizado y un equipo muy acogedor.', user: usuarios[10], organization_id: usuarios[2].id }
 
   ]
 )
