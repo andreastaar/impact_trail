@@ -94,10 +94,17 @@
 /* Estilo para el nombre */
 .card-title {
   font-size: 1.5em;
-  color: #464a64;
+  color:#495579;
   font-weight: 700;
   margin-top: 10px;
+  font-family: 'Poppins',  sans-serif;
 }
+
+.title-home {
+
+}
+
+
 
 /* Información centrada */
 .card-text {
@@ -132,3 +139,5 @@
 .btn.accept:hover {
   background-color:#39ce77;
 }
+
+

@@ -1,0 +1,215 @@
+$white: #ffffff;
+$black: #252525;
+$primary1: #555c86;
+$primary2: salmon;
+$textCol: #999;
+
+
+.formulario {
+  font-family: 'Roboto', sans-serif;
+  background-color: #f8f9fa;
+  margin: 0 auto;
+  max-width: 900px;
+  padding: 20px;
+}
+
+.formulario h1 {
+  font-size: 2rem;
+  color: #343a40;
+}
+
+.formulario .container {
+  background-color: #ffffff;
+  border: 1px solid #dee2e6;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.formulario .form-group label {
+  font-weight: bold;
+  color: #495057;
+}
+
+.formulario .form-control {
+  border-radius: 8px;
+  border: 1px solid #ced4da;
+}
+
+.formulario .form-control:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.form-row .form-group {
+  margin-bottom: 15px;  // Añade espacio vertical entre las filas
+  padding: 0 10px;      // Añade espacio horizontal entre las columnas
+}
+
+.formulario input[type="file"] {
+  padding: 8px;
+  background-color: #f1f1f1;
+  border-radius: 8px;
+  border: 1px solid #ced4da;
+}
+
+.formulario .custom-button {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.formulario .custom-button:hover {
+  background-color: #218838;
+}
+
+.formulario .custom-button-grey {
+  background-color: #6c757d;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.formulario .custom-button-grey:hover {
+  background-color: #5a6268;
+}
+
+.formulario .d-flex {
+  display: flex;
+}
+
+.formulario .justify-content-center {
+  justify-content: center;
+}
+
+.formulario .mt-5, .formulario .mb-5 {
+  margin-top: 3rem !important;
+  margin-bottom: 3rem !important;
+}
+
+/* Ajuste para separar las fechas */
+.formulario .form-group.row {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+
+.formulario .form-group .col-md-3 {
+  width: 48%;
+}
+
+/* Opcional: mejora en la estética de los inputs */
+.formulario .form-group .col-md-3 .form-control {
+  padding: 8px;
+  font-size: 0.9rem;
+}
+
+// form de new offer
+
+.book_section {
+  h4 {
+    position: relative;
+    padding-bottom: 5px;
+
+    span {
+      color: $primary1;
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 150px;
+      height: 3px;
+      background-color: $primary2;
+    }
+
+    margin-bottom: 35px;
+  }
+
+    .form-row {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-right: -5px;
+    margin-left: -5px;
+    }
+  form {
+    padding: 35px 45px;
+    box-shadow: 0 0 15px 10px rgba($color: #000000, $alpha: .07);
+
+    label {
+      color: $black;
+    }
+
+    .form-control {
+      width: 100%;
+      background-color: transparent;
+      border: 1px solid $primary1;
+      height: 45px;
+      outline: none;
+      box-shadow: none;
+      border-radius: 5px;
+ 
+      &::placeholder {
+        color: $primary1;
+      }
+    }
+
+    #inputDate {
+      color: $primary1;
+
+      input {
+        color: $primary1;
+      }
+    }
+
+    button.btn {
+      background-color: $primary2;
+      color: #ffffff;
+      padding: 10px 45px;
+      border-radius: 5px;
+      margin-top: 10px;
+      text-transform: uppercase;
+    }
+  }
+
+  .date_icon {
+    right: 10px;
+    height: 100%;
+    position: absolute;
+    background-color: transparent;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: $primary1;
+  }
+
+  .nice-select {
+    &:after {
+      content: "\f107";
+      font-family: FontAwesome;
+      border: none;
+      width: auto;
+      height: auto;
+      transform: none;
+      top: 7px;
+      font-size: 20px;
+      font-weight: bold;
+      transition: all .3s;
+    }
+
+    &.open:after {
+      content: "\f106";
+    }
+  }
+
+}

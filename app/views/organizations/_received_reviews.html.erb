@@ -1,9 +1,9 @@
-<div class="container">
+<div class="">
 
 <div class="row">
 
 <div>
-  <div class="pt-2"><strong>Reviews</strong></div>
+  <div class="title2-izq pt-1"><strong>Reviews</strong></div>
 <% if @reviews.any? %>
   <% @reviews.each do |review| %>
 <div class="d-flex">
@@ -18,13 +18,13 @@
     </div>
     <div class="d-flex review-user">
       <div>
-        <li class="text-muted"><i><%= review.user.first_name %></i></li>
+        <li class="text-muted "><i><%= review.user.first_name %></i></li>
       </div>
       <div class="ms-2 text-muted">
         <li><i><%= review.created_at.strftime("%d-%m-%Y") %></i></li>
       </div>
     </div>
-      <li class="review-content"><i><%= review.content.capitalize  %></i></li>
+      <li class="review-content "><i><%= review.content.capitalize  %></i></li>
     </ul>
   </div>
 </div>

@@ -6,8 +6,8 @@
 <% end %>
 <%# Ver ofertas en general y las todas las postulaciones que tenga el boton de crear nueva %>
 
-<%# Vista si eres voluntario %>
-<h2><strong><%= @organization.organization_name.upcase %></strong></h2>
+<%# Vista para todos %>
+<div class="title1-izq"><strong><%= @organization.organization_name.upcase %></strong></div>
   <div class="organization-rating-address">
     <%# estrellas amarillas, del promedio %>
     <div>
@@ -51,10 +51,9 @@
 
 <%# agregar review, si eres voluntario %>
 <% if user_signed_in? && current_user.role!= "organización" %>
-<div class= "mt-5"><h5><strong>Crea una nueva review</strong></h5>
-      <%= simple_form_for @review do |f| %>
-        <%= f.input :content,label:"Escribe tu review" %>
-        <%= f.input :rating, collection: (1..5).to_a, label: "Califica tu Experiencia", input_html: {data: {controller: "star-rating"}} %>
+       <%= simple_form_for @review do |f| %>
+        <%= f.input :content,label:"Escribe tu review" , label_html: {class:"title2-izq"}%>
+        <%= f.input :rating, collection: (1..5).to_a, label: "Califica tu Experiencia", label_html: {class:"title2-izq"}, input_html: {data: {controller: "star-rating"}} %>
         <%= f.input :organization_id, :as => :hidden, input_html: {value: params[:id]} %>
         <%= f.submit "Envía review", class: 'custom-button' %>
       <% end %>
