@@ -82,7 +82,19 @@ usuarios = User.create!(
       instagram_account: 'julioperez',
       facebook_account: 'julio_p_fb',
       organization_name: nil,
-      description: 'Interesado en conocer más gente con este estilo de vida colaborador.' }
+      description: 'Interesado en conocer más gente con este estilo de vida colaborador.' },
+    { email: 'pamela@gmail.com',
+      password: '123456',
+      password_confirmation: '123456',
+      first_name: 'Pamela',
+      last_name: 'Alcantara',
+      role: 'voluntario',
+      location: 'Peru',
+      city_name: 'Lima',
+      instagram_account: 'pamela23a',
+      facebook_account: 'pamela.cantara.37',
+      organization_name: nil,
+      description: 'Encantada de poder viajar con un propósito.' }
   ]
 )
 
@@ -91,9 +103,10 @@ user_images = [
   "https://s3-us-west-2.amazonaws.com/anchor-generated-image-bank/production/podcast_uploaded400/9796984/9796984-1613805696689-ac884b986ad7c.jpg",
   "https://img.freepik.com/vector-gratis/plantilla-diseno-logotipo-amor-mano_474888-2344.jpg",
   "https://yfu.org.ec/wp-content/uploads/2018/04/YFU_Icons_volunteers_rgb.jpg",
-  "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/ChrisEvans2023.jpg/440px-ChrisEvans2023.jpg",
-  "https://exitofem.com/wp-content/uploads/2020/04/Imagen-Destacada.jpg",
-  "https://www.clarin.com/img/2024/07/04/uteodLeuh_2000x1500__1.jpg"
+  "https://res.cloudinary.com/dij1c8lht/image/upload/v1726789004/hombre6_nld6bc.jpg",
+  "https://res.cloudinary.com/dij1c8lht/image/upload/v1726783030/mujer1_bh4mu7.jpg",
+  "https://res.cloudinary.com/dij1c8lht/image/upload/v1726784522/hombre4_muzkdd.jpg",
+  "https://res.cloudinary.com/dij1c8lht/image/upload/v1726789838/profile_qipky5.jpg",
 ]
 
 user_images.each_with_index do |imagen, index|

@@ -65,6 +65,7 @@
                     <h5 class="card-title text-center"><%= application.user.first_name %> <%= application.user.last_name %></h5>
                     <p class="card-text text-center">
                      <%= application.user.full_location %>
+                      <%= application.user.email %>
                       <% case application.user.location %>
                           <% when "IT" %>
                         <%= "🇮🇹" %>
