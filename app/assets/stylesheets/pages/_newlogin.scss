@@ -1,0 +1,113 @@
+// .login {
+//   .login-imagen-de-fondo {
+//     background-size: cover;
+//     background-position: center;
+//     display: flex;
+//     justify-content: center;
+//     align-items: stretch;
+//     min-height: 500px;
+//     border-radius: 10px;
+//     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+//     width: 100%;
+//     margin-top: 70px;
+//     overflow: hidden;
+
+//     &::before {
+//       content: '';
+//       position: absolute;
+//       top: 0;
+//       left: 0;
+//       width: 100%;
+//       height: 100%;
+//       background-color: rgba(90, 90, 245, 0.5); // Filtro azul transparente
+//       z-index: 1;
+//     }
+//   }
+
+//   .login-contenedor {
+//     display: flex;
+//     position: relative;
+//     z-index: 2;
+//     justify-content: center;
+//     align-items: stretch;
+
+//     .login-left-section {
+//       color: #fff;
+//       display: flex;
+//       flex-direction: column;
+//       justify-content: center;
+//       align-items: center;
+//       text-align: center;
+//       padding: 40px;
+//       flex: 1;
+//       border-top-left-radius: 10px;
+//       border-bottom-left-radius: 10px;
+
+//       h1 {
+//         font-size: 2.5rem;
+//         margin-bottom: 20px;
+//       }
+
+//       p {
+//         font-size: 1.2rem;
+//         max-width: 80%;
+//       }
+//     }
+
+//     .login-right-section {
+//       margin: 50px auto;
+//       background: rgba(255, 255, 255, 0.9);
+//       flex: 1;
+//       padding: 40px;
+//       border-top-right-radius: 10px;
+//       border-bottom-right-radius: 10px;
+
+//       h2 {
+//         font-size: 2rem;
+//         color: #333;
+//         margin-bottom: 30px;
+//       }
+
+//       .login-form-inputs {
+//         margin-bottom: 20px;
+
+//         input {
+//           width: 100%;
+//           padding: 10px;
+//           font-size: 1rem;
+//           border: 1px solid #dddddd;
+//           border-radius: 5px;
+//           margin-bottom: 20px;
+
+//           &:focus {
+//             outline: none;
+//             border-color: #007bff; // Color del borde al enfocarse
+//           }
+//         }
+//       }
+
+//       #user_remember_me {
+//         width: 5%;
+//         margin-right: 5px;
+//       }
+
+//       .login-form-actions {
+//         text-align: center;
+
+//         button {
+//           background-color: #007bff;
+//           color: #fff;
+//           border: none;
+//           padding: 10px 20px;
+//           font-size: 1rem;
+//           border-radius: 5px;
+//           cursor: pointer;
+
+//           &:hover {
+//             background-color: #0056b3;
+//           }
+//         }
+//       }
+//     }
+//   }
+// }

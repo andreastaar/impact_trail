@@ -1,22 +1,29 @@
-<div class = "container shadow border mt-5 p-4 w-50">
-  <h2>Log in</h2>
-
-  <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-    <div class="form-inputs">
-      <%= f.input :email,
-                  required: false,
-                  autofocus: true,
-                  input_html: { autocomplete: "email" } %>
-      <%= f.input :password,
-                  required: false,
-                  input_html: { autocomplete: "current-password" } %>
-      <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+<div class="login-imagen-de-fondo" style="background-image: url(<%= asset_path("viajero.jpg")%>)">
+  <div class="login-contenedor">
+    <!-- Sección de la imagen con texto -->
+    <div class="login-left-section">
+      <h1>Tu frase inspiradora</h1>
+      <p>Una breve descripción o mensaje motivador que aparezca en la sección izquierda.</p>
     </div>
-
-    <div class="form-actions">
-      <%= f.button :submit, "Log in" %>
+    <!-- Sección del formulario -->
+    <div class="login-right-section">
+      <h2>Log in</h2>
+      <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <div class="login-form-inputs">
+          <%= f.input :email,
+                      required: false,
+                      autofocus: true,
+                      input_html: { autocomplete: "email" } %>
+          <%= f.input :password,
+                      required: false,
+                      input_html: { autocomplete: "current-password" } %>
+          <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+        </div>
+        <div class="login-form-actions">
+          <%= f.button :submit, "Log in" %>
+        </div>
+      <% end %>
+      <%= render "devise/shared/links" %>
     </div>
-  <% end %>
-
-  <%= render "devise/shared/links" %>
+  </div>
 </div>
