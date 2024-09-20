@@ -1,9 +1,10 @@
-<div class="login-imagen-de-fondo" style="background-image: url(<%= asset_path("viajero.jpg")%>)">
-  <div class="login-contenedor">
+
+<div class="login-background-image" style="background-image: url(<%= asset_path('viajero.jpg')%>)">
+  <div class="login-container">
     <!-- Sección de la imagen con texto -->
     <div class="login-left-section">
-      <h1>Tu frase inspiradora</h1>
-      <p>Una breve descripción o mensaje motivador que aparezca en la sección izquierda.</p>
+      <h1>Viaja con proposito</h1>
+      <p>Tu tiempo puede cambiar vidas. Únete al cambio</p>
     </div>
     <!-- Sección del formulario -->
     <div class="login-right-section">
@@ -17,10 +18,10 @@
           <%= f.input :password,
                       required: false,
                       input_html: { autocomplete: "current-password" } %>
-          <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+          <%= f.input :remember_me, as: :boolean, input_html: {id: "rememberbutton"} if devise_mapping.rememberable? %>
         </div>
         <div class="login-form-actions">
-          <%= f.button :submit, "Log in" %>
+          <%= f.button :submit, "Log in", class: 'custom-button' %>
         </div>
       <% end %>
       <%= render "devise/shared/links" %>
